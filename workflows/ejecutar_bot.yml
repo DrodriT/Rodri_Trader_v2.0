@@ -1,0 +1,25 @@
+name: Test Conexion Velas
+
+on:
+  workflow_dispatch: # Permite ejecutarlo manualmente desde un botón en GitHub
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: |
+          pip install pandas numpy ccxt
+
+      - name: Ejecutar script de velas
+        run: |
+          python test_conexion_velas.py
