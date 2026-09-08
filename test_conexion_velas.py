@@ -15,30 +15,91 @@ from indicadores import (
 )
 
 
-def inicializar_exchange():
-    """Crea la instancia del exchange según config.py."""
-    exchange_class = getattr(ccxt, config.EXCHANGE_ID)
-    exchange = exchange_class({
-        "enableRateLimit": True,  # Respeta límites de llamadas del exchange
-    })
+def get_default_type(exchange_id: str) -> str:
+    """
+    Devuelve el valor correcto para 'options.defaultType' según el exchange.
+    - Binance (incluyendo binanceusdm) usa 'future'.
+    - Bitget, Bybit, OKX, Kraken, KuCoin, etc. usan 'swap'.
+    """
+    exchange_lower = exchange_id.lower()
+    if "binance" in exchange_lower:
+        return "future"
+    else:
+        return "swap"
 
-    if config.TESTNET_MODE and hasattr(exchange, "set_sandbox_mode"):
-        try:
-            exchange.set_sandbox_mode(True)
-        except Exception:
-            pass
+
+def inicializar_exchange():
+    """
+    Crea la instancia del exchange.
+    - SIEMPRE se conecta a la red principal (mainnet).
+    - Configura automáticamente el tipo de mercado (futuros perpetuos).
+    - Solo usa API keys si están definidas y no vacías.
+    """
+    try:
+        exchange_class = getattr(ccxt, config.EXCHANGE_ID)
+    except AttributeError:
+        raise ValueError(
+            f"❌ Exchange '{config.EXCHANGE_ID}' no soportado por CCXT. "
+            "Revisa la lista en https://docs.ccxt.com/#/README?id=exchanges"
+        )
+
+    # Configuración base
+    exchange_config = {
+        "enableRateLimit": True,
+        "timeout": 30000,
+        "options": {
+            "defaultType":  config.MARKET_TYPE,  
+        },
+    }
+
+    # Solo añadir credenciales si existen y no están vacías
+    if hasattr(config, 'API_KEY') and config.API_KEY and config.API_KEY.strip():
+        exchange_config["apiKey"] = config.API_KEY
+        exchange_config["secret"] = config.API_SECRET
+        print("🔑 Usando API keys (privadas) para el exchange.")
+    else:
+        print("🌐 Sin API keys - solo acceso a datos públicos.")
+
+    exchange = exchange_class(exchange_config)
+
+    print(f"🔗 Conectado a {config.EXCHANGE_ID.upper()} (Mainnet) - Tipo: {config.MARKET_TYPE}")
 
     return exchange
 
 
 def descargar_velas(exchange, simbolo: str):
-    """Descarga las últimas velas OHLCV y devuelve un DataFrame limpio."""
-    print(f"\nDescargando {config.CANTIDAD_VELAS} velas de {simbolo} ({config.TIMEFRAME})...")
-    ohlcv = exchange.fetch_ohlcv(
-        symbol=simbolo,
-        timeframe=config.TIMEFRAME,
-        limit=config.CANTIDAD_VELAS,
-    )
+    """
+    Descarga las últimas velas OHLCV y devuelve un DataFrame limpio.
+    Incluye manejo de errores detallado.
+    """
+    print(f"\n📥 Descargando {config.CANTIDAD_VELAS} velas de {simbolo} ({config.TIMEFRAME})...")
+    try:
+        ohlcv = exchange.fetch_ohlcv(
+            symbol=simbolo,
+            timeframe=config.TIMEFRAME,
+            limit=config.CANTIDAD_VELAS,
+        )
+
+    except ccxt.BadSymbol as e:
+        print(f"❌ Símbolo '{simbolo}' no válido para {config.EXCHANGE_ID}.")
+        print(f"   Detalle: {e}")
+        # Opcional: mostrar los primeros 10 símbolos válidos del exchange
+        try:
+            exchange.load_markets()
+            valid_symbols = list(exchange.markets.keys())[:10]
+            print(f"   Ejemplos de símbolos válidos: {valid_symbols}")
+        except:
+            pass
+        return None
+    except ccxt.NetworkError as e:
+        print(f"❌ Error de red al consultar {simbolo}: {e}")
+        return None
+    except ccxt.ExchangeError as e:
+        print(f"❌ Error del exchange al consultar {simbolo}: {e}")
+        return None
+    except Exception as e:
+        print(f"❌ Error inesperado consultando {simbolo}: {type(e).__name__} - {e}")
+        return None
 
     columnas = ["timestamp", "open", "high", "low", "close", "volume"]
     df = pd.DataFrame(ohlcv, columns=columnas)
@@ -49,15 +110,21 @@ def descargar_velas(exchange, simbolo: str):
 def main():
     exchange = inicializar_exchange()
 
-    print(f"=== INICIANDO CONEXIÓN A {config.EXCHANGE_ID.upper()} ===")
+    # (Opcional) Cargar mercados para verificar símbolos disponibles
+    # Esto es útil para depuración, pero ralentiza la primera ejecución.
+    # exchange.load_markets()
+
+    print(f"\n=== INICIANDO ANÁLISIS EN {config.EXCHANGE_ID.upper()} (MAINNET) ===")
     print(f"Pares a consultar: {config.LISTADO_MONEDAS}")
-    print(f"Temporalidad: {config.TIMEFRAME} | Velas: {config.CANTIDAD_VELAS}")
+    print(f"Temporalidad: {config.TIMEFRAME} | Velas: {config.CANTIDAD_VELAS}\n")
 
     for par in config.LISTADO_MONEDAS:
-        try:
-            df = descargar_velas(exchange, par)
+        df = descargar_velas(exchange, par)
+        if df is None:
+            continue
 
-            # Cálculo de indicadores usando los parámetros de config.py
+        try:
+            # Cálculo de indicadores
             df["EMA_rapida"] = calcular_ema(df, periodo=config.EMA_RAPIDA_PERIODO)
             df["EMA_lenta"] = calcular_ema(df, periodo=config.EMA_LENTA_PERIODO)
             df["RSI"] = calcular_rsi(df, periodo=config.RSI_PERIODO)
@@ -67,7 +134,7 @@ def main():
             dmi = calcular_dm(df, periodo=config.ADX_PERIODO)
             df["ADX"] = dmi["ADX"]
 
-            # Datos de la última vela cerrada / actual
+            # Última vela
             ultima_vela = df.iloc[-1]
             precio_actual = ultima_vela["close"]
             sl_long = calcular_stop_loss_atr(
@@ -83,10 +150,10 @@ def main():
             print(f"  EMA({config.EMA_LENTA_PERIODO}):        ${ultima_vela['EMA_lenta']:,.2f}")
             print(f"  RSI({config.RSI_PERIODO}):         {ultima_vela['RSI']:.2f}")
             print(f"  ADX({config.ADX_PERIODO}):         {ultima_vela['ADX']:.2f}")
-            print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)")
+            print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)\n")
 
         except Exception as e:
-            print(f"❌ Error consultando {par}: {e}")
+            print(f"❌ Error procesando indicadores para {par}: {e}\n")
 
 
 if __name__ == "__main__":

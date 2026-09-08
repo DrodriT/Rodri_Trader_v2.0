@@ -9,15 +9,15 @@ del bot, exchanges, indicadores y pares a analizar.
 # 1. CONFIGURACIÓN DEL EXCHANGE
 # ==============================================================================
 # Nombre del exchange soportado por ccxt (ej: 'binance', 'bybit', 'kraken', 'kucoin')
-EXCHANGE_ID = "binance"
+EXCHANGE_ID = "bitget"
 
-# ¿Usar entorno de pruebas / Testnet? (True = sin dinero real, False = producción)
-TESTNET_MODE = True
+# Tipo de mercado: 'spot', 'margin', 'future', 'swap', 'option', etc.
+# Para futuros perpetuos USDT‑M, usa 'swap' (la mayoría) o 'future' (Binance).
+MARKET_TYPE = "future"   # <--- NUEVA VARIABLE
 
 # Claves API (déjalas vacías por ahora si solo vas a leer velas y datos públicos)
 API_KEY = ""
 API_SECRET = ""
-
 
 # ==============================================================================
 # 2. MERCADO, MONEDAS Y TEMPORALIDAD
@@ -25,11 +25,11 @@ API_SECRET = ""
 # Listado de pares a monitorizar
 # Puedes añadir o quitar criptomonedas según tus preferencias
 LISTADO_MONEDAS = [
-    "BTC/USDT",
-    "ETH/USDT",
-    "SOL/USDT",
-    "BNB/USDT",
-    "XRP/USDT",
+    "BTC/USDT:USDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "BNBUSDT",
+    "XRPUSDT",
 ]
 
 # Temporalidad de las velas:
