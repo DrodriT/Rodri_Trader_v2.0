@@ -25,11 +25,30 @@ API_SECRET = ""
 # Listado de pares a monitorizar
 # Puedes añadir o quitar criptomonedas según tus preferencias
 LISTADO_MONEDAS = [
-    "BTC/USDT:USDT",
+    "BTCUSDT",
     "ETHUSDT",
     "SOLUSDT",
-    "BNBUSDT",
     "XRPUSDT",
+    "BCHUSDT",
+    "SUIUSDT",
+    "XLMUSDT",
+    "INJUSDT",
+    "HBARUSDT",
+    "ADAUSDT",
+    "AVAXUSDT",
+    "LTCUSDT",
+    "AAVEUSDT",
+    "ICPUSDT",
+    "OPUSDT",
+    "NEARUSDT",
+    "XMRUSDT",
+    "DOGEUSDT",
+    "UNIUSDT",
+    "FILUSDT",
+    "ATOMUSDT",
+    "LINKUSDT",
+    "DOTUSDT",
+    "ETCUSDT",
 ]
 
 # Temporalidad de las velas:
