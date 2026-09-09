@@ -25,11 +25,10 @@ API_SECRET = ""
 # Listado de pares a monitorizar
 # Puedes añadir o quitar criptomonedas según tus preferencias
 LISTADO_MONEDAS = [
-    "BTCUSDT",
     "BTC/USDT:USDT",
-    "ETHUSDT",
-    "SOLUSDT",
-    "XRPUSDT",
+    "ETH/USDT:USDT",
+    "SOL/USDT:USDT",
+    "XRP/USDT:USDT",
 ]
 
 # Temporalidad de las velas:
