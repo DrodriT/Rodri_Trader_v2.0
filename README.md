@@ -1,7 +1,6 @@
 
 <div align="center">
 
-<img src="./assets/rodri_trader_logo.png" alt="Rodri Trader Logo" width="260"/>
 
 # 🤖 RODRI TRADER v2.0 — Bot de Trading Algorítmico
 
@@ -14,6 +13,8 @@
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-2088FF?logo=githubactions&logoColor=white)
 ![Status](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow)
 ![License](https://img.shields.io/badge/Licencia-MIT-lightgrey)
+
+<img src="./assets/rodri_trader_logo.png" alt="Rodri Trader Logo" width="260"/>
 
 </div>
 
