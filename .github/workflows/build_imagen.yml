@@ -6,8 +6,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "Dockerfile/Dockerfile"
-      - "Dockerfile/requirements.txt"
+      - "./Dockerfile/Dockerfile"
+      - "./Dockerfile/requirements.txt"
       - "indicadores/**"
       - "config.py"
       - "test_conexion_velas.py"
