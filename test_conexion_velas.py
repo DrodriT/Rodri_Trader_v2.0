@@ -159,9 +159,14 @@ def main():
             print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)\n")
 
             # ---- Guardar en JSON ----
-            nombre_base = par.replace("/", ":").replace("_")
+            nombre_base = par.replace("/", "_").replace(":", "_")
             nombre_archivo = f"{nombre_base}.json"
             ruta_json = os.path.join(output_dir, nombre_archivo)
+
+            # Verificar que el directorio existe (por si acaso)
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir, exist_ok=True)
+                print(f"  📁 Directorio creado: {output_dir}")
 
             datos_json = {
                 "simbolo": par,
