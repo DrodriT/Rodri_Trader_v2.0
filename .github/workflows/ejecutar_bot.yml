@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write   # para el commit/push de data/
+  packages: read     # <-- añadido: para poder hacer 'docker pull' desde GHCR
 
 jobs:
   run-bot:
