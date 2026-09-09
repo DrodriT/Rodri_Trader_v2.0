@@ -50,7 +50,7 @@ def inicializar_exchange():
         "enableRateLimit": True,
         "timeout": 30000,
         "options": {
-            "defaultType":  config.MARKET_TYPE,  
+            "defaultType": config.MARKET_TYPE,
         },
     }
 
@@ -110,10 +110,12 @@ def descargar_velas(exchange, simbolo: str):
 
 
 def main():
+    # Inicializar el exchange (con o sin API keys)
     exchange = inicializar_exchange()
 
-    # Crear la carpeta de salida si no existe
+    # Definir la carpeta donde se guardarán los archivos JSON de resumen
     output_dir = "data/indicadores"
+    # Crear la carpeta si no existe (exist_ok=True evita error si ya existe)
     os.makedirs(output_dir, exist_ok=True)
 
     # (Opcional) Cargar mercados para verificar símbolos disponibles
@@ -124,25 +126,31 @@ def main():
     print(f"Pares a consultar: {config.LISTADO_MONEDAS}")
     print(f"Temporalidad: {config.TIMEFRAME} | Velas: {config.CANTIDAD_VELAS}\n")
 
+    # Iterar sobre cada par de trading definido en config.LISTADO_MONEDAS
     for par in config.LISTADO_MONEDAS:
+        # Descargar velas OHLCV para el par
         df = descargar_velas(exchange, par)
         if df is None:
+            # Si hubo error al descargar, pasar al siguiente par
             continue
 
         try:
-            # Cálculo de indicadores
+            # Cálculo de indicadores técnicos
             df["EMA_rapida"] = calcular_ema(df, periodo=config.EMA_RAPIDA_PERIODO)
             df["EMA_lenta"] = calcular_ema(df, periodo=config.EMA_LENTA_PERIODO)
             df["RSI"] = calcular_rsi(df, periodo=config.RSI_PERIODO)
             df["ATR"] = calcular_atr(df, periodo=config.ATR_PERIODO)
             df["VWAP"] = calcular_vwap(df)
 
+            # Calcular ADX (Directional Movement Index)
             dmi = calcular_dm(df, periodo=config.ADX_PERIODO)
             df["ADX"] = dmi["ADX"]
 
-            # Última vela
+            # Obtener la última vela (la más reciente)
             ultima_vela = df.iloc[-1]
             precio_actual = ultima_vela["close"]
+
+            # Calcular stop-loss sugerido para posición larga usando ATR
             sl_long = calcular_stop_loss_atr(
                 precio_actual,
                 ultima_vela["ATR"],
@@ -150,6 +158,7 @@ def main():
                 direccion="LONG",
             )
 
+            # ---------- IMPRESIÓN EN PANTALLA (resumen) ----------
             print(f"--- Resumen {par} ---")
             print(f"  Precio actual:     ${precio_actual:,.2f}")
             print(f"  EMA({config.EMA_RAPIDA_PERIODO}):         ${ultima_vela['EMA_rapida']:,.2f}")
@@ -158,19 +167,22 @@ def main():
             print(f"  ADX({config.ADX_PERIODO}):         {ultima_vela['ADX']:.2f}")
             print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)\n")
 
-            # ---- Guardar en JSON ----
-            nombre_base = par.replace("/", "_").replace(":", "_")
+            # ---------- GUARDADO EN ARCHIVO JSON ----------
+            # Extraer el nombre base de la moneda (antes de la primera '/')
+            # Ejemplo: "BTC/USDT:USDT" -> "BTC"
+            nombre_base = par.split('/')[0]
             nombre_archivo = f"{nombre_base}.json"
             ruta_json = os.path.join(output_dir, nombre_archivo)
 
-            # Verificar que el directorio existe (por si acaso)
+            # Verificación adicional: si el directorio no existe, crearlo (por si acaso)
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir, exist_ok=True)
                 print(f"  📁 Directorio creado: {output_dir}")
 
+            # Construir el diccionario con los datos a guardar
             datos_json = {
-                "simbolo": par,
-                "timestamp": ultima_vela["timestamp"].isoformat(),
+                "simbolo": par,                       # Símbolo completo del par
+                "timestamp": ultima_vela["timestamp"].isoformat(),  # Fecha/hora de la última vela
                 "precio_actual": round(precio_actual, 2),
                 f"EMA_{config.EMA_RAPIDA_PERIODO}": round(ultima_vela["EMA_rapida"], 2),
                 f"EMA_{config.EMA_LENTA_PERIODO}": round(ultima_vela["EMA_lenta"], 2),
@@ -183,15 +195,17 @@ def main():
                 "velas_usadas": config.CANTIDAD_VELAS,
             }
 
+            # Escribir el archivo JSON con manejo de errores
             try:
                 with open(ruta_json, "w", encoding="utf-8") as f:
                     json.dump(datos_json, f, indent=4, ensure_ascii=False)
-                # Mostrar ruta absoluta para saber dónde está
+                # Mostrar la ruta absoluta para saber exactamente dónde se guardó
                 print(f"  ✅ Datos guardados en {os.path.abspath(ruta_json)}")
             except Exception as e:
                 print(f"  ❌ Error al guardar JSON en {ruta_json}: {e}")
-                
+
         except Exception as e:
+            # Capturar cualquier error durante el procesamiento de indicadores
             print(f"❌ Error procesando indicadores para {par}: {e}\n")
 
 
