@@ -3,23 +3,47 @@ name: Test Conexion Velas
 on:
   workflow_dispatch: # Permite ejecutarlo manualmente desde un botón en GitHub
 
+# Necesario para que el job pueda hacer push de vuelta al repo
+permissions:
+  contents: write
+
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
+    # Ejecutamos el job dentro de la imagen Docker ya publicada en GHCR
+    container:
+      image: ghcr.io/${{ github.repository }}:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
+      # Necesitamos el checkout del repo DENTRO del job para poder hacer commit/push,
+      # aunque el código ya viene incluido en la imagen (copiamos solo para tener el .git)
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
-      - name: Configurar Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Instalar dependencias
-        run: |
-          pip install pandas numpy ccxt
-
       - name: Ejecutar script de velas
+        run: python test_conexion_velas.py
+
+      - name: Marcar el directorio como seguro para git
+        # Necesario porque dentro del contenedor Docker el usuario difiere
+        # del dueño de los archivos del checkout, y git lo bloquea por seguridad
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Commit y push de los resultados generados
         run: |
-          python test_conexion_velas.py
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/
+
+          # Si no hay cambios (por ejemplo, valores idénticos a la ejecución anterior),
+          # 'git commit' fallaría; con este chequeo evitamos que el workflow rompa por eso
+          if git diff --cached --quiet; then
+            echo "ℹ️ Sin cambios en data/, no se hace commit."
+          else
+            git commit -m "🤖 Actualiza resultados de indicadores [skip ci]"
+            git push
+          fi
