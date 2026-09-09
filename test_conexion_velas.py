@@ -16,6 +16,9 @@ from indicadores import (
     calcular_vwap,
 )
 
+# Carpeta donde se guardará un JSON por cada par analizado
+OUTPUT_DIR = os.path.join("data", "indicadores")
+
 
 def get_default_type(exchange_id: str) -> str:
     """
@@ -45,7 +48,6 @@ def inicializar_exchange():
             "Revisa la lista en https://docs.ccxt.com/#/README?id=exchanges"
         )
 
-    # Configuración base
     exchange_config = {
         "enableRateLimit": True,
         "timeout": 30000,
@@ -54,7 +56,6 @@ def inicializar_exchange():
         },
     }
 
-    # Solo añadir credenciales si existen y no están vacías
     if hasattr(config, 'API_KEY') and config.API_KEY and config.API_KEY.strip():
         exchange_config["apiKey"] = config.API_KEY
         exchange_config["secret"] = config.API_SECRET
@@ -85,12 +86,11 @@ def descargar_velas(exchange, simbolo: str):
     except ccxt.BadSymbol as e:
         print(f"❌ Símbolo '{simbolo}' no válido para {config.EXCHANGE_ID}.")
         print(f"   Detalle: {e}")
-        # Opcional: mostrar los primeros 10 símbolos válidos del exchange
         try:
             exchange.load_markets()
             valid_symbols = list(exchange.markets.keys())[:10]
             print(f"   Ejemplos de símbolos válidos: {valid_symbols}")
-        except:
+        except Exception:
             pass
         return None
     except ccxt.NetworkError as e:
@@ -109,29 +109,58 @@ def descargar_velas(exchange, simbolo: str):
     return df
 
 
+def obtener_simbolo_base(par: str) -> str:
+    """
+    Extrae el nombre 'base' de la moneda a partir del símbolo del par,
+    sin importar el formato exacto que use el exchange.
+
+    Ejemplos:
+        "BTC/USDT:USDT" -> "BTC"
+        "BTC/USDT"      -> "BTC"
+        "BTCUSDT"       -> "BTC"   (si termina en USDT y no tiene separadores)
+    """
+    # Caso 1: formato unificado de CCXT con '/' (ej: "BTC/USDT:USDT")
+    if "/" in par:
+        return par.split("/")[0]
+
+    # Caso 2: símbolo plano tipo "BTCUSDT" (sin separadores) -> quitamos el quote habitual
+    for quote in ("USDT", "USDC", "BUSD", "USD"):
+        if par.upper().endswith(quote):
+            return par.upper().removesuffix(quote)
+
+    # Si no coincide con ningún patrón conocido, devolvemos el símbolo tal cual
+    return par
+
+
+def guardar_resultado_par(par: str, datos: dict) -> None:
+    """
+    Guarda el resultado de un par en 'data/indicadores/<BASE>.json'.
+    Sobrescribe el archivo con el último snapshot calculado para ese par.
+    """
+    # Nos aseguramos de que la carpeta exista (idempotente, no falla si ya existe)
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    nombre_base = obtener_simbolo_base(par)
+    ruta_json = os.path.join(OUTPUT_DIR, f"{nombre_base}.json")
+
+    try:
+        with open(ruta_json, "w", encoding="utf-8") as f:
+            json.dump(datos, f, indent=4, ensure_ascii=False)
+        print(f"  ✅ Datos guardados en {os.path.abspath(ruta_json)}")
+    except Exception as e:
+        print(f"  ❌ Error al guardar JSON en {ruta_json}: {e}")
+
+
 def main():
-    # Inicializar el exchange (con o sin API keys)
     exchange = inicializar_exchange()
-
-    # Definir la carpeta donde se guardarán los archivos JSON de resumen
-    output_dir = "./data/indicadores"
-    # Crear la carpeta si no existe (exist_ok=True evita error si ya existe)
-    os.makedirs(output_dir, exist_ok=True)
-
-    # (Opcional) Cargar mercados para verificar símbolos disponibles
-    # Esto es útil para depuración, pero ralentiza la primera ejecución.
-    # exchange.load_markets()
 
     print(f"\n=== INICIANDO ANÁLISIS EN {config.EXCHANGE_ID.upper()} (MAINNET) ===")
     print(f"Pares a consultar: {config.LISTADO_MONEDAS}")
     print(f"Temporalidad: {config.TIMEFRAME} | Velas: {config.CANTIDAD_VELAS}\n")
 
-    # Iterar sobre cada par de trading definido en config.LISTADO_MONEDAS
     for par in config.LISTADO_MONEDAS:
-        # Descargar velas OHLCV para el par
         df = descargar_velas(exchange, par)
         if df is None:
-            # Si hubo error al descargar, pasar al siguiente par
             continue
 
         try:
@@ -142,15 +171,12 @@ def main():
             df["ATR"] = calcular_atr(df, periodo=config.ATR_PERIODO)
             df["VWAP"] = calcular_vwap(df)
 
-            # Calcular ADX (Directional Movement Index)
             dmi = calcular_dm(df, periodo=config.ADX_PERIODO)
             df["ADX"] = dmi["ADX"]
 
-            # Obtener la última vela (la más reciente)
             ultima_vela = df.iloc[-1]
             precio_actual = ultima_vela["close"]
 
-            # Calcular stop-loss sugerido para posición larga usando ATR
             sl_long = calcular_stop_loss_atr(
                 precio_actual,
                 ultima_vela["ATR"],
@@ -167,45 +193,29 @@ def main():
             print(f"  ADX({config.ADX_PERIODO}):         {ultima_vela['ADX']:.2f}")
             print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)\n")
 
-            # ---------- GUARDADO EN ARCHIVO JSON ----------
-            # Extraer el nombre base de la moneda (antes de la primera '/')
-            # Ejemplo: "BTC/USDT:USDT" -> "BTC"
-            nombre_base = par.split('/')[0]
-            nombre_archivo = f"{nombre_base}.json"
-            ruta_json = os.path.join(output_dir, nombre_archivo)
-
-            # Verificación adicional: si el directorio no existe, crearlo (por si acaso)
-            if not os.path.exists(output_dir):
-                os.makedirs(output_dir, exist_ok=True)
-                print(f"  📁 Directorio creado: {output_dir}")
-
-            # Construir el diccionario con los datos a guardar
+            # ---------- CONSTRUCCIÓN DEL JSON ----------
+            # IMPORTANTE: convertimos todo a float()/str() nativos de Python,
+            # ya que numpy.float64 / pandas.Timestamp NO son serializables
+            # directamente por json.dump y provocarían un TypeError.
             datos_json = {
-                "simbolo": par,                       # Símbolo completo del par
-                "timestamp": ultima_vela["timestamp"].isoformat(),  # Fecha/hora de la última vela
-                "precio_actual": round(precio_actual, 2),
-                f"EMA_{config.EMA_RAPIDA_PERIODO}": round(ultima_vela["EMA_rapida"], 2),
-                f"EMA_{config.EMA_LENTA_PERIODO}": round(ultima_vela["EMA_lenta"], 2),
-                "RSI": round(ultima_vela["RSI"], 2),
-                "ADX": round(ultima_vela["ADX"], 2),
-                "ATR": round(ultima_vela["ATR"], 2),
-                "stop_loss_long": round(sl_long, 2),
+                "simbolo": par,
+                "timestamp": ultima_vela["timestamp"].isoformat(),
+                "precio_actual": round(float(precio_actual), 2),
+                f"EMA_{config.EMA_RAPIDA_PERIODO}": round(float(ultima_vela["EMA_rapida"]), 2),
+                f"EMA_{config.EMA_LENTA_PERIODO}": round(float(ultima_vela["EMA_lenta"]), 2),
+                "RSI": round(float(ultima_vela["RSI"]), 2),
+                "ADX": round(float(ultima_vela["ADX"]), 2),
+                "ATR": round(float(ultima_vela["ATR"]), 2),
+                "stop_loss_long": round(float(sl_long), 2),
                 "multiplicador_SL": config.ATR_MULTIPLICADOR_SL,
                 "timeframe": config.TIMEFRAME,
                 "velas_usadas": config.CANTIDAD_VELAS,
             }
 
-            # Escribir el archivo JSON con manejo de errores
-            try:
-                with open(ruta_json, "w", encoding="utf-8") as f:
-                    json.dump(datos_json, f, indent=4, ensure_ascii=False)
-                # Mostrar la ruta absoluta para saber exactamente dónde se guardó
-                print(f"  ✅ Datos guardados en {os.path.abspath(ruta_json)}")
-            except Exception as e:
-                print(f"  ❌ Error al guardar JSON en {ruta_json}: {e}")
+            # ---------- GUARDADO EN data/indicadores/<BASE>.json ----------
+            guardar_resultado_par(par, datos_json)
 
         except Exception as e:
-            # Capturar cualquier error durante el procesamiento de indicadores
             print(f"❌ Error procesando indicadores para {par}: {e}\n")
 
 
