@@ -159,9 +159,13 @@ def main():
             print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)\n")
 
             # ---- Guardar en JSON ----
+            nombre_base = par.replace("/", "_").replace(":", "_")
+            nombre_archivo = f"{nombre_base}.json"
+            ruta_json = os.path.join(output_dir, nombre_archivo)
+
             datos_json = {
                 "simbolo": par,
-                "timestamp": ultima_vela["timestamp"].isoformat(),  # Fecha/hora de la última vela
+                "timestamp": ultima_vela["timestamp"].isoformat(),
                 "precio_actual": round(precio_actual, 2),
                 f"EMA_{config.EMA_RAPIDA_PERIODO}": round(ultima_vela["EMA_rapida"], 2),
                 f"EMA_{config.EMA_LENTA_PERIODO}": round(ultima_vela["EMA_lenta"], 2),
@@ -174,16 +178,14 @@ def main():
                 "velas_usadas": config.CANTIDAD_VELAS,
             }
 
-            # Ruta del archivo: ./data/indicadores/par.json
-            # Limpiamos el símbolo para usarlo como nombre de archivo (reemplazamos '/' por '_' por si acaso)
-            nombre_archivo = par.replace("/", "_") + ".json"
-            ruta_json = os.path.join(output_dir, nombre_archivo)
-
-            with open(ruta_json, "w", encoding="utf-8") as f:
-                json.dump(datos_json, f, indent=4, ensure_ascii=False)
-
-            print(f"  ✅ Datos guardados en {ruta_json}\n")
-            
+            try:
+                with open(ruta_json, "w", encoding="utf-8") as f:
+                    json.dump(datos_json, f, indent=4, ensure_ascii=False)
+                # Mostrar ruta absoluta para saber dónde está
+                print(f"  ✅ Datos guardados en {os.path.abspath(ruta_json)}")
+            except Exception as e:
+                print(f"  ❌ Error al guardar JSON en {ruta_json}: {e}")
+                
         except Exception as e:
             print(f"❌ Error procesando indicadores para {par}: {e}\n")
 
