@@ -114,7 +114,7 @@ def main():
     exchange = inicializar_exchange()
 
     # Definir la carpeta donde se guardarán los archivos JSON de resumen
-    output_dir = "/data/indicadores"
+    output_dir = "./data/indicadores"
     # Crear la carpeta si no existe (exist_ok=True evita error si ya existe)
     os.makedirs(output_dir, exist_ok=True)
 
