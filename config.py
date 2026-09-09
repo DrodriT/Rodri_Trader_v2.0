@@ -13,7 +13,7 @@ EXCHANGE_ID = "bitget"
 
 # Tipo de mercado: 'spot', 'margin', 'future', 'swap', 'option', etc.
 # Para futuros perpetuos USDT‑M, usa 'swap' (la mayoría) o 'future' (Binance).
-MARKET_TYPE = "future"   # <--- NUEVA VARIABLE
+MARKET_TYPE = "swap"   # <--- NUEVA VARIABLE
 
 # Claves API (déjalas vacías por ahora si solo vas a leer velas y datos públicos)
 API_KEY = ""
