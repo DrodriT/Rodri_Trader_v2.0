@@ -7,19 +7,14 @@ jobs:
   run-bot:
     runs-on: ubuntu-latest
 
+    # Ejecutamos el job DENTRO de la imagen Docker ya publicada en GHCR.
+    # No hay que instalar Python ni dependencias: la imagen ya las trae.
+    container:
+      image: ghcr.io/${{ github.repository }}:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-      - name: Descargar repositorio
-        uses: actions/checkout@v4
-
-      - name: Configurar Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Instalar dependencias
-        run: |
-          pip install pandas numpy ccxt
-
       - name: Ejecutar script de velas
-        run: |
-          python test_conexion_velas.py
+        run: python test_conexion_velas.py
