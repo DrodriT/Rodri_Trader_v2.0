@@ -113,7 +113,7 @@ def main():
     exchange = inicializar_exchange()
 
     # Crear la carpeta de salida si no existe
-    output_dir = "./data/indicadores"
+    output_dir = "data/indicadores"
     os.makedirs(output_dir, exist_ok=True)
 
     # (Opcional) Cargar mercados para verificar símbolos disponibles
