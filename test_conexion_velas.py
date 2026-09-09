@@ -1,3 +1,7 @@
+import json
+import os
+from datetime import datetime, timezone
+
 import ccxt
 import pandas as pd
 
@@ -13,6 +17,10 @@ from indicadores import (
     calcular_stop_loss_atr,
     calcular_vwap,
 )
+
+# Carpeta raíz donde se organizan los resultados, con una subcarpeta por cada par (símbolo)
+CARPETA_DATA = "data"
+NOMBRE_ARCHIVO_RESULTADOS = "resultados.json"
 
 
 def get_default_type(exchange_id: str) -> str:
@@ -43,16 +51,14 @@ def inicializar_exchange():
             "Revisa la lista en https://docs.ccxt.com/#/README?id=exchanges"
         )
 
-    # Configuración base
     exchange_config = {
         "enableRateLimit": True,
         "timeout": 30000,
         "options": {
-            "defaultType":  config.MARKET_TYPE,  
+            "defaultType":  config.MARKET_TYPE,
         },
     }
 
-    # Solo añadir credenciales si existen y no están vacías
     if hasattr(config, 'API_KEY') and config.API_KEY and config.API_KEY.strip():
         exchange_config["apiKey"] = config.API_KEY
         exchange_config["secret"] = config.API_SECRET
@@ -83,12 +89,11 @@ def descargar_velas(exchange, simbolo: str):
     except ccxt.BadSymbol as e:
         print(f"❌ Símbolo '{simbolo}' no válido para {config.EXCHANGE_ID}.")
         print(f"   Detalle: {e}")
-        # Opcional: mostrar los primeros 10 símbolos válidos del exchange
         try:
             exchange.load_markets()
             valid_symbols = list(exchange.markets.keys())[:10]
             print(f"   Ejemplos de símbolos válidos: {valid_symbols}")
-        except:
+        except Exception:
             pass
         return None
     except ccxt.NetworkError as e:
@@ -107,12 +112,60 @@ def descargar_velas(exchange, simbolo: str):
     return df
 
 
+def obtener_ruta_resultados(par: str) -> str:
+    """
+    Construye (y crea si no existe) la ruta de la carpeta 'data/<PAR>/'
+    y devuelve la ruta completa al archivo resultados.json de ese par.
+
+    Ejemplo: obtener_ruta_resultados("BTCUSDT") -> "data/BTCUSDT/resultados.json"
+    """
+    carpeta_par = os.path.join(CARPETA_DATA, par)
+    # exist_ok=True evita error si la carpeta ya existe (creación idempotente)
+    os.makedirs(carpeta_par, exist_ok=True)
+    return os.path.join(carpeta_par, NOMBRE_ARCHIVO_RESULTADOS)
+
+
+def guardar_resultado_par(par: str, resultado: dict) -> None:
+    """
+    Guarda el resultado de UN par en su propio archivo data/<PAR>/resultados.json,
+    añadiéndolo al histórico existente (no lo sobrescribe).
+
+    Cada entrada queda marcada con su timestamp UTC, exchange y timeframe,
+    de forma que más adelante se puedan calcular estadísticas por símbolo
+    (evolución del RSI, ADX medio, volatilidad histórica, etc.).
+    """
+    ruta_archivo = obtener_ruta_resultados(par)
+
+    entrada = {
+        "fecha_hora_utc": datetime.now(timezone.utc).isoformat(),
+        "exchange": config.EXCHANGE_ID,
+        "timeframe": config.TIMEFRAME,
+        **resultado,
+    }
+
+    # Cargamos el histórico existente de este par (si lo hay)
+    historico = []
+    try:
+        with open(ruta_archivo, "r", encoding="utf-8") as f:
+            contenido = json.load(f)
+            if isinstance(contenido, list):
+                historico = contenido
+    except (FileNotFoundError, json.JSONDecodeError):
+        # Primera vez que se analiza este par, o archivo corrupto/vacío -> empezamos de cero
+        historico = []
+
+    historico.append(entrada)
+
+    try:
+        with open(ruta_archivo, "w", encoding="utf-8") as f:
+            json.dump(historico, f, ensure_ascii=False, indent=4)
+        print(f"  💾 Guardado en '{ruta_archivo}' (histórico: {len(historico)} registros)")
+    except Exception as e:
+        print(f"  ❌ Error al guardar resultados de {par} en JSON: {e}")
+
+
 def main():
     exchange = inicializar_exchange()
-
-    # (Opcional) Cargar mercados para verificar símbolos disponibles
-    # Esto es útil para depuración, pero ralentiza la primera ejecución.
-    # exchange.load_markets()
 
     print(f"\n=== INICIANDO ANÁLISIS EN {config.EXCHANGE_ID.upper()} (MAINNET) ===")
     print(f"Pares a consultar: {config.LISTADO_MONEDAS}")
@@ -150,7 +203,22 @@ def main():
             print(f"  EMA({config.EMA_LENTA_PERIODO}):        ${ultima_vela['EMA_lenta']:,.2f}")
             print(f"  RSI({config.RSI_PERIODO}):         {ultima_vela['RSI']:.2f}")
             print(f"  ADX({config.ADX_PERIODO}):         {ultima_vela['ADX']:.2f}")
-            print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)\n")
+            print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)")
+
+            # Empaquetamos el resultado de este par (convertimos a float nativo,
+            # ya que los valores de pandas/numpy no son serializables por json.dump)
+            resultado = {
+                "precio_actual": round(float(precio_actual), 2),
+                "ema_rapida": round(float(ultima_vela["EMA_rapida"]), 2),
+                "ema_lenta": round(float(ultima_vela["EMA_lenta"]), 2),
+                "rsi": round(float(ultima_vela["RSI"]), 2),
+                "adx": round(float(ultima_vela["ADX"]), 2),
+                "stop_loss_long": round(float(sl_long), 2),
+            }
+
+            # Guardamos inmediatamente en data/<PAR>/resultados.json
+            guardar_resultado_par(par, resultado)
+            print()
 
         except Exception as e:
             print(f"❌ Error procesando indicadores para {par}: {e}\n")
