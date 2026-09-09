@@ -26,6 +26,7 @@ API_SECRET = ""
 # Puedes añadir o quitar criptomonedas según tus preferencias
 LISTADO_MONEDAS = [
     "BTCUSDT",
+    "BTC/USDT:USDT",
     "ETHUSDT",
     "SOLUSDT",
     "XRPUSDT",
