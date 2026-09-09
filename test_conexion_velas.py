@@ -159,7 +159,7 @@ def main():
             print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)\n")
 
             # ---- Guardar en JSON ----
-            nombre_base = par.replace("/", "_").replace(":", "_")
+            nombre_base = par.replace("/", ":").replace("_")
             nombre_archivo = f"{nombre_base}.json"
             ruta_json = os.path.join(output_dir, nombre_archivo)
 
