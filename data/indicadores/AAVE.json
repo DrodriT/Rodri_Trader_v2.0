@@ -1,13 +1,13 @@
 {
     "simbolo": "AAVE/USDT:USDT",
-    "timestamp": "2026-09-10T23:40:00",
-    "precio_actual": 121.21,
-    "EMA_9": 121.46,
-    "EMA_21": 121.82,
-    "RSI": 30.89,
-    "ADX": 38.12,
-    "ATR": 0.27,
-    "stop_loss_long": 120.68,
+    "timestamp": "2026-09-10T23:45:00",
+    "precio_actual": 121.23,
+    "EMA_9": 121.41,
+    "EMA_21": 121.76,
+    "RSI": 31.65,
+    "ADX": 39.6,
+    "ATR": 0.25,
+    "stop_loss_long": 120.73,
     "multiplicador_SL": 2.0,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 75.0,
-        "score_anterior": 80.0,
+        "score_anterior": 75.0,
         "senal": null
     }
 }
