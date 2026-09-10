@@ -4,19 +4,22 @@ import requests
 
 TELEGRAM_API_URL = "https://api.telegram.org/bot{token}/sendMessage"
 
+# Emoji según la dirección de la señal/sesgo. NEUTRAL cubre los casos donde
+# no hay tendencia clara en el HTF (ver htf_filter.py), que ahora también
+# se notifican al enviar siempre, sin condición de score.
+EMOJI_POR_DIRECCION = {
+    "LONG": "🟢",
+    "SHORT": "🔴",
+    "NEUTRAL": "⚪",
+}
+
 
 def _obtener_credenciales() -> tuple[str, str] | None:
     """
     Lee el token del bot y el chat_id desde variables de entorno.
-
-    Se usan variables de entorno (no config.py) a propósito: son credenciales
-    sensibles y NUNCA deben quedar hardcodeadas en el código fuente ni
-    subirse al repositorio. En GitHub Actions se inyectan desde Secrets.
-
-    Devuelve None si alguna de las dos falta, para que el llamador decida
-    cómo actuar (en nuestro caso, omitir el envío sin romper la ejecución).
+    Devuelve None si alguna de las dos falta.
     """
-    token = os.environ.get("TELEGRAM_TOKEN")
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID")
 
     if not token or not chat_id:
@@ -27,31 +30,30 @@ def _obtener_credenciales() -> tuple[str, str] | None:
 def enviar_alerta(
     par: str,
     senal: str,
-    score: float,
+    score: float | None,
     precio: float,
     timeframe_entrada: str,
 ) -> None:
     """
-    Envía una alerta de Telegram cuando la estrategia detecta una señal de
-    entrada (LONG/SHORT).
+    Envía una alerta de Telegram con el estado de la estrategia para un par.
 
-    Si las credenciales no están configuradas (por ejemplo, en pruebas
-    locales sin variables de entorno), la función avisa por consola y
-    retorna sin lanzar excepción: una notificación fallida NUNCA debe
-    interrumpir el análisis del resto de pares.
+    Se llama para TODOS los pares en cada ejecución (sin condición de score
+    ni de umbral) — 'senal' puede ser "LONG", "SHORT" o "NEUTRAL".
     """
     credenciales = _obtener_credenciales()
     if credenciales is None:
-        print("  ℹ️ Notificación Telegram omitida (faltan TELEGRAM_TOKEN / TELEGRAM_CHAT_ID).")
+        print("  ℹ️ Notificación Telegram omitida (faltan TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID).")
         return
 
     token, chat_id = credenciales
 
-    emoji = "🟢" if senal == "LONG" else "🔴"
+    emoji = EMOJI_POR_DIRECCION.get(senal, "⚪")
+    score_texto = f"{score}/100" if score is not None else "N/D"
+
     mensaje = (
-        f"{emoji} *SEÑAL {senal}* — {par}\n"
+        f"{emoji} *{senal}* — {par}\n"
         f"Precio: ${precio:,.4f}\n"
-        f"Score: {score}/100\n"
+        f"Score: {score_texto}\n"
         f"Timeframe: {timeframe_entrada}"
     )
 
@@ -59,7 +61,7 @@ def enviar_alerta(
     payload = {
         "chat_id": chat_id,
         "text": mensaje,
-        "parse_mode": "Markdown",
+       # "parse_mode": "Markdown",
     }
 
     try:
