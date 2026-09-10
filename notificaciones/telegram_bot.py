@@ -19,7 +19,7 @@ def _obtener_credenciales() -> tuple[str, str] | None:
     Lee el token del bot y el chat_id desde variables de entorno.
     Devuelve None si alguna de las dos falta.
     """
-    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    token = os.environ.get("TELEGRAM_TOKEN")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID")
 
     if not token or not chat_id:
@@ -42,7 +42,7 @@ def enviar_alerta(
     """
     credenciales = _obtener_credenciales()
     if credenciales is None:
-        print("  ℹ️ Notificación Telegram omitida (faltan TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID).")
+        print("  ℹ️ Notificación Telegram omitida (faltan TELEGRAM_TOKEN / TELEGRAM_CHAT_ID).")
         return
 
     token, chat_id = credenciales
