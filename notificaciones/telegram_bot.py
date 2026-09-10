@@ -4,9 +4,6 @@ import requests
 
 TELEGRAM_API_URL = "https://api.telegram.org/bot{token}/sendMessage"
 
-# Emoji según la dirección de la señal/sesgo. NEUTRAL cubre los casos donde
-# no hay tendencia clara en el HTF (ver htf_filter.py), que ahora también
-# se notifican al enviar siempre, sin condición de score.
 EMOJI_POR_DIRECCION = {
     "LONG": "🟢",
     "SHORT": "🔴",
@@ -19,7 +16,7 @@ def _obtener_credenciales() -> tuple[str, str] | None:
     Lee el token del bot y el chat_id desde variables de entorno.
     Devuelve None si alguna de las dos falta.
     """
-    token = os.environ.get("TELEGRAM_TOKEN")
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID")
 
     if not token or not chat_id:
@@ -36,13 +33,10 @@ def enviar_alerta(
 ) -> None:
     """
     Envía una alerta de Telegram con el estado de la estrategia para un par.
-
-    Se llama para TODOS los pares en cada ejecución (sin condición de score
-    ni de umbral) — 'senal' puede ser "LONG", "SHORT" o "NEUTRAL".
     """
     credenciales = _obtener_credenciales()
     if credenciales is None:
-        print("  ℹ️ Notificación Telegram omitida (faltan TELEGRAM_TOKEN / TELEGRAM_CHAT_ID).")
+        print("  ℹ️ Notificación Telegram omitida (faltan TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID).")
         return
 
     token, chat_id = credenciales
@@ -61,7 +55,7 @@ def enviar_alerta(
     payload = {
         "chat_id": chat_id,
         "text": mensaje,
-       # "parse_mode": "Markdown",
+        "parse_mode": "Markdown",
     }
 
     try:
@@ -69,4 +63,7 @@ def enviar_alerta(
         respuesta.raise_for_status()
         print(f"  📨 Alerta de Telegram enviada para {par}.")
     except requests.exceptions.RequestException as e:
-        print(f"  ❌ Error al enviar alerta de Telegram para {par}: {e}")
+        detalle = ""
+        if e.response is not None:
+            detalle = f" | Detalle: {e.response.text}"
+        print(f"  ❌ Error al enviar alerta de Telegram para {par}: {e}{detalle}")

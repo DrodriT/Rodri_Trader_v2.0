@@ -135,7 +135,7 @@ VOLUME_SMA_PERIODO = 20
 # Puntuación mínima (sobre 100) que debe alcanzar el score compuesto para
 # considerar una entrada válida. La señal se dispara solo en el CRUCE hacia
 # arriba de este umbral (score actual >= umbral Y score anterior < umbral).
-SCORE_ENTRADA_MINIMO = 75.0
+SCORE_ENTRADA_MINIMO = 70.0
 
 # --- Desglose de puntos máximos por componente del score (deben sumar 100) ---
 PUNTOS_HTF_BIAS = 20

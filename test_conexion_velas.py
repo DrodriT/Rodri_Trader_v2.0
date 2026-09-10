@@ -276,42 +276,19 @@ def main():
                 print(f"  Mandatory Filter:      {'✅ Cumple' if resultado_estrategia['cumple_mandatory'] else '❌ No cumple'}")
                 print(f"  Score actual:          {resultado_estrategia['score_actual']}/100")
                 print(f"  Score anterior:        {resultado_estrategia['score_anterior']}/100")
-                
+
                 if resultado_estrategia["senal"]:
                     print(f"  🚀 SEÑAL DE ENTRADA:   {resultado_estrategia['senal']}")
+                    enviar_alerta(
+                        par=par,
+                        senal=resultado_estrategia["senal"],
+                        score=resultado_estrategia["score_actual"],
+                        precio=float(precio_actual),
+                        timeframe_entrada=config.TIMEFRAME_ENTRADA,
+                    )
                 else:
                     print("  Señal de entrada:      Ninguna (sin cruce de umbral)")
-
-                # Envío SIEMPRE a Telegram, sin condición de score ni umbral.
-                # Si hubo señal real (cruce de umbral) se usa esa dirección;
-                # si no, se usa el sesgo HTF como etiqueta (o "NEUTRAL" si
-                # tampoco hay sesgo claro), para que el mensaje siempre tenga
-                # una dirección que mostrar.
-                etiqueta = resultado_estrategia["senal"] or resultado_estrategia["bias_htf"] or "NEUTRAL"
-                enviar_alerta(
-                    par=par,
-                    senal=etiqueta,
-                    score=resultado_estrategia["score_actual"],
-                    precio=float(precio_actual),
-                    timeframe_entrada=config.TIMEFRAME_ENTRADA,
-                )
                 print()
-
-                print()
-
-            # ---------- IMPRESIÓN EN TELEGRAM (estrategia) ----------
-            if resultado_estrategia["senal"]:
-                print(f"  🚀 SEÑAL DE ENTRADA:   {resultado_estrategia['senal']}")
-                enviar_alerta(
-                    par=par,
-                    senal=resultado_estrategia["senal"],
-                    score=resultado_estrategia["score_actual"],
-                    precio=float(precio_actual),
-                    timeframe_entrada=config.TIMEFRAME_ENTRADA,
-                )
-            else:
-                print("  Señal de entrada:      Ninguna (sin cruce de umbral)")
-            print()
 
             # ---------- CONSTRUCCIÓN DEL JSON ----------
             # IMPORTANTE: convertimos todo a float()/str() nativos de Python,
