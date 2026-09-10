@@ -38,7 +38,11 @@ def cumple_mandatory_filter(df_entrada: pd.DataFrame, bias_htf: str) -> bool:
     if adx < config.ADX_MINIMO_MANDATORY:
         return False
 
+    # IMPORTANTE: envolvemos el resultado en bool(...) porque las comparaciones
+    # sobre valores de pandas (ultima_vela[...]) devuelven numpy.bool_, no el
+    # bool nativo de Python. json.dump() no sabe serializar numpy.bool_ y
+    # lanzaría TypeError al guardar el resultado.
     if bias_htf == "LONG":
-        return precio > ema_lenta and ema_rapida > ema_lenta and rsi > 50
+        return bool(precio > ema_lenta and ema_rapida > ema_lenta and rsi > 50)
     else:  # bias_htf == "SHORT"
-        return precio < ema_lenta and ema_rapida < ema_lenta and rsi < 50
+        return bool(precio < ema_lenta and ema_rapida < ema_lenta and rsi < 50)
