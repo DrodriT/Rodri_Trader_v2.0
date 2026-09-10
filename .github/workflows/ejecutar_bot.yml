@@ -3,9 +3,16 @@ name: Test Conexion Velas
 on:
   workflow_dispatch:
 
+# Evita que dos ejecuciones de este workflow corran a la vez sobre el mismo repo.
+# Si lanzas una nueva mientras otra sigue corriendo, esta espera en cola en vez
+# de competir por el mismo 'main' y generar conflictos de push.
+concurrency:
+  group: ejecutar-bot-main
+  cancel-in-progress: false
+
 permissions:
-  contents: write   # para el commit/push de data/
-  packages: read     # <-- añadido: para poder hacer 'docker pull' desde GHCR
+  contents: write
+  packages: read
 
 jobs:
   run-bot:
@@ -40,10 +47,27 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
           git add data/
+
           if git diff --cached --quiet; then
             echo "ℹ️ Sin cambios en data/, no se hace commit."
-          else
-            git commit -m "🤖 Actualiza resultados de indicadores [skip ci]"
-            git push
+            exit 0
           fi
+
+          git commit -m "🤖 Actualiza resultados de indicadores [skip ci]"
+
+          # Reintenta el push hasta 3 veces: si el remoto avanzó entre nuestro
+          # commit y el push (otra ejecución concurrente, o un commit manual),
+          # traemos esos cambios con rebase y reintentamos en vez de fallar.
+          for intento in 1 2 3; do
+            if git push; then
+              echo "✅ Push realizado con éxito (intento $intento)."
+              exit 0
+            fi
+            echo "⚠️ Push rechazado, sincronizando con el remoto (intento $intento)..."
+            git pull --rebase origin main
+          done
+
+          echo "❌ No se pudo hacer push tras varios intentos."
+          exit 1
