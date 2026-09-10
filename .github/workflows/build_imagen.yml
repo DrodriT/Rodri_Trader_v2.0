@@ -7,6 +7,7 @@ on:
       - "docker/Dockerfile"
       - "requirements.txt"
       - "indicadores/**"
+      - "estrategia/**"
       - "config.py"
       - "test_conexion_velas.py"
   workflow_dispatch:
