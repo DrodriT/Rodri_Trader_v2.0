@@ -4,6 +4,7 @@ CONFIGURACIÓN GENERAL DEL BOT DE TRADING
 Modifica los valores de este archivo para ajustar el comportamiento
 del bot, exchanges, indicadores y pares a analizar.
 """
+import os
 
 # ==============================================================================
 # 1. CONFIGURACIÓN DEL EXCHANGE
@@ -18,6 +19,13 @@ MARKET_TYPE = "swap"   # <--- NUEVA VARIABLE
 # Claves API (déjalas vacías por ahora si solo vas a leer velas y datos públicos)
 API_KEY = ""
 API_SECRET = ""
+
+# ==============================================================================
+# Telegram
+# ==============================================================================
+TELEGRAM_TOKEN: str = os.environ.get("TELEGRAM_TOKEN", "PON_AQUI_TU_TOKEN")
+TELEGRAM_CHAT_ID: str = os.environ.get("TELEGRAM_CHAT_ID", "PON_AQUI_TU_CHAT_ID")
+
 
 # ==============================================================================
 # 2. MERCADO, MONEDAS Y TEMPORALIDAD
