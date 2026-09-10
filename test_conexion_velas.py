@@ -13,11 +13,13 @@ from indicadores import (
     calcular_ema,
     calcular_rsi,
     calcular_stop_loss_atr,
-    calcular_vwap,
 )
 
 # Importamos la estrategia (Algorithmic Entry Model V1.0)
 from estrategia import generar_senal
+
+# Importamos las notificaciones
+from notificaciones import enviar_alerta
 
 # Carpeta donde se guardará un JSON por cada par analizado
 OUTPUT_DIR = os.path.join("data", "indicadores")
@@ -77,11 +79,6 @@ def descargar_velas(exchange, simbolo: str, timeframe: str, cantidad: int):
     """
     Descarga las últimas velas OHLCV de un timeframe concreto y devuelve
     un DataFrame limpio. Incluye manejo de errores detallado.
-
-    Generalizada para aceptar timeframe y cantidad como parámetros, ya que
-    ahora necesitamos descargar varios timeframes distintos por cada par
-    (el de análisis general en config.TIMEFRAME, y los de la estrategia
-    en config.TIMEFRAME_ENTRADA / config.TIMEFRAME_TENDENCIA).
     """
     print(f"📥 Descargando {cantidad} velas de {simbolo} ({timeframe})...")
     try:
@@ -117,34 +114,21 @@ def descargar_velas(exchange, simbolo: str, timeframe: str, cantidad: int):
     return df
 
 
-def calcular_indicadores_generales(df: pd.DataFrame) -> pd.DataFrame:
+def calcular_indicadores_entrada(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Calcula el set completo de indicadores usado en el análisis general
-    (timeframe config.TIMEFRAME, ej. 1h). Trabaja sobre una copia del df.
+    Calcula TODOS los indicadores necesarios en el timeframe operativo
+    (config.TIMEFRAME_ENTRADA, ej. 5m): EMA rápida/lenta, RSI, ATR y ADX.
+
+    Este timeframe pasa a ser ahora la única fuente de precio/indicadores
+    "generales" del par (ya no se descarga un timeframe de 1h aparte):
+    tanto el resumen impreso en pantalla como el Stop Loss sugerido y la
+    estrategia se calculan sobre estos mismos datos.
     """
     df = df.copy()
     df["EMA_rapida"] = calcular_ema(df, periodo=config.EMA_RAPIDA_PERIODO)
     df["EMA_lenta"] = calcular_ema(df, periodo=config.EMA_LENTA_PERIODO)
     df["RSI"] = calcular_rsi(df, periodo=config.RSI_PERIODO)
     df["ATR"] = calcular_atr(df, periodo=config.ATR_PERIODO)
-    df["VWAP"] = calcular_vwap(df)
-
-    dmi = calcular_dm(df, periodo=config.ADX_PERIODO)
-    df["ADX"] = dmi["ADX"]
-    return df
-
-
-def calcular_indicadores_entrada(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Calcula los indicadores mínimos necesarios en el timeframe operativo
-    (5m) para que la estrategia pueda evaluar el Mandatory Filter y el Score:
-    EMA rápida/lenta, RSI y ADX. El volumen SMA y los niveles de estructura
-    los calcula internamente el propio módulo 'estrategia'.
-    """
-    df = df.copy()
-    df["EMA_rapida"] = calcular_ema(df, periodo=config.EMA_RAPIDA_PERIODO)
-    df["EMA_lenta"] = calcular_ema(df, periodo=config.EMA_LENTA_PERIODO)
-    df["RSI"] = calcular_rsi(df, periodo=config.RSI_PERIODO)
 
     dmi = calcular_dm(df, periodo=config.ADX_PERIODO)
     df["ADX"] = dmi["ADX"]
@@ -153,8 +137,9 @@ def calcular_indicadores_entrada(df: pd.DataFrame) -> pd.DataFrame:
 
 def calcular_indicadores_tendencia(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Calcula los indicadores mínimos necesarios en el timeframe HTF (15m)
-    para que la estrategia pueda evaluar el HTF Filter: EMA rápida/lenta.
+    Calcula los indicadores mínimos necesarios en el timeframe HTF
+    (config.TIMEFRAME_TENDENCIA, ej. 15m) para que la estrategia pueda
+    evaluar el HTF Filter: EMA rápida/lenta.
     """
     df = df.copy()
     df["EMA_rapida"] = calcular_ema(df, periodo=config.EMA_RAPIDA_PERIODO)
@@ -200,42 +185,58 @@ def guardar_resultado_par(par: str, datos: dict) -> None:
         print(f"  ❌ Error al guardar JSON en {ruta_json}: {e}")
 
 
-def analizar_estrategia(exchange, par: str) -> dict:
+def analizar_par(exchange, par: str) -> dict | None:
     """
-    Descarga las velas de los timeframes de la estrategia (config.TIMEFRAME_ENTRADA
-    y config.TIMEFRAME_TENDENCIA) para el par indicado, usando la cantidad de
-    velas específica de cada uno (config.CANTIDAD_VELAS_ENTRADA /
-    config.CANTIDAD_VELAS_TENDENCIA), calcula los indicadores necesarios y
-    evalúa la estrategia (Algorithmic Entry Model).
+    Descarga las velas de 5m (entrada) y 15m (tendencia) para el par,
+    calcula todos los indicadores y evalúa la estrategia.
 
-    Devuelve siempre un diccionario serializable a JSON. Si falla la
-    descarga de cualquiera de los dos timeframes, devuelve un resultado
-    "vacío" con un campo 'error' en vez de lanzar una excepción, para no
-    interrumpir el análisis del resto de pares.
+    Devuelve un diccionario con toda la información del par (indicadores +
+    resultado de la estrategia), listo para imprimir y guardar en JSON.
+    Devuelve None si falla la descarga de 5m (timeframe imprescindible,
+    ya que de él salen el precio actual, el SL y el Mandatory Filter/Score).
     """
     df_5m = descargar_velas(
         exchange, par, config.TIMEFRAME_ENTRADA, config.CANTIDAD_VELAS_ENTRADA
     )
+    if df_5m is None:
+        return None
+
+    df_5m = calcular_indicadores_entrada(df_5m)
+    ultima_vela = df_5m.iloc[-1]
+    precio_actual = ultima_vela["close"]
+
+    sl_long = calcular_stop_loss_atr(
+        precio_actual,
+        ultima_vela["ATR"],
+        multiplicador=config.ATR_MULTIPLICADOR_SL,
+        direccion="LONG",
+    )
+
+    # ---------- Timeframe HTF (15m) ----------
     df_15m = descargar_velas(
         exchange, par, config.TIMEFRAME_TENDENCIA, config.CANTIDAD_VELAS_TENDENCIA
     )
 
-    if df_5m is None or df_15m is None:
-        return {
+    if df_15m is None:
+        resultado_estrategia = {
             "bias_htf": None,
             "cumple_mandatory": None,
             "score_actual": None,
             "score_anterior": None,
             "senal": None,
-            "error": "No se pudieron descargar velas de 5m y/o 15m para evaluar la estrategia.",
+            "error": "No se pudieron descargar velas de 15m para evaluar la estrategia.",
         }
+    else:
+        df_15m = calcular_indicadores_tendencia(df_15m)
+        resultado_estrategia = generar_senal(par, df_5m, df_15m)
+        resultado_estrategia.pop("par", None)  # ya va como clave superior del JSON
 
-    df_5m = calcular_indicadores_entrada(df_5m)
-    df_15m = calcular_indicadores_tendencia(df_15m)
-
-    resultado = generar_senal(par, df_5m, df_15m)
-    resultado.pop("par", None)
-    return resultado
+    return {
+        "ultima_vela": ultima_vela,
+        "precio_actual": precio_actual,
+        "sl_long": sl_long,
+        "estrategia": resultado_estrategia,
+    }
 
 
 def main():
@@ -243,32 +244,21 @@ def main():
 
     print(f"\n=== INICIANDO ANÁLISIS EN {config.EXCHANGE_ID.upper()} (MAINNET) ===")
     print(f"Pares a consultar: {config.LISTADO_MONEDAS}")
-    print(f"Temporalidad general: {config.TIMEFRAME} | Velas: {config.CANTIDAD_VELAS}")
-    print(f"Estrategia -> Entrada: {config.TIMEFRAME_ENTRADA} | Tendencia HTF: {config.TIMEFRAME_TENDENCIA}\n")
+    print(f"Entrada: {config.TIMEFRAME_ENTRADA} ({config.CANTIDAD_VELAS_ENTRADA} velas) "
+          f"| Tendencia HTF: {config.TIMEFRAME_TENDENCIA} ({config.CANTIDAD_VELAS_TENDENCIA} velas)\n")
 
     for par in config.LISTADO_MONEDAS:
-        df = descargar_velas(exchange, par, config.TIMEFRAME, config.CANTIDAD_VELAS)
-        if df is None:
-            continue
-
         try:
-            # ---------- Indicadores generales (timeframe config.TIMEFRAME) ----------
-            df = calcular_indicadores_generales(df)
+            analisis = analizar_par(exchange, par)
+            if analisis is None:
+                continue
 
-            ultima_vela = df.iloc[-1]
-            precio_actual = ultima_vela["close"]
+            ultima_vela = analisis["ultima_vela"]
+            precio_actual = analisis["precio_actual"]
+            sl_long = analisis["sl_long"]
+            resultado_estrategia = analisis["estrategia"]
 
-            sl_long = calcular_stop_loss_atr(
-                precio_actual,
-                ultima_vela["ATR"],
-                multiplicador=config.ATR_MULTIPLICADOR_SL,
-                direccion="LONG",
-            )
-
-            # ---------- Estrategia multi-timeframe (5m / 15m) ----------
-            resultado_estrategia = analizar_estrategia(exchange, par)
-
-            # ---------- IMPRESIÓN EN PANTALLA (resumen general) ----------
+            # ---------- IMPRESIÓN EN PANTALLA (resumen) ----------
             print(f"--- Resumen {par} ---")
             print(f"  Precio actual:     ${precio_actual:,.2f}")
             print(f"  EMA({config.EMA_RAPIDA_PERIODO}):         ${ultima_vela['EMA_rapida']:,.2f}")
@@ -291,6 +281,19 @@ def main():
                 else:
                     print("  Señal de entrada:      Ninguna (sin cruce de umbral)")
                 print()
+            # ---------- IMPRESIÓN EN TELEGRAM (estrategia) ----------
+            if resultado_estrategia["senal"]:
+                print(f"  🚀 SEÑAL DE ENTRADA:   {resultado_estrategia['senal']}")
+                enviar_alerta(
+                    par=par,
+                    senal=resultado_estrategia["senal"],
+                    score=resultado_estrategia["score_actual"],
+                    precio=float(precio_actual),
+                    timeframe_entrada=config.TIMEFRAME_ENTRADA,
+                )
+            else:
+                print("  Señal de entrada:      Ninguna (sin cruce de umbral)")
+            print()
 
             # ---------- CONSTRUCCIÓN DEL JSON ----------
             # IMPORTANTE: convertimos todo a float()/str() nativos de Python,
@@ -307,8 +310,8 @@ def main():
                 "ATR": round(float(ultima_vela["ATR"]), 2),
                 "stop_loss_long": round(float(sl_long), 2),
                 "multiplicador_SL": config.ATR_MULTIPLICADOR_SL,
-                "timeframe": config.TIMEFRAME,
-                "velas_usadas": config.CANTIDAD_VELAS,
+                "timeframe": config.TIMEFRAME_ENTRADA,
+                "velas_usadas": config.CANTIDAD_VELAS_ENTRADA,
                 # ---------- Bloque de la estrategia multi-timeframe ----------
                 "estrategia": {
                     "timeframe_entrada": config.TIMEFRAME_ENTRADA,

@@ -37,6 +37,8 @@ jobs:
           docker pull ghcr.io/${{ env.IMAGE_NAME }}:latest
           docker run --rm \
             -v "$PWD/data:/app/data" \
+            -e TELEGRAM_TOKEN="${{ secrets.TELEGRAM_TOKEN }}" \
+            -e TELEGRAM_CHAT_ID="${{ secrets.TELEGRAM_CHAT_ID }}" \
             ghcr.io/${{ env.IMAGE_NAME }}:latest \
             python test_conexion_velas.py
 

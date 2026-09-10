@@ -54,14 +54,6 @@ LISTADO_MONEDAS = [
     "UNI/USDT:USDT",
 ]
 
-# Temporalidad de las velas:
-# Opciones habituales: '1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '1d'
-TIMEFRAME = "1h"
-
-# Cantidad de velas históricas a descargar para el cálculo (mínimo recomendado: 100)
-CANTIDAD_VELAS = 150
-
-
 # ==============================================================================
 # 3. PARÁMETROS DE INDICADORES TÉCNICOS
 # ==============================================================================
@@ -87,7 +79,6 @@ ATR_MULTIPLICADOR_TP = 3.0   # Take Profit dinámico (ej. ratio 1:1.5 de riesgo/
 # --- DMI / ADX ---
 ADX_PERIODO = 14
 ADX_UMBRAL_TENDENCIA = 25.0  # Por encima de este valor se considera tendencia con fuerza
-
 
 # ==============================================================================
 # 4. CONFIGURACIÓN DEL BUCLE DE EJECUCIÓN (RUNTIME)

@@ -8,6 +8,7 @@ on:
       - "requirements.txt"
       - "indicadores/**"
       - "estrategia/**"
+      - "notificaciones/**"
       - "config.py"
       - "test_conexion_velas.py"
   workflow_dispatch:
