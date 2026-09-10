@@ -1,0 +1,23 @@
+{
+    "simbolo": "HBAR/USDT:USDT",
+    "timestamp": "2026-09-10T21:00:00",
+    "precio_actual": 0.08,
+    "EMA_9": 0.08,
+    "EMA_21": 0.08,
+    "RSI": 42.43,
+    "ADX": 53.1,
+    "ATR": 0.0,
+    "stop_loss_long": 0.07,
+    "multiplicador_SL": 2.0,
+    "timeframe": "1h",
+    "velas_usadas": 150,
+    "estrategia": {
+        "timeframe_entrada": "5m",
+        "timeframe_tendencia": "15m",
+        "bias_htf": "LONG",
+        "cumple_mandatory": true,
+        "score_actual": 51.0,
+        "score_anterior": 80.0,
+        "senal": null
+    }
+}
