@@ -1,13 +1,13 @@
 {
     "simbolo": "LTC/USDT:USDT",
     "timestamp": "2026-09-11T10:15:00",
-    "precio_actual": 52.33,
-    "EMA_9": 52.52,
-    "EMA_21": 52.69,
-    "RSI": 27.41,
-    "ADX": 39.78,
+    "precio_actual": 52.39,
+    "EMA_9": 52.54,
+    "EMA_21": 52.7,
+    "RSI": 29.19,
+    "ADX": 39.8,
     "ATR": 0.11,
-    "stop_loss_long": 52.11,
+    "stop_loss_long": 52.17,
     "multiplicador_SL": 2.0,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -16,7 +16,7 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 77.0,
+        "score_actual": 67.0,
         "score_anterior": 75.0,
         "senal": null
     }
