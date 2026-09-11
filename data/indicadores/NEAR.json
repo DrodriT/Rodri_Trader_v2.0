@@ -1,13 +1,13 @@
 {
     "simbolo": "NEAR/USDT:USDT",
-    "timestamp": "2026-09-11T18:10:00",
-    "precio_actual": 2.55,
+    "timestamp": "2026-09-11T18:15:00",
+    "precio_actual": 2.57,
     "EMA_9": 2.57,
     "EMA_21": 2.59,
-    "RSI": 34.05,
-    "ADX": 25.33,
+    "RSI": 41.76,
+    "ADX": 25.97,
     "ATR": 0.02,
-    "stop_loss_long": 2.5,
+    "stop_loss_long": 2.52,
     "multiplicador_SL": 2.0,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 73.0,
-        "score_anterior": 76.0,
+        "score_actual": 58.0,
+        "score_anterior": 73.0,
         "senal": null
     }
 }
