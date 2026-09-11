@@ -1,10 +1,10 @@
 {
     "simbolo": "XMR/USDT:USDT",
     "timestamp": "2026-09-11T16:15:00",
-    "precio_actual": 517.38,
-    "EMA_9": 516.88,
+    "precio_actual": 517.4,
+    "EMA_9": 516.89,
     "EMA_21": 517.14,
-    "RSI": 51.33,
+    "RSI": 51.39,
     "ADX": 16.5,
     "ATR": 2.13,
     "stop_loss_long": 513.13,
