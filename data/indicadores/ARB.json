@@ -1,11 +1,11 @@
 {
     "simbolo": "ARB/USDT:USDT",
-    "timestamp": "2026-09-11T13:55:00",
+    "timestamp": "2026-09-11T14:00:00",
     "precio_actual": 0.15,
     "EMA_9": 0.15,
     "EMA_21": 0.14,
-    "RSI": 80.72,
-    "ADX": 33.11,
+    "RSI": 78.62,
+    "ADX": 34.98,
     "ATR": 0.0,
     "stop_loss_long": 0.15,
     "multiplicador_SL": 2.0,
@@ -16,7 +16,7 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 95.0,
+        "score_actual": 78.0,
         "score_anterior": 95.0,
         "senal": null
     }
