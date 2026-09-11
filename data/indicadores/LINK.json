@@ -1,10 +1,10 @@
 {
     "simbolo": "LINK/USDT:USDT",
     "timestamp": "2026-09-11T10:30:00",
-    "precio_actual": 11.38,
+    "precio_actual": 11.39,
     "EMA_9": 11.42,
     "EMA_21": 11.44,
-    "RSI": 33.24,
+    "RSI": 34.27,
     "ADX": 23.27,
     "ATR": 0.02,
     "stop_loss_long": 11.34,
@@ -16,7 +16,7 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 81.0,
+        "score_actual": 74.0,
         "score_anterior": 64.0,
         "senal": "SHORT"
     }
