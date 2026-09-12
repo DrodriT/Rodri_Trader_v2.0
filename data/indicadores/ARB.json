@@ -5,7 +5,7 @@
     "EMA_9": 0.14,
     "EMA_21": 0.14,
     "RSI": 56.46,
-    "ADX": 17.04,
+    "ADX": 17.24,
     "ATR": 0.0,
     "stop_loss_long": 0.14,
     "multiplicador_SL": 2.0,
@@ -14,7 +14,7 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": "NEUTRAL",
+        "bias_htf": "LONG",
         "cumple_mandatory": false,
         "score_actual": 0.0,
         "score_anterior": 0.0,
