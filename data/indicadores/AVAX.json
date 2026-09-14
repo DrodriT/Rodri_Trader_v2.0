@@ -1,11 +1,11 @@
 {
     "simbolo": "AVAX/USDT:USDT",
-    "timestamp": "2026-09-14T23:45:00",
-    "precio_actual": 7.57,
-    "EMA_9": 7.59,
-    "EMA_21": 7.61,
-    "RSI": 32.89,
-    "ADX": 35.96,
+    "timestamp": "2026-09-14T23:50:00",
+    "precio_actual": 7.56,
+    "EMA_9": 7.58,
+    "EMA_21": 7.6,
+    "RSI": 32.29,
+    "ADX": 37.22,
     "ATR": 0.02,
     "stop_loss_long": 7.53,
     "multiplicador_SL": 2.0,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 70.0,
-        "score_anterior": 58.0,
-        "senal": "SHORT"
+        "score_anterior": 70.0,
+        "senal": null
     }
 }

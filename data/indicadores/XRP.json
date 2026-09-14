@@ -1,11 +1,11 @@
 {
     "simbolo": "XRP/USDT:USDT",
-    "timestamp": "2026-09-14T23:45:00",
+    "timestamp": "2026-09-14T23:50:00",
     "precio_actual": 1.42,
-    "EMA_9": 1.43,
+    "EMA_9": 1.42,
     "EMA_21": 1.43,
-    "RSI": 27.85,
-    "ADX": 48.02,
+    "RSI": 25.5,
+    "ADX": 48.84,
     "ATR": 0.0,
     "stop_loss_long": 1.41,
     "multiplicador_SL": 2.0,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 75.0,
-        "score_anterior": 67.0,
-        "senal": "SHORT"
+        "score_actual": 82.0,
+        "score_anterior": 75.0,
+        "senal": null
     }
 }
