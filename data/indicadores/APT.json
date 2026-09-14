@@ -4,10 +4,10 @@
     "precio_actual": 0.6,
     "EMA_9": 0.6,
     "EMA_21": 0.59,
-    "RSI": 68.03,
+    "RSI": 64.69,
     "ADX": 32.86,
     "ATR": 0.0,
-    "stop_loss_long": 0.6,
+    "stop_loss_long": 0.59,
     "multiplicador_SL": 2.0,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 90.0,
-        "score_anterior": 100.0,
+        "score_actual": 78.0,
+        "score_anterior": 95.0,
         "senal": null
     }
 }
