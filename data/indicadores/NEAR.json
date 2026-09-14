@@ -1,10 +1,10 @@
 {
     "simbolo": "NEAR/USDT:USDT",
     "timestamp": "2026-09-14T15:10:00",
-    "precio_actual": 2.38,
+    "precio_actual": 2.39,
     "EMA_9": 2.39,
     "EMA_21": 2.4,
-    "RSI": 38.68,
+    "RSI": 39.87,
     "ADX": 11.55,
     "ATR": 0.01,
     "stop_loss_long": 2.36,
