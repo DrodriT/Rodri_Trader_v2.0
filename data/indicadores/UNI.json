@@ -1,11 +1,11 @@
 {
     "simbolo": "UNI/USDT:USDT",
-    "timestamp": "2026-09-14T23:15:00",
+    "timestamp": "2026-09-14T23:20:00",
     "precio_actual": 6.55,
     "EMA_9": 6.53,
     "EMA_21": 6.55,
-    "RSI": 47.27,
-    "ADX": 38.06,
+    "RSI": 46.8,
+    "ADX": 36.5,
     "ATR": 0.03,
     "stop_loss_long": 6.5,
     "multiplicador_SL": 2.0,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 65.0,
-        "score_anterior": 55.0,
+        "score_actual": 56.0,
+        "score_anterior": 65.0,
         "senal": null
     }
 }
