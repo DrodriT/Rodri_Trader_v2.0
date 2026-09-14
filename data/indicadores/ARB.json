@@ -3,8 +3,8 @@
     "timestamp": "2026-09-14T13:00:00",
     "precio_actual": 0.13,
     "EMA_9": 0.13,
-    "EMA_21": 0.14,
-    "RSI": 37.25,
+    "EMA_21": 0.13,
+    "RSI": 34.26,
     "ADX": 19.27,
     "ATR": 0.0,
     "stop_loss_long": 0.13,
@@ -16,7 +16,7 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 69.0,
+        "score_actual": 79.0,
         "score_anterior": 79.0,
         "senal": null
     }
