@@ -1,11 +1,11 @@
 {
     "simbolo": "OP/USDT:USDT",
-    "timestamp": "2026-09-14T13:50:00",
+    "timestamp": "2026-09-14T13:55:00",
     "precio_actual": 0.1,
     "EMA_9": 0.1,
     "EMA_21": 0.1,
-    "RSI": 55.43,
-    "ADX": 19.51,
+    "RSI": 53.74,
+    "ADX": 18.57,
     "ATR": 0.0,
     "stop_loss_long": 0.1,
     "multiplicador_SL": 2.0,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 57.0,
-        "score_anterior": 69.0,
+        "score_actual": 59.0,
+        "score_anterior": 57.0,
         "senal": null
     }
 }
