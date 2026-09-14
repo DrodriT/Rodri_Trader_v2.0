@@ -1,11 +1,11 @@
 {
     "simbolo": "ICP/USDT:USDT",
-    "timestamp": "2026-09-14T20:35:00",
+    "timestamp": "2026-09-14T20:40:00",
     "precio_actual": 2.8,
-    "EMA_9": 2.79,
+    "EMA_9": 2.8,
     "EMA_21": 2.79,
-    "RSI": 63.8,
-    "ADX": 33.67,
+    "RSI": 62.81,
+    "ADX": 34.01,
     "ATR": 0.01,
     "stop_loss_long": 2.78,
     "multiplicador_SL": 2.0,
@@ -16,7 +16,7 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 83.0,
+        "score_actual": 75.0,
         "score_anterior": 83.0,
         "senal": null
     }
