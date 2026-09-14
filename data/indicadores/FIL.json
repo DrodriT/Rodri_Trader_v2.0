@@ -1,11 +1,11 @@
 {
     "simbolo": "FIL/USDT:USDT",
-    "timestamp": "2026-09-14T10:20:00",
+    "timestamp": "2026-09-14T10:25:00",
     "precio_actual": 1.0,
     "EMA_9": 1.01,
     "EMA_21": 1.01,
-    "RSI": 43.63,
-    "ADX": 23.33,
+    "RSI": 47.58,
+    "ADX": 21.91,
     "ATR": 0.01,
     "stop_loss_long": 0.98,
     "multiplicador_SL": 2.0,
@@ -14,7 +14,7 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": "NEUTRAL",
+        "bias_htf": "LONG",
         "cumple_mandatory": false,
         "score_actual": 0.0,
         "score_anterior": 0.0,
