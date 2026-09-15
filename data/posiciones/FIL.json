@@ -1,14 +1,17 @@
 {
+    "id_operacion": "FIL_20260915_184145_076770",
+    "simbolo": "FIL/USDT:USDT",
     "estado": "abierta",
     "direccion": "SHORT",
-    "precio_entrada": 0.8724,
-    "stop_loss_original": 0.890798,
-    "stop_loss_actual": 0.8724,
-    "tp1": 0.854002,
-    "tp2": 0.835604,
-    "tp3": 0.817206,
-    "tp1_alcanzado": true,
-    "tp2_alcanzado": true,
-    "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-15T14:31:15.838884+00:00"
+    "precio_entrada": 0.8211,
+    "stop_loss_original": 0.868781,
+    "stop_loss_actual": 0.868781,
+    "tp1": 0.773419,
+    "tp2": 0.725738,
+    "tp3": 0.678058,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-15T18:41:45.076788+00:00"
 }
