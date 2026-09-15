@@ -3,9 +3,9 @@
     "timestamp": "2026-09-15T11:50:00",
     "precio_actual": 0.14,
     "EMA_9": 0.14,
-    "EMA_21": 0.13,
-    "RSI": 59.49,
-    "ADX": 28.04,
+    "EMA_21": 0.14,
+    "RSI": 61.87,
+    "ADX": 28.63,
     "ATR": 0.0,
     "stop_loss_long": 0.13,
     "multiplicador_SL": 2.0,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 69.0,
-        "score_anterior": 76.0,
-        "senal": null
+        "score_actual": 76.0,
+        "score_anterior": 69.0,
+        "senal": "LONG"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "LONG",
+        "precio_entrada": 0.136,
+        "stop_loss": 0.134044,
+        "tp1": 0.137956,
+        "tp2": 0.139912,
+        "tp3": 0.141867,
+        "nivel_estructura_referencia": 0.1363,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 1.438,
+        "apalancamiento_sugerido": 6.95,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 695.37,
+        "cantidad_activo": 5113.029898
+    }
 }
