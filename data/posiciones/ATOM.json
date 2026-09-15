@@ -1,0 +1,14 @@
+{
+    "estado": "abierta",
+    "direccion": "SHORT",
+    "precio_entrada": 1.5566,
+    "stop_loss_original": 1.593347,
+    "stop_loss_actual": 1.593347,
+    "tp1": 1.519853,
+    "tp2": 1.483107,
+    "tp3": 1.44636,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-15T14:05:55.033066+00:00"
+}
