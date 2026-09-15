@@ -225,7 +225,7 @@ def gestionar_posicion_abierta(par: str, par_base: str, posicion: dict, ultima_v
     for evento in eventos:
         if evento in ("SL_TOCADO", "BE_TOCADO"):
             motivo = "SL" if evento == "SL_TOCADO" else "BE"
-            cerrar_posicion(par_base, posicion, motivo=motivo)
+            cerrar_posicion(par_base, posicion, motivo=motivo, precio_salida=precio_actual, par=par,)
             enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
             break  # posición cerrada: no seguimos evaluando más eventos
 
@@ -240,7 +240,8 @@ def gestionar_posicion_abierta(par: str, par_base: str, posicion: dict, ultima_v
             enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
 
         elif evento == "TP3_TOCADO":
-            cerrar_posicion(par_base, posicion, motivo="TP3")
+            posicion["tp3_alcanzado"] = True
+            cerrar_posicion(par_base, posicion, motivo="TP3", precio_salida=precio_actual, par=par,)
             enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
             break  # posición cerrada
 
@@ -347,7 +348,7 @@ def analizar_par(exchange, par: str) -> dict | None:
             df_5m, float(precio_actual), resultado_estrategia["senal"]
         )
         if plan_riesgo:
-            abrir_posicion(par_base, resultado_estrategia["senal"], plan_riesgo)
+            abrir_posicion(par_base, resultado_estrategia["senal"], plan_riesgo, par=par,)
 
     return {
         "ultima_vela": ultima_vela,

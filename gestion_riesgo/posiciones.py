@@ -42,12 +42,15 @@ def guardar_posicion(par_base: str, posicion: dict) -> None:
         print(f"  ❌ Error al guardar posición de {par_base}: {e}")
 
 
-def abrir_posicion(par_base: str, direccion: str, riesgo: dict) -> dict:
+def abrir_posicion(par_base: str, direccion: str, riesgo: dict, par: str | None = None,) -> dict:
     """
     Crea y persiste una nueva posición abierta a partir del plan de riesgo
     (SL/TP1/TP2/TP3) calculado por gestion_riesgo.calcular_gestion_riesgo().
     """
+    timestamp_apertura = datetime.now(timezone.utc)
     posicion = {
+        "id_operacion": (f"{par_base}_"f"{timestamp_apertura.strftime('%Y%m%d_%H%M%S_%f')}"),
+        "simbolo": par if par is not None else par_base,
         "estado": "abierta",
         "direccion": direccion,
         "precio_entrada": riesgo["precio_entrada"],
@@ -58,6 +61,7 @@ def abrir_posicion(par_base: str, direccion: str, riesgo: dict) -> dict:
         "tp3": riesgo["tp3"],
         "tp1_alcanzado": False,
         "tp2_alcanzado": False,
+        "tp3_alcanzado": False,
         "sl_movido_be": False,
         "timestamp_apertura": datetime.now(timezone.utc).isoformat(),
     }
@@ -65,15 +69,28 @@ def abrir_posicion(par_base: str, direccion: str, riesgo: dict) -> dict:
     return posicion
 
 
-def cerrar_posicion(par_base: str, posicion: dict, motivo: str) -> None:
+def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: float, par: str | None = None,) -> None:
     """
     Marca la posición como cerrada (motivo: 'SL', 'BE' o 'TP3') y la persiste.
     A partir de este momento, cargar_posicion() volverá a devolver None para
     este par, liberándolo para que la estrategia pueda generar nuevas señales.
     """
+    from gestion_riesgo.estadistica import (registrar_operacion_cerrada)
+
     posicion["estado"] = "cerrada"
     posicion["motivo_cierre"] = motivo
+    posicion["precio_salida"] = precio_salida
     posicion["timestamp_cierre"] = datetime.now(timezone.utc).isoformat()
+
+    # Registrar en histórico
+    registrar_operacion_cerrada(
+        par=par if par is not None else posicion.get("simbolo", par_base),
+        posicion=posicion,
+        motivo=motivo,
+        precio_salida=precio_salida,
+    )
+
+    # Persistir posición cerrada
     guardar_posicion(par_base, posicion)
 
 
