@@ -1,11 +1,11 @@
 {
     "simbolo": "ARB/USDT:USDT",
-    "timestamp": "2026-09-15T11:35:00",
-    "precio_actual": 0.14,
+    "timestamp": "2026-09-15T11:40:00",
+    "precio_actual": 0.13,
     "EMA_9": 0.14,
     "EMA_21": 0.13,
-    "RSI": 53.82,
-    "ADX": 31.55,
+    "RSI": 51.65,
+    "ADX": 29.77,
     "ATR": 0.0,
     "stop_loss_long": 0.13,
     "multiplicador_SL": 2.0,
@@ -16,28 +16,9 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 79.0,
-        "score_anterior": 69.0,
-        "senal": "LONG"
+        "score_actual": 69.0,
+        "score_anterior": 79.0,
+        "senal": null
     },
-    "riesgo": {
-        "direccion": "LONG",
-        "precio_entrada": 0.1351,
-        "stop_loss": 0.134047,
-        "tp1": 0.136153,
-        "tp2": 0.137205,
-        "tp3": 0.138258,
-        "nivel_estructura_referencia": 0.1363,
-        "tp1_validado_por_estructura": true,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 0.779,
-        "apalancamiento_sugerido": 12.84,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 1283.58,
-        "cantidad_activo": 9500.956045
-    }
+    "riesgo": null
 }
