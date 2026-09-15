@@ -1,0 +1,14 @@
+{
+    "estado": "abierta",
+    "direccion": "LONG",
+    "precio_entrada": 224.21,
+    "stop_loss_original": 220.861266,
+    "stop_loss_actual": 220.861266,
+    "tp1": 227.558734,
+    "tp2": 230.907467,
+    "tp3": 234.256201,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-15T13:59:33.874840+00:00"
+}
