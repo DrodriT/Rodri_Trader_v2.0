@@ -2,6 +2,7 @@ import ccxt
 import pandas as pd
 import json
 import os
+import traceback
 
 # Importamos las variables directamente desde config.py
 import config
@@ -17,6 +18,9 @@ from indicadores import (
 
 # Importamos la estrategia (Algorithmic Entry Model V1.0)
 from estrategia import generar_senal
+
+# Importamos la gestión de riesgo (SL/TP/apalancamiento)
+from gestion_riesgo import calcular_gestion_riesgo
 
 # Importamos las notificaciones (Telegram)
 from notificaciones import enviar_alerta
@@ -205,12 +209,13 @@ def guardar_resultado_par(par: str, datos: dict) -> None:
 def analizar_par(exchange, par: str) -> dict | None:
     """
     Descarga las velas de 5m (entrada) y 15m (tendencia) para el par,
-    calcula todos los indicadores y evalúa la estrategia.
+    calcula todos los indicadores, evalúa la estrategia y, si hay señal
+    de entrada, calcula el plan de gestión de riesgo (SL/TP/apalancamiento).
 
-    Devuelve un diccionario con toda la información del par (indicadores +
-    resultado de la estrategia), listo para imprimir y guardar en JSON.
-    Devuelve None si falla la descarga de 5m (timeframe imprescindible,
-    ya que de él salen el precio actual, el SL y el Mandatory Filter/Score).
+    Devuelve un diccionario con toda la información del par, listo para
+    imprimir y guardar en JSON. Devuelve None si falla la descarga de 5m
+    (timeframe imprescindible, ya que de él salen el precio actual, el SL
+    de referencia y el Mandatory Filter/Score).
 
     IMPORTANTE: 'resultado_estrategia' se inicializa SIEMPRE con un
     diccionario por defecto antes de cualquier rama condicional, para
@@ -261,11 +266,22 @@ def analizar_par(exchange, par: str) -> dict | None:
         )
         resultado_estrategia.pop("par", None)  # ya va como clave superior del JSON
 
+    # ---------- Gestión de riesgo: solo si hay señal de entrada real ----------
+    # Se calcula sobre df_5m (que ya tiene EMA/RSI/ATR/ADX), reutilizando
+    # los niveles de estructura (swing low/high de las últimas N velas)
+    # que también usa el componente STRUCTURE de la estrategia.
+    plan_riesgo = None
+    if resultado_estrategia.get("senal"):
+        plan_riesgo = calcular_gestion_riesgo(
+            df_5m, float(precio_actual), resultado_estrategia["senal"]
+        )
+
     return {
         "ultima_vela": ultima_vela,
         "precio_actual": precio_actual,
         "sl_long": sl_long,
         "estrategia": resultado_estrategia,
+        "riesgo": plan_riesgo,
     }
 
 
@@ -287,6 +303,7 @@ def main():
             precio_actual = analisis["precio_actual"]
             sl_long = analisis["sl_long"]
             resultado_estrategia = analisis["estrategia"]
+            riesgo = analisis.get("riesgo")
 
             # ---------- IMPRESIÓN EN PANTALLA (resumen) ----------
             print(f"--- Resumen {par} ---")
@@ -309,12 +326,30 @@ def main():
 
                 if resultado_estrategia["senal"]:
                     print(f"  🚀 SEÑAL DE ENTRADA:   {resultado_estrategia['senal']}")
+
+                    # ---------- IMPRESIÓN EN PANTALLA (plan de riesgo) ----------
+                    if riesgo:
+                        print(f"  --- Plan de riesgo ---")
+                        print(f"  SL:  ${riesgo['stop_loss']:,.4f}  ({riesgo['distancia_sl_pct']}% de distancia)")
+                        print(f"  TP1: ${riesgo['tp1']:,.4f}  (validado por estructura: {riesgo['tp1_validado_por_estructura']})")
+                        print(f"  TP2: ${riesgo['tp2']:,.4f}  (validado por estructura: {riesgo['tp2_validado_por_estructura']})")
+                        print(f"  TP3: ${riesgo['tp3']:,.4f}  (validado por estructura: {riesgo['tp3_validado_por_estructura']})")
+                        aviso = " ⚠️ LIMITADO (SL muy ajustado)" if riesgo["apalancamiento_limitado"] else ""
+                        print(f"  Apalancamiento sugerido: {riesgo['apalancamiento_sugerido']}x{aviso}")
+                        print(f"  Pérdida estimada si salta SL: {riesgo['perdida_estimada_pct_capital_operacion']}% del capital de la operación")
+                        print(f"  Capital asignado: ${riesgo['capital_entrada_usdt']:,.2f} "
+                              f"| Tamaño posición: ${riesgo['tamano_posicion_usdt']:,.2f} "
+                              f"({riesgo['cantidad_activo']} unidades)")
+                    else:
+                        print("  ⚠️ No se pudo calcular el plan de riesgo (datos insuficientes).")
+
                     enviar_alerta(
                         par=par,
                         senal=resultado_estrategia["senal"],
                         score=resultado_estrategia["score_actual"],
                         precio=float(precio_actual),
                         timeframe_entrada=config.TIMEFRAME_ENTRADA,
+                        riesgo=riesgo,
                     )
                 else:
                     print("  Señal de entrada:      Ninguna (sin cruce de umbral)")
@@ -343,13 +378,17 @@ def main():
                     "timeframe_tendencia": config.TIMEFRAME_TENDENCIA,
                     **resultado_estrategia,
                 },
+                # ---------- Bloque de gestión de riesgo (None si no hay señal) ----------
+                "riesgo": riesgo,
             }
 
             # ---------- GUARDADO EN data/indicadores/<BASE>.json ----------
             guardar_resultado_par(par, datos_json)
 
         except Exception as e:
-            print(f"❌ Error procesando indicadores para {par}: {e}\n")
+            print(f"❌ Error procesando indicadores para {par}: {e}")
+            traceback.print_exc()
+            print()
 
 
 if __name__ == "__main__":

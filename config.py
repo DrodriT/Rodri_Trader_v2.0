@@ -144,3 +144,32 @@ PUNTOS_RSI = 15
 PUNTOS_ADX = 15
 PUNTOS_VOLUME = 10
 PUNTOS_STRUCTURE = 15
+
+# ==============================================================================
+# 6. GESTIÓN DE RIESGO (SL / TP / Apalancamiento)
+# ==============================================================================
+
+# --- Capital y riesgo por operación ---
+CAPITAL_TOTAL_USDT = 1000.0          # Capital total de la cuenta (ajusta a tu caso real)
+CAPITAL_POR_OPERACION_USDT = 100.0   # Margen fijo que usas en CADA operación, en USDT
+PCT_PERDIDA_MAXIMA_SL = 10.0         # % del capital DE ESA OPERACIÓN que se pierde si salta el SL
+
+# --- Límite de seguridad del apalancamiento ---
+# Si la distancia al SL es muy pequeña, la fórmula podría pedir un apalancamiento
+# irreal/peligroso. Este tope lo evita (se recorta y se marca con un aviso).
+APALANCAMIENTO_MAXIMO = 20.0
+
+# --- Stop Loss ---
+# El SL se calcula sobre el swing low/high de las últimas N velas (mismo
+# lookback que ya usa el componente STRUCTURE de la estrategia: config.HIGHEST_LOWEST_PERIODO),
+# con un pequeño buffer adicional en múltiplos de ATR para no quedar pegado
+# exactamente al nivel (evita saltos por 'spikes' de mecha).
+SL_BUFFER_ATR_MULT = 0.1
+
+# --- Take Profit (Riesgo:Beneficio) ---
+# TP1/TP2/TP3 se calculan como múltiplos de la distancia al SL (riesgo),
+# y se validan contra el próximo nivel de estructura visible (swing
+# high/low reciente) para saber si son realistas o quedan "fuera de rango".
+RR_TP1 = 1.0   # 1:1 -> mismo riesgo que beneficio
+RR_TP2 = 2.0   # 1:2
+RR_TP3 = 3.0   # 1:3
