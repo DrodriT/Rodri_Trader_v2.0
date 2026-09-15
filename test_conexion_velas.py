@@ -336,7 +336,7 @@ def main():
                         print(f"  TP3: ${riesgo['tp3']:,.4f}  (validado por estructura: {riesgo['tp3_validado_por_estructura']})")
                         aviso = " ⚠️ LIMITADO (SL muy ajustado)" if riesgo["apalancamiento_limitado"] else ""
                         print(f"  Apalancamiento sugerido: {riesgo['apalancamiento_sugerido']}x{aviso}")
-                        print(f"  Pérdida estimada si salta SL: {riesgo['perdida_estimada_pct_capital_operacion']}% del capital de la operación")
+                        #print(f"  Pérdida estimada si salta SL: {riesgo['perdida_estimada_pct_capital_operacion']}% del capital de la operación")
                         print(f"  Capital asignado: ${riesgo['capital_entrada_usdt']:,.2f} "
                               f"| Tamaño posición: ${riesgo['tamano_posicion_usdt']:,.2f} "
                               f"({riesgo['cantidad_activo']} unidades)")
