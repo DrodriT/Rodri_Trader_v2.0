@@ -1,13 +1,13 @@
 {
     "simbolo": "LINK/USDT:USDT",
     "timestamp": "2026-09-15T13:05:00",
-    "precio_actual": 11.44,
+    "precio_actual": 11.46,
     "EMA_9": 11.41,
     "EMA_21": 11.39,
-    "RSI": 63.56,
+    "RSI": 65.47,
     "ADX": 21.97,
     "ATR": 0.03,
-    "stop_loss_long": 11.39,
+    "stop_loss_long": 11.4,
     "multiplicador_SL": 2.0,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 69.0,
+        "score_actual": 76.0,
         "score_anterior": 69.0,
-        "senal": null
+        "senal": "LONG"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "LONG",
+        "precio_entrada": 11.456,
+        "stop_loss": 11.314182,
+        "tp1": 11.597818,
+        "tp2": 11.739636,
+        "tp3": 11.881455,
+        "nivel_estructura_referencia": 11.452,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 1.238,
+        "apalancamiento_sugerido": 8.08,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 807.79,
+        "cantidad_activo": 70.512795
+    }
 }
