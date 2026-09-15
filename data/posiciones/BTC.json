@@ -1,5 +1,5 @@
 {
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 76334.0,
     "stop_loss_original": 77118.521282,
@@ -10,5 +10,8 @@
     "tp1_alcanzado": false,
     "tp2_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-15T14:05:47.577383+00:00"
+    "timestamp_apertura": "2026-09-15T14:05:47.577383+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 77180.0,
+    "timestamp_cierre": "2026-09-15T17:35:49.829921+00:00"
 }
