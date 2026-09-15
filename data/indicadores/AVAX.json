@@ -5,9 +5,9 @@
     "EMA_9": 7.49,
     "EMA_21": 7.48,
     "RSI": 58.04,
-    "ADX": 22.68,
+    "ADX": 22.47,
     "ATR": 0.01,
-    "stop_loss_long": 7.48,
+    "stop_loss_long": 7.47,
     "multiplicador_SL": 2.0,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -19,5 +19,6 @@
         "score_actual": 0.0,
         "score_anterior": 0.0,
         "senal": null
-    }
+    },
+    "riesgo": null
 }
