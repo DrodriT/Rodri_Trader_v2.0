@@ -4,7 +4,7 @@
     "precio_actual": 0.21,
     "EMA_9": 0.21,
     "EMA_21": 0.2,
-    "RSI": 55.81,
+    "RSI": 52.19,
     "ADX": 21.96,
     "ATR": 0.0,
     "stop_loss_long": 0.2,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 62.0,
-        "score_anterior": 69.0,
+        "score_actual": 54.0,
+        "score_anterior": 62.0,
         "senal": null
     },
     "riesgo": null
