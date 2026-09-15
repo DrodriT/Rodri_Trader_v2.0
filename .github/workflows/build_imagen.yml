@@ -9,6 +9,7 @@ on:
       - "indicadores/**"
       - "estrategia/**"
       - "notificaciones/**"
+      - "gestion_riesgo/**"
       - "config.py"
       - "test_conexion_velas.py"
   workflow_dispatch:
