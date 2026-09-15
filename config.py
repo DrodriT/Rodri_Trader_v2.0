@@ -59,7 +59,6 @@ LISTADO_MONEDAS = [
     "ETC/USDT:USDT",
     "APT/USDT:USDT",
     "ARB/USDT:USDT",
-    "UNI/USDT:USDT",
 ]
 
 # ==============================================================================
@@ -81,8 +80,8 @@ SMA_PERIODO = 20
 
 # --- ATR (Average True Range) & Gestión de Riesgo ---
 ATR_PERIODO = 14
-ATR_MULTIPLICADOR_SL = 2.0   # Distancia del Stop Loss en múltiplos de ATR (ej. 1.5x o 2.0x)
-ATR_MULTIPLICADOR_TP = 3.0   # Take Profit dinámico (ej. ratio 1:1.5 de riesgo/beneficio)
+ATR_MULTIPLICADOR_SL = 1.5   # Distancia del Stop Loss en múltiplos de ATR (ej. 1.5x o 2.0x)
+ATR_MULTIPLICADOR_TP = 2.0   # Take Profit dinámico (ej. ratio 1:1.5 de riesgo/beneficio)
 
 # --- DMI / ADX ---
 ADX_PERIODO = 14
@@ -119,7 +118,7 @@ CANTIDAD_VELAS_TENDENCIA = 60
 # ADX mínimo exigido en el timeframe operativo para considerar que hay
 # tendencia suficiente como para operar (más permisivo que ADX_UMBRAL_TENDENCIA,
 # que se sigue usando para el análisis de 1h en test_conexion_velas.py).
-ADX_MINIMO_MANDATORY = 18.0
+ADX_MINIMO_MANDATORY = 20.0
 
 # --- Componente STRUCTURE (Breakout) ---
 # Nº de velas hacia atrás (excluyendo la actual) para calcular el máximo/mínimo
@@ -135,7 +134,7 @@ VOLUME_SMA_PERIODO = 20
 # Puntuación mínima (sobre 100) que debe alcanzar el score compuesto para
 # considerar una entrada válida. La señal se dispara solo en el CRUCE hacia
 # arriba de este umbral (score actual >= umbral Y score anterior < umbral).
-SCORE_ENTRADA_MINIMO = 70.0
+SCORE_ENTRADA_MINIMO = 75.0
 
 # --- Desglose de puntos máximos por componente del score (deben sumar 100) ---
 PUNTOS_HTF_BIAS = 20
@@ -157,19 +156,19 @@ PCT_PERDIDA_MAXIMA_SL = 10.0         # % del capital DE ESA OPERACIÓN que se pi
 # --- Límite de seguridad del apalancamiento ---
 # Si la distancia al SL es muy pequeña, la fórmula podría pedir un apalancamiento
 # irreal/peligroso. Este tope lo evita (se recorta y se marca con un aviso).
-APALANCAMIENTO_MAXIMO = 20.0
+APALANCAMIENTO_MAXIMO = 50.0
 
 # --- Stop Loss ---
 # El SL se calcula sobre el swing low/high de las últimas N velas (mismo
 # lookback que ya usa el componente STRUCTURE de la estrategia: config.HIGHEST_LOWEST_PERIODO),
 # con un pequeño buffer adicional en múltiplos de ATR para no quedar pegado
 # exactamente al nivel (evita saltos por 'spikes' de mecha).
-SL_BUFFER_ATR_MULT = 0.1
+SL_BUFFER_ATR_MULT = 1.4
 
 # --- Take Profit (Riesgo:Beneficio) ---
 # TP1/TP2/TP3 se calculan como múltiplos de la distancia al SL (riesgo),
 # y se validan contra el próximo nivel de estructura visible (swing
 # high/low reciente) para saber si son realistas o quedan "fuera de rango".
 RR_TP1 = 1.0   # 1:1 -> mismo riesgo que beneficio
-RR_TP2 = 2.0   # 1:2
-RR_TP3 = 3.0   # 1:3
+RR_TP2 = 2.0   # 1:1.5
+RR_TP3 = 3.0   # 1:2
