@@ -1,6 +1,7 @@
 import json
 import os
 from datetime import datetime, timezone
+from gestion_riesgo.estadistica import registrar_operacion_cerrada
 
 import pandas as pd
 
@@ -69,7 +70,7 @@ def abrir_posicion(par_base: str, direccion: str, riesgo: dict, par: str | None 
     return posicion
 
 
-def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: float, par: str | None = None,) -> None:
+def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: float, par: str,) -> None:
     """
     Marca la posición como cerrada (motivo: 'SL', 'BE' o 'TP3') y la persiste.
     A partir de este momento, cargar_posicion() volverá a devolver None para
@@ -79,20 +80,19 @@ def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: f
 
     posicion["estado"] = "cerrada"
     posicion["motivo_cierre"] = motivo
-    posicion["precio_salida"] = precio_salida
+    posicion["precio_salida"] = float(precio_salida)
     posicion["timestamp_cierre"] = datetime.now(timezone.utc).isoformat()
-
-    # Registrar en histórico
-    registrar_operacion_cerrada(
-        par=par if par is not None else posicion.get("simbolo", par_base),
-        posicion=posicion,
-        motivo=motivo,
-        precio_salida=precio_salida,
-    )
 
     # Persistir posición cerrada
     guardar_posicion(par_base, posicion)
 
+    # Registramos la operación en estadísticas
+    registrar_operacion_cerrada(
+        par=par,
+        posicion=posicion,
+        motivo_cierre=motivo,
+        precio_salida=float(precio_salida),
+    )
 
 def evaluar_posicion(posicion: dict, ultima_vela: pd.Series) -> list[str]:
     """

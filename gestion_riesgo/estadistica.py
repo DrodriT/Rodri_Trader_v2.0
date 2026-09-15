@@ -1,145 +1,157 @@
-
 import json
 import os
 from datetime import datetime, timezone
 
-# Archivo histórico de operaciones cerradas
+
 OUTPUT_DIR_ESTADISTICA = os.path.join("data", "estadistica")
-RUTA_OPERACIONES = os.path.join(
+ARCHIVO_ESTADISTICA = os.path.join(
     OUTPUT_DIR_ESTADISTICA,
-    "operaciones.json"
+    "operaciones.json",
 )
-
-
-def _cargar_operaciones() -> list:
-    """
-    Carga el histórico de operaciones cerradas.
-    Si no existe, devuelve una lista vacía.
-    """
-    try:
-        with open(RUTA_OPERACIONES, "r", encoding="utf-8") as f:
-            datos = json.load(f)
-
-        return datos if isinstance(datos, list) else []
-
-    except (FileNotFoundError, json.JSONDecodeError):
-        return []
 
 
 def registrar_operacion_cerrada(
     par: str,
     posicion: dict,
-    motivo: str,
+    motivo_cierre: str,
     precio_salida: float,
 ) -> None:
     """
     Registra una operación cerrada en data/estadistica/operaciones.json.
 
-    Evita duplicar operaciones utilizando el id_operacion.
+    La operación se añade al histórico sin sobrescribir las operaciones
+    anteriores.
     """
 
     os.makedirs(OUTPUT_DIR_ESTADISTICA, exist_ok=True)
 
-    operaciones = _cargar_operaciones()
+    operaciones = []
 
-    # Identificador único de la operación
-    id_operacion = posicion["id_operacion"]
-
-    # Evitar duplicados
-    if any(
-        op.get("id_operacion") == id_operacion
-        for op in operaciones
-    ):
-        print(
-            f"  ⚠️ Operación {id_operacion} "
-            "ya registrada en estadísticas."
-        )
-        return
-
-    timestamp_cierre = datetime.now(timezone.utc).isoformat()
-
-    # Calcular duración
-    timestamp_apertura = posicion["timestamp_apertura"]
-
+    # ---------------------------------------------------------
+    # Cargar histórico existente
+    # ---------------------------------------------------------
     try:
-        inicio = datetime.fromisoformat(timestamp_apertura)
-        fin = datetime.fromisoformat(timestamp_cierre)
+        with open(ARCHIVO_ESTADISTICA, "r", encoding="utf-8") as f:
+            operaciones = json.load(f)
 
-        duracion_segundos = int(
-            (fin - inicio).total_seconds()
-        )
+        if not isinstance(operaciones, list):
+            operaciones = []
 
-    except (ValueError, TypeError):
-        duracion_segundos = None
+    except (FileNotFoundError, json.JSONDecodeError):
+        operaciones = []
 
-    # Resultado general de la operación
-    if motivo in ("TP1", "TP2", "TP3"):
-        resultado = "ganadora"
-    elif motivo == "BE":
-        resultado = "break_even"
-    elif motivo == "SL":
-        resultado = "perdedora"
+    # ---------------------------------------------------------
+    # Evitar duplicados
+    # ---------------------------------------------------------
+    timestamp_apertura = posicion.get("timestamp_apertura")
+
+    for operacion in operaciones:
+        if (
+            operacion.get("par") == par
+            and operacion.get("timestamp_apertura") == timestamp_apertura
+        ):
+            print(
+                f"  ⚠️ Operación ya registrada en estadísticas: "
+                f"{par} | {timestamp_apertura}"
+            )
+            return
+
+    # ---------------------------------------------------------
+    # Determinar resultado
+    # ---------------------------------------------------------
+    if motivo_cierre == "SL":
+        resultado = "PERDIDA"
+
+    elif motivo_cierre == "BE":
+        resultado = "BREAKEVEN"
+
+    elif motivo_cierre == "TP3":
+        resultado = "GANANCIA"
+
     else:
-        resultado = "desconocido"
+        resultado = motivo_cierre
 
-    # Copia histórica de la posición
+    # ---------------------------------------------------------
+    # Crear registro
+    # ---------------------------------------------------------
     operacion = {
-        "id_operacion": id_operacion,
-
-        "simbolo": par,
-        "direccion": posicion["direccion"],
-
-        "estado_final": "cerrada",
-        "motivo_cierre": motivo,
-
-        "precio_entrada": posicion["precio_entrada"],
-        "precio_salida": precio_salida,
-
-        "stop_loss_original": posicion["stop_loss_original"],
-        "stop_loss_final": posicion["stop_loss_actual"],
-
-        "tp1": posicion["tp1"],
-        "tp2": posicion["tp2"],
-        "tp3": posicion["tp3"],
-
-        "tp1_alcanzado": posicion["tp1_alcanzado"],
-        "tp2_alcanzado": posicion["tp2_alcanzado"],
-        "tp3_alcanzado": posicion.get(
-            "tp3_alcanzado",
-            motivo == "TP3"
+        "id_operacion": (
+            f"{par.replace('/', '_').replace(':', '_')}_"
+            f"{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f')}"
         ),
 
-        "sl_movido_be": posicion["sl_movido_be"],
+        "par": par,
 
-        "timestamp_apertura": timestamp_apertura,
-        "timestamp_cierre": timestamp_cierre,
+        "direccion": posicion.get("direccion"),
 
-        "duracion_segundos": duracion_segundos,
+        "timestamp_apertura": posicion.get("timestamp_apertura"),
+
+        "timestamp_cierre": posicion.get("timestamp_cierre"),
+
+        "precio_entrada": posicion.get("precio_entrada"),
+
+        "precio_salida": precio_salida,
+
+        "stop_loss_original": posicion.get("stop_loss_original"),
+
+        "stop_loss_final": posicion.get("stop_loss_actual"),
+
+        "tp1": posicion.get("tp1"),
+
+        "tp2": posicion.get("tp2"),
+
+        "tp3": posicion.get("tp3"),
+
+        "tp1_alcanzado": posicion.get(
+            "tp1_alcanzado",
+            False,
+        ),
+
+        "tp2_alcanzado": posicion.get(
+            "tp2_alcanzado",
+            False,
+        ),
+
+        "tp3_alcanzado": posicion.get(
+            "tp3_alcanzado",
+            False,
+        ),
+
+        "sl_movido_be": posicion.get(
+            "sl_movido_be",
+            False,
+        ),
+
+        "motivo_cierre": motivo_cierre,
 
         "resultado": resultado,
     }
 
     operaciones.append(operacion)
 
+    # ---------------------------------------------------------
+    # Guardar histórico
+    # ---------------------------------------------------------
     try:
         with open(
-            RUTA_OPERACIONES,
+            ARCHIVO_ESTADISTICA,
             "w",
-            encoding="utf-8"
+            encoding="utf-8",
         ) as f:
+
             json.dump(
                 operaciones,
                 f,
                 indent=4,
-                ensure_ascii=False
+                ensure_ascii=False,
             )
 
         print(
-            f"  📊 Operación {id_operacion} "
-            f"registrada: {motivo}"
+            f"  📊 Operación registrada en "
+            f"{os.path.abspath(ARCHIVO_ESTADISTICA)}"
         )
 
     except Exception as e:
         print(
-            f"  ❌ Error guardando estadísticas: {e}"
+            f"  ❌ Error guardando estadística: {e}"
         )
