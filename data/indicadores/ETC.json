@@ -1,11 +1,11 @@
 {
     "simbolo": "ETC/USDT:USDT",
-    "timestamp": "2026-09-15T03:25:00",
+    "timestamp": "2026-09-15T03:30:00",
     "precio_actual": 7.47,
     "EMA_9": 7.48,
     "EMA_21": 7.5,
-    "RSI": 32.01,
-    "ADX": 31.42,
+    "RSI": 31.16,
+    "ADX": 31.86,
     "ATR": 0.01,
     "stop_loss_long": 7.44,
     "multiplicador_SL": 2.0,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 83.0,
-        "score_anterior": 85.0,
+        "score_actual": 75.0,
+        "score_anterior": 83.0,
         "senal": null
     }
 }
