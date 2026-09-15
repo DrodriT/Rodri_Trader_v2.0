@@ -18,7 +18,7 @@ from indicadores import (
 # Importamos la estrategia (Algorithmic Entry Model V1.0)
 from estrategia import generar_senal
 
-# Importamos las notificaciones
+# Importamos las notificaciones (Telegram)
 from notificaciones import enviar_alerta
 
 # Carpeta donde se guardará un JSON por cada par analizado
@@ -118,11 +118,6 @@ def calcular_indicadores_entrada(df: pd.DataFrame) -> pd.DataFrame:
     """
     Calcula TODOS los indicadores necesarios en el timeframe operativo
     (config.TIMEFRAME_ENTRADA, ej. 5m): EMA rápida/lenta, RSI, ATR y ADX.
-
-    Este timeframe pasa a ser ahora la única fuente de precio/indicadores
-    "generales" del par (ya no se descarga un timeframe de 1h aparte):
-    tanto el resumen impreso en pantalla como el Stop Loss sugerido y la
-    estrategia se calculan sobre estos mismos datos.
     """
     df = df.copy()
     df["EMA_rapida"] = calcular_ema(df, periodo=config.EMA_RAPIDA_PERIODO)
@@ -166,15 +161,14 @@ def obtener_simbolo_base(par: str) -> str:
 
     return par
 
+
 def leer_estrategia_previa(par: str) -> dict | None:
     """
     Lee el bloque 'estrategia' guardado en la ÚLTIMA EJECUCIÓN real para este
     par, desde su archivo data/indicadores/<BASE>.json, si existe.
 
     Se usa como referencia auténtica de 'score_anterior' en generar_senal(),
-    para detectar cruces de umbral ENTRE ejecuciones distintas del bot
-    (resuelve la limitación de comparar solo dentro del mismo lote de velas
-    descargado en una única ejecución).
+    para detectar cruces de umbral ENTRE ejecuciones distintas del bot.
 
     Devuelve None si es la primera vez que se analiza este par (archivo no
     existe todavía) o si el archivo está corrupto/incompleto.
@@ -190,6 +184,24 @@ def leer_estrategia_previa(par: str) -> dict | None:
         return None
 
 
+def guardar_resultado_par(par: str, datos: dict) -> None:
+    """
+    Guarda el resultado de un par en 'data/indicadores/<BASE>.json'.
+    Sobrescribe el archivo con el último snapshot calculado para ese par.
+    """
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    nombre_base = obtener_simbolo_base(par)
+    ruta_json = os.path.join(OUTPUT_DIR, f"{nombre_base}.json")
+
+    try:
+        with open(ruta_json, "w", encoding="utf-8") as f:
+            json.dump(datos, f, indent=4, ensure_ascii=False)
+        print(f"  ✅ Datos guardados en {os.path.abspath(ruta_json)}")
+    except Exception as e:
+        print(f"  ❌ Error al guardar JSON en {ruta_json}: {e}")
+
+
 def analizar_par(exchange, par: str) -> dict | None:
     """
     Descarga las velas de 5m (entrada) y 15m (tendencia) para el par,
@@ -199,6 +211,11 @@ def analizar_par(exchange, par: str) -> dict | None:
     resultado de la estrategia), listo para imprimir y guardar en JSON.
     Devuelve None si falla la descarga de 5m (timeframe imprescindible,
     ya que de él salen el precio actual, el SL y el Mandatory Filter/Score).
+
+    IMPORTANTE: 'resultado_estrategia' se inicializa SIEMPRE con un
+    diccionario por defecto antes de cualquier rama condicional, para
+    garantizar que nunca llegue a ser None en ningún camino de ejecución
+    (evita el error 'NoneType' object has no attribute 'pop').
     """
     df_5m = descargar_velas(
         exchange, par, config.TIMEFRAME_ENTRADA, config.CANTIDAD_VELAS_ENTRADA
@@ -217,28 +234,31 @@ def analizar_par(exchange, par: str) -> dict | None:
         direccion="LONG",
     )
 
+    # ---------- Valor por defecto: NUNCA debe quedar como None ----------
+    resultado_estrategia = {
+        "bias_htf": None,
+        "cumple_mandatory": None,
+        "score_actual": None,
+        "score_anterior": None,
+        "senal": None,
+        "error": "No se pudieron descargar velas de 15m para evaluar la estrategia.",
+    }
+
     # ---------- Timeframe HTF (15m) ----------
     df_15m = descargar_velas(
         exchange, par, config.TIMEFRAME_TENDENCIA, config.CANTIDAD_VELAS_TENDENCIA
     )
 
-    if df_15m is None:
-        resultado_estrategia = {
-            "bias_htf": None,
-            "cumple_mandatory": None,
-            "score_actual": None,
-            "score_anterior": None,
-            "senal": None,
-            "error": "No se pudieron descargar velas de 15m para evaluar la estrategia.",
-        }
-    else:
+    if df_15m is not None:
         df_15m = calcular_indicadores_tendencia(df_15m)
 
         # Leemos el resultado de la ÚLTIMA ejecución real para este par,
         # ANTES de que este análisis lo sobrescriba más adelante en main().
         estrategia_previa = leer_estrategia_previa(par)
 
-        resultado_estrategia = generar_senal(par, df_5m, df_15m, resultado_previo=estrategia_previa)
+        resultado_estrategia = generar_senal(
+            par, df_5m, df_15m, resultado_previo=estrategia_previa
+        )
         resultado_estrategia.pop("par", None)  # ya va como clave superior del JSON
 
     return {
