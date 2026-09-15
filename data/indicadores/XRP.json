@@ -1,10 +1,10 @@
 {
     "simbolo": "XRP/USDT:USDT",
     "timestamp": "2026-09-15T18:55:00",
-    "precio_actual": 1.33,
+    "precio_actual": 1.32,
     "EMA_9": 1.35,
     "EMA_21": 1.37,
-    "RSI": 35.05,
+    "RSI": 34.13,
     "ADX": 29.49,
     "ATR": 0.02,
     "stop_loss_long": 1.3,
