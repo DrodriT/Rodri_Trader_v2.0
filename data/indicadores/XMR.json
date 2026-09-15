@@ -1,13 +1,13 @@
 {
     "simbolo": "XMR/USDT:USDT",
-    "timestamp": "2026-09-15T04:20:00",
-    "precio_actual": 516.99,
-    "EMA_9": 515.4,
-    "EMA_21": 515.14,
-    "RSI": 61.81,
-    "ADX": 19.86,
-    "ATR": 0.9,
-    "stop_loss_long": 515.19,
+    "timestamp": "2026-09-15T04:25:00",
+    "precio_actual": 516.52,
+    "EMA_9": 515.57,
+    "EMA_21": 515.24,
+    "RSI": 59.19,
+    "ADX": 21.63,
+    "ATR": 0.85,
+    "stop_loss_long": 514.83,
     "multiplicador_SL": 2.0,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 63.0,
-        "score_anterior": 30.0,
+        "score_actual": 46.0,
+        "score_anterior": 63.0,
         "senal": null
     }
 }
