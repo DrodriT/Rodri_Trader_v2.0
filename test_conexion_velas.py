@@ -166,23 +166,28 @@ def obtener_simbolo_base(par: str) -> str:
 
     return par
 
-
-def guardar_resultado_par(par: str, datos: dict) -> None:
+def leer_estrategia_previa(par: str) -> dict | None:
     """
-    Guarda el resultado de un par en 'data/indicadores/<BASE>.json'.
-    Sobrescribe el archivo con el último snapshot calculado para ese par.
-    """
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    Lee el bloque 'estrategia' guardado en la ÚLTIMA EJECUCIÓN real para este
+    par, desde su archivo data/indicadores/<BASE>.json, si existe.
 
+    Se usa como referencia auténtica de 'score_anterior' en generar_senal(),
+    para detectar cruces de umbral ENTRE ejecuciones distintas del bot
+    (resuelve la limitación de comparar solo dentro del mismo lote de velas
+    descargado en una única ejecución).
+
+    Devuelve None si es la primera vez que se analiza este par (archivo no
+    existe todavía) o si el archivo está corrupto/incompleto.
+    """
     nombre_base = obtener_simbolo_base(par)
     ruta_json = os.path.join(OUTPUT_DIR, f"{nombre_base}.json")
 
     try:
-        with open(ruta_json, "w", encoding="utf-8") as f:
-            json.dump(datos, f, indent=4, ensure_ascii=False)
-        print(f"  ✅ Datos guardados en {os.path.abspath(ruta_json)}")
-    except Exception as e:
-        print(f"  ❌ Error al guardar JSON en {ruta_json}: {e}")
+        with open(ruta_json, "r", encoding="utf-8") as f:
+            datos_previos = json.load(f)
+        return datos_previos.get("estrategia")
+    except (FileNotFoundError, json.JSONDecodeError, AttributeError):
+        return None
 
 
 def analizar_par(exchange, par: str) -> dict | None:
@@ -228,7 +233,12 @@ def analizar_par(exchange, par: str) -> dict | None:
         }
     else:
         df_15m = calcular_indicadores_tendencia(df_15m)
-        resultado_estrategia = generar_senal(par, df_5m, df_15m)
+
+        # Leemos el resultado de la ÚLTIMA ejecución real para este par,
+        # ANTES de que este análisis lo sobrescriba más adelante en main().
+        estrategia_previa = leer_estrategia_previa(par)
+
+        resultado_estrategia = generar_senal(par, df_5m, df_15m, resultado_previo=estrategia_previa)
         resultado_estrategia.pop("par", None)  # ya va como clave superior del JSON
 
     return {
