@@ -19,11 +19,17 @@ from indicadores import (
 # Importamos la estrategia (Algorithmic Entry Model V1.0)
 from estrategia import generar_senal
 
-# Importamos la gestión de riesgo (SL/TP/apalancamiento)
-from gestion_riesgo import calcular_gestion_riesgo
+# Importamos la gestión de riesgo (SL/TP/apalancamiento + posiciones abiertas)
+from gestion_riesgo import (
+    calcular_gestion_riesgo,
+    cargar_posicion,
+    abrir_posicion,
+    cerrar_posicion,
+    evaluar_posicion,
+)
 
 # Importamos las notificaciones (Telegram)
-from notificaciones import enviar_alerta
+from notificaciones import enviar_alerta, enviar_actualizacion_posicion
 
 # Carpeta donde se guardará un JSON por cada par analizado
 OUTPUT_DIR = os.path.join("data", "indicadores")
@@ -170,12 +176,6 @@ def leer_estrategia_previa(par: str) -> dict | None:
     """
     Lee el bloque 'estrategia' guardado en la ÚLTIMA EJECUCIÓN real para este
     par, desde su archivo data/indicadores/<BASE>.json, si existe.
-
-    Se usa como referencia auténtica de 'score_anterior' en generar_senal(),
-    para detectar cruces de umbral ENTRE ejecuciones distintas del bot.
-
-    Devuelve None si es la primera vez que se analiza este par (archivo no
-    existe todavía) o si el archivo está corrupto/incompleto.
     """
     nombre_base = obtener_simbolo_base(par)
     ruta_json = os.path.join(OUTPUT_DIR, f"{nombre_base}.json")
@@ -206,21 +206,67 @@ def guardar_resultado_par(par: str, datos: dict) -> None:
         print(f"  ❌ Error al guardar JSON en {ruta_json}: {e}")
 
 
+def gestionar_posicion_abierta(par: str, par_base: str, posicion: dict, ultima_vela: pd.Series) -> dict:
+    """
+    Monitoriza una posición ya abierta contra la última vela descargada:
+    detecta si tocó SL, TP1, TP2, TP3 o Breakeven, actualiza/persiste su
+    estado, y envía las notificaciones de Telegram correspondientes.
+
+    Procesa los eventos en orden de prioridad: SL/BE (cierre inmediato,
+    no sigue evaluando TPs) antes que TP1/TP2/TP3.
+
+    Devuelve el diccionario 'posicion' actualizado (o el mismo, si no hubo
+    eventos este ciclo). Si la posición se cerró, su 'estado' pasa a
+    'cerrada' en el propio diccionario devuelto.
+    """
+    precio_actual = float(ultima_vela["close"])
+    eventos = evaluar_posicion(posicion, ultima_vela)
+
+    for evento in eventos:
+        if evento in ("SL_TOCADO", "BE_TOCADO"):
+            motivo = "SL" if evento == "SL_TOCADO" else "BE"
+            cerrar_posicion(par_base, posicion, motivo=motivo)
+            enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
+            break  # posición cerrada: no seguimos evaluando más eventos
+
+        elif evento == "TP1_TOCADO":
+            posicion["tp1_alcanzado"] = True
+            posicion["stop_loss_actual"] = posicion["precio_entrada"]  # mover SL a breakeven
+            posicion["sl_movido_be"] = True
+            enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
+
+        elif evento == "TP2_TOCADO":
+            posicion["tp2_alcanzado"] = True
+            enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
+
+        elif evento == "TP3_TOCADO":
+            cerrar_posicion(par_base, posicion, motivo="TP3")
+            enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
+            break  # posición cerrada
+
+    # Si la posición sigue abierta tras procesar eventos (o no hubo ninguno),
+    # persistimos el estado actualizado (ej. tp1_alcanzado, nuevo SL en BE).
+    if posicion.get("estado") == "abierta":
+        from gestion_riesgo import guardar_posicion
+        guardar_posicion(par_base, posicion)
+
+    return posicion
+
+
 def analizar_par(exchange, par: str) -> dict | None:
     """
-    Descarga las velas de 5m (entrada) y 15m (tendencia) para el par,
-    calcula todos los indicadores, evalúa la estrategia y, si hay señal
-    de entrada, calcula el plan de gestión de riesgo (SL/TP/apalancamiento).
+    Descarga las velas de 5m (entrada) y 15m (tendencia) para el par.
+
+    Si ya existe una posición ABIERTA para este par, la monitoriza (SL/TP1/
+    TP2/TP3/BE) y NO evalúa ni genera una nueva señal de entrada mientras
+    siga abierta — evita señales repetidas sobre la misma moneda.
+
+    Si no hay posición abierta (o se acaba de cerrar en este mismo ciclo),
+    evalúa la estrategia con normalidad y, si genera una señal nueva, abre
+    la posición correspondiente.
 
     Devuelve un diccionario con toda la información del par, listo para
-    imprimir y guardar en JSON. Devuelve None si falla la descarga de 5m
-    (timeframe imprescindible, ya que de él salen el precio actual, el SL
-    de referencia y el Mandatory Filter/Score).
-
-    IMPORTANTE: 'resultado_estrategia' se inicializa SIEMPRE con un
-    diccionario por defecto antes de cualquier rama condicional, para
-    garantizar que nunca llegue a ser None en ningún camino de ejecución
-    (evita el error 'NoneType' object has no attribute 'pop').
+    imprimir y guardar en JSON. Devuelve None si falla la descarga de 5m.
     """
     df_5m = descargar_velas(
         exchange, par, config.TIMEFRAME_ENTRADA, config.CANTIDAD_VELAS_ENTRADA
@@ -238,6 +284,36 @@ def analizar_par(exchange, par: str) -> dict | None:
         multiplicador=config.ATR_MULTIPLICADOR_SL,
         direccion="LONG",
     )
+
+    par_base = obtener_simbolo_base(par)
+
+    # ---------- 1) ¿Hay ya una posición abierta para este par? ----------
+    posicion_abierta = cargar_posicion(par_base)
+
+    if posicion_abierta is not None:
+        posicion_actualizada = gestionar_posicion_abierta(par, par_base, posicion_abierta, ultima_vela)
+
+        if posicion_actualizada.get("estado") == "abierta":
+            # Sigue abierta tras esta vela: NO evaluamos nueva señal.
+            resultado_estrategia = {
+                "bias_htf": None,
+                "cumple_mandatory": None,
+                "score_actual": None,
+                "score_anterior": None,
+                "senal": None,
+                "posicion_abierta": True,
+                "nota": f"Posición {posicion_actualizada['direccion']} ya abierta desde "
+                        f"{posicion_actualizada['timestamp_apertura']}. Esperando SL/TP3.",
+            }
+            return {
+                "ultima_vela": ultima_vela,
+                "precio_actual": precio_actual,
+                "sl_long": sl_long,
+                "estrategia": resultado_estrategia,
+                "riesgo": None,
+            }
+        # Si se cerró en este mismo ciclo (SL/BE/TP3), continuamos abajo
+        # con el flujo normal para evaluar si hay una señal NUEVA ya mismo.
 
     # ---------- Valor por defecto: NUNCA debe quedar como None ----------
     resultado_estrategia = {
@@ -257,24 +333,21 @@ def analizar_par(exchange, par: str) -> dict | None:
     if df_15m is not None:
         df_15m = calcular_indicadores_tendencia(df_15m)
 
-        # Leemos el resultado de la ÚLTIMA ejecución real para este par,
-        # ANTES de que este análisis lo sobrescriba más adelante en main().
         estrategia_previa = leer_estrategia_previa(par)
 
         resultado_estrategia = generar_senal(
             par, df_5m, df_15m, resultado_previo=estrategia_previa
         )
-        resultado_estrategia.pop("par", None)  # ya va como clave superior del JSON
+        resultado_estrategia.pop("par", None)
 
-    # ---------- Gestión de riesgo: solo si hay señal de entrada real ----------
-    # Se calcula sobre df_5m (que ya tiene EMA/RSI/ATR/ADX), reutilizando
-    # los niveles de estructura (swing low/high de las últimas N velas)
-    # que también usa el componente STRUCTURE de la estrategia.
+    # ---------- 2) Gestión de riesgo + apertura de posición si hay señal ----------
     plan_riesgo = None
     if resultado_estrategia.get("senal"):
         plan_riesgo = calcular_gestion_riesgo(
             df_5m, float(precio_actual), resultado_estrategia["senal"]
         )
+        if plan_riesgo:
+            abrir_posicion(par_base, resultado_estrategia["senal"], plan_riesgo)
 
     return {
         "ultima_vela": ultima_vela,
@@ -314,8 +387,12 @@ def main():
             print(f"  ADX({config.ADX_PERIODO}):         {ultima_vela['ADX']:.2f}")
             print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)")
 
+            # ---------- IMPRESIÓN EN PANTALLA (posición abierta) ----------
+            if resultado_estrategia.get("posicion_abierta"):
+                print(f"  🔒 {resultado_estrategia['nota']}\n")
+
             # ---------- IMPRESIÓN EN PANTALLA (estrategia) ----------
-            if resultado_estrategia.get("error"):
+            elif resultado_estrategia.get("error"):
                 print(f"  ⚠️ Estrategia: {resultado_estrategia['error']}\n")
             else:
                 print(f"  --- Estrategia ({config.TIMEFRAME_ENTRADA}/{config.TIMEFRAME_TENDENCIA}) ---")
@@ -327,7 +404,6 @@ def main():
                 if resultado_estrategia["senal"]:
                     print(f"  🚀 SEÑAL DE ENTRADA:   {resultado_estrategia['senal']}")
 
-                    # ---------- IMPRESIÓN EN PANTALLA (plan de riesgo) ----------
                     if riesgo:
                         print(f"  --- Plan de riesgo ---")
                         print(f"  SL:  ${riesgo['stop_loss']:,.4f}  ({riesgo['distancia_sl_pct']}% de distancia)")
@@ -336,8 +412,8 @@ def main():
                         print(f"  TP3: ${riesgo['tp3']:,.4f}  (validado por estructura: {riesgo['tp3_validado_por_estructura']})")
                         aviso = " ⚠️ LIMITADO (SL muy ajustado)" if riesgo["apalancamiento_limitado"] else ""
                         print(f"  Apalancamiento sugerido: {riesgo['apalancamiento_sugerido']}x{aviso}")
-                        #print(f"  Pérdida estimada si salta SL: {riesgo['perdida_estimada_pct_capital_operacion']}% del capital de la operación")
-                        print(f"  Capital asignado: ${riesgo['capital_entrada_usdt']:,.2f} "
+                        print(f"  Pérdida estimada si salta SL: {riesgo['perdida_estimada_pct_margen']}% del margen (${riesgo['perdida_estimada_usdt']})")
+                        print(f"  Margen: ${riesgo['capital_entrada_usdt']:,.2f} "
                               f"| Tamaño posición: ${riesgo['tamano_posicion_usdt']:,.2f} "
                               f"({riesgo['cantidad_activo']} unidades)")
                     else:
@@ -356,9 +432,6 @@ def main():
                 print()
 
             # ---------- CONSTRUCCIÓN DEL JSON ----------
-            # IMPORTANTE: convertimos todo a float()/str() nativos de Python,
-            # ya que numpy.float64 / pandas.Timestamp NO son serializables
-            # directamente por json.dump y provocarían un TypeError.
             datos_json = {
                 "simbolo": par,
                 "timestamp": ultima_vela["timestamp"].isoformat(),
@@ -372,17 +445,14 @@ def main():
                 "multiplicador_SL": config.ATR_MULTIPLICADOR_SL,
                 "timeframe": config.TIMEFRAME_ENTRADA,
                 "velas_usadas": config.CANTIDAD_VELAS_ENTRADA,
-                # ---------- Bloque de la estrategia multi-timeframe ----------
                 "estrategia": {
                     "timeframe_entrada": config.TIMEFRAME_ENTRADA,
                     "timeframe_tendencia": config.TIMEFRAME_TENDENCIA,
                     **resultado_estrategia,
                 },
-                # ---------- Bloque de gestión de riesgo (None si no hay señal) ----------
                 "riesgo": riesgo,
             }
 
-            # ---------- GUARDADO EN data/indicadores/<BASE>.json ----------
             guardar_resultado_par(par, datos_json)
 
         except Exception as e:
