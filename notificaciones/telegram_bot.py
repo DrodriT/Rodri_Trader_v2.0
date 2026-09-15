@@ -12,11 +12,11 @@ EMOJI_POR_DIRECCION = {
 
 # Emoji y texto según el tipo de evento de una posición ya abierta.
 EVENTOS_POSICION = {
-    "TP1_TOCADO": ("🎯", "TP1 alcanzado — SL movido a Breakeven"),
-    "TP2_TOCADO": ("🎯🎯", "TP2 alcanzado"),
+    "TP1_TOCADO": ("✅", "TP1 alcanzado"),
+    "TP2_TOCADO": ("🔥", "TP2 alcanzado"),
     "TP3_TOCADO": ("🏆", "TP3 alcanzado — Posición cerrada con éxito"),
-    "SL_TOCADO": ("🛑", "Stop Loss alcanzado — Posición cerrada"),
-    "BE_TOCADO": ("⚖️", "Cerrado en Breakeven (tras TP1)"),
+    "SL_TOCADO": ("❌", "SL tocado — Posición cerrada"),
+    "BE_TOCADO": ("⚖️", "BE tocado (TP1 asegurado)"),
 }
 
 
@@ -80,20 +80,21 @@ def enviar_alerta(
 
     mensaje = (
         f"{emoji} *{senal}* — {par}\n"
-        f"Precio: ${precio:,.4f}\n"
-        f"Score: {score_texto}\n"
-        f"Timeframe: {timeframe_entrada}"
+        f"Score: {score_texto}\n\n"
+        f"💰 Entrada: ${precio:,.4f}\n"
+       
     )
 
     if riesgo:
         aviso_limite = " ⚠️" if riesgo.get("apalancamiento_limitado") else ""
         mensaje += (
             f"\n\n📐 *Plan de riesgo*\n"
-            f"SL: ${riesgo['stop_loss']:,.4f} ({riesgo['distancia_sl_pct']}%)\n"
-            f"TP1: ${riesgo['tp1']:,.4f}\n"
-            f"TP2: ${riesgo['tp2']:,.4f}\n"
-            f"TP3: ${riesgo['tp3']:,.4f}\n"
-            f"Apalancamiento: {riesgo['apalancamiento_sugerido']}x{aviso_limite}\n"
+            f"⚡ Apalancamiento: {riesgo['apalancamiento_sugerido']}x{aviso_limite}\n"
+            f"🔴 Stop Loss: ${riesgo['stop_loss']:,.4f} ({riesgo['distancia_sl_pct']}%)\n"
+            f"🎯 TP1: ${riesgo['tp1']:,.4f}\n"
+            f"🎯 TP2: ${riesgo['tp2']:,.4f}\n"
+            f"🎯 TP3: ${riesgo['tp3']:,.4f}\n"
+            
             f"Tamaño posición: ${riesgo['tamano_posicion_usdt']:,.2f}"
         )
 
@@ -115,13 +116,12 @@ def enviar_actualizacion_posicion(
     emoji, titulo = EVENTOS_POSICION.get(evento, ("ℹ️", evento))
 
     mensaje = (
-        f"{emoji} *{titulo}*\n"
-        f"{par} — {posicion['direccion']}\n"
+        f"{par} — {emoji} *{titulo}*\n"
         f"Entrada: ${posicion['precio_entrada']:,.4f}\n"
         f"Precio actual: ${precio_actual:,.4f}"
     )
 
     if evento == "TP1_TOCADO":
-        mensaje += f"\nNuevo SL (breakeven): ${posicion['stop_loss_actual']:,.4f}"
+        mensaje += f"\n🔒 SL movido a BE: ${posicion['stop_loss_actual']:,.4f}"
 
     _enviar_mensaje(mensaje, contexto=f"{evento} {par}")
