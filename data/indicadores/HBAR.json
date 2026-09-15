@@ -1,11 +1,11 @@
 {
     "simbolo": "HBAR/USDT:USDT",
-    "timestamp": "2026-09-15T13:10:00",
+    "timestamp": "2026-09-15T13:15:00",
     "precio_actual": 0.08,
     "EMA_9": 0.08,
     "EMA_21": 0.08,
-    "RSI": 70.86,
-    "ADX": 46.81,
+    "RSI": 69.94,
+    "ADX": 48.78,
     "ATR": 0.0,
     "stop_loss_long": 0.08,
     "multiplicador_SL": 2.0,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 67.0,
-        "score_anterior": 75.0,
-        "senal": null
+        "score_actual": 72.0,
+        "score_anterior": 67.0,
+        "senal": "LONG"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "LONG",
+        "precio_entrada": 0.07918,
+        "stop_loss": 0.076777,
+        "tp1": 0.081583,
+        "tp2": 0.083985,
+        "tp3": 0.086388,
+        "nivel_estructura_referencia": 0.07988,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 3.034,
+        "apalancamiento_sugerido": 3.3,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 329.56,
+        "cantidad_activo": 4162.107269
+    }
 }
