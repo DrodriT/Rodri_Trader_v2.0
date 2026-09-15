@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 69.0,
+        "score_actual": 79.0,
         "score_anterior": 66.0,
-        "senal": null
+        "senal": "SHORT"
     }
 }
