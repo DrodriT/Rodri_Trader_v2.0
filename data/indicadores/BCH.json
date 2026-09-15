@@ -1,13 +1,13 @@
 {
     "simbolo": "BCH/USDT:USDT",
     "timestamp": "2026-09-15T14:50:00",
-    "precio_actual": 219.86,
-    "EMA_9": 221.3,
-    "EMA_21": 222.13,
-    "RSI": 31.05,
-    "ADX": 28.14,
-    "ATR": 0.84,
-    "stop_loss_long": 218.6,
+    "precio_actual": 216.91,
+    "EMA_9": 220.71,
+    "EMA_21": 221.86,
+    "RSI": 21.67,
+    "ADX": 29.73,
+    "ATR": 1.14,
+    "stop_loss_long": 215.21,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 73.0,
+        "score_actual": 90.0,
         "score_anterior": 73.0,
-        "senal": null
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 216.91,
+        "stop_loss": 226.500674,
+        "tp1": 207.319326,
+        "tp2": 197.728652,
+        "tp3": 188.137977,
+        "nivel_estructura_referencia": 219.81,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 4.421,
+        "apalancamiento_sugerido": 2.26,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 226.17,
+        "cantidad_activo": 1.04268
+    }
 }

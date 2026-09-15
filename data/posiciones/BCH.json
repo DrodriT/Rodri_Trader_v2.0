@@ -1,16 +1,14 @@
 {
-    "estado": "cerrada",
-    "direccion": "LONG",
-    "precio_entrada": 224.21,
-    "stop_loss_original": 220.861266,
-    "stop_loss_actual": 220.861266,
-    "tp1": 227.558734,
-    "tp2": 230.907467,
-    "tp3": 234.256201,
+    "estado": "abierta",
+    "direccion": "SHORT",
+    "precio_entrada": 216.91,
+    "stop_loss_original": 226.500674,
+    "stop_loss_actual": 226.500674,
+    "tp1": 207.319326,
+    "tp2": 197.728652,
+    "tp3": 188.137977,
     "tp1_alcanzado": false,
     "tp2_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-15T13:59:33.874840+00:00",
-    "motivo_cierre": "SL",
-    "timestamp_cierre": "2026-09-15T14:39:35.089522+00:00"
+    "timestamp_apertura": "2026-09-15T14:52:46.670979+00:00"
 }

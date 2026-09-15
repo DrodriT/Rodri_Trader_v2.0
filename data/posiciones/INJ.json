@@ -1,14 +1,14 @@
 {
     "estado": "abierta",
     "direccion": "SHORT",
-    "precio_entrada": 5.878,
-    "stop_loss_original": 5.956428,
-    "stop_loss_actual": 5.878,
-    "tp1": 5.799572,
-    "tp2": 5.721144,
-    "tp3": 5.642716,
-    "tp1_alcanzado": true,
-    "tp2_alcanzado": true,
-    "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-15T14:04:40.638835+00:00"
+    "precio_entrada": 5.639,
+    "stop_loss_original": 5.998008,
+    "stop_loss_actual": 5.998008,
+    "tp1": 5.279992,
+    "tp2": 4.920984,
+    "tp3": 4.561975,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-15T14:52:48.278259+00:00"
 }
