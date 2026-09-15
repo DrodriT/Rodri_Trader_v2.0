@@ -63,10 +63,9 @@ def enviar_alerta(
     score_texto = f"{score}/100" if score is not None else "N/D"
 
     mensaje = (
-        f"{emoji} *{senal}* — {par}\n"
+        f"{emoji} *{par}* | {senal}\n"
+        f"Score: {score_texto}\n\n"
         f"Precio: ${precio:,.4f}\n"
-        f"Score: {score_texto}\n"
-        f"Timeframe: {timeframe_entrada}"
     )
 
     # ---------- Bloque adicional con el plan de riesgo, si se proporciona ----------
@@ -79,7 +78,8 @@ def enviar_alerta(
             f"TP2: ${riesgo['tp2']:,.4f}\n"
             f"TP3: ${riesgo['tp3']:,.4f}\n"
             f"Apalancamiento: {riesgo['apalancamiento_sugerido']}x{aviso_limite}\n"
-            f"Tamaño posición: ${riesgo['tamano_posicion_usdt']:,.2f}"
+            f"Tamaño posición: ${riesgo['tamano_posicion_usdt']:,.2f}\n\n"
+            f"Timeframe: {timeframe_entrada}"
         )
 
     url = TELEGRAM_API_URL.format(token=token)
