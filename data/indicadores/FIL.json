@@ -1,11 +1,11 @@
 {
     "simbolo": "FIL/USDT:USDT",
-    "timestamp": "2026-09-15T01:35:00",
+    "timestamp": "2026-09-15T01:40:00",
     "precio_actual": 0.91,
     "EMA_9": 0.91,
     "EMA_21": 0.91,
-    "RSI": 38.66,
-    "ADX": 47.57,
+    "RSI": 36.91,
+    "ADX": 47.36,
     "ATR": 0.0,
     "stop_loss_long": 0.9,
     "multiplicador_SL": 2.0,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 80.0,
-        "score_anterior": 65.0,
-        "senal": "SHORT"
+        "score_anterior": 80.0,
+        "senal": null
     }
 }
