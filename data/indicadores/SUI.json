@@ -1,11 +1,11 @@
 {
     "simbolo": "SUI/USDT:USDT",
-    "timestamp": "2026-09-15T04:30:00",
+    "timestamp": "2026-09-15T04:35:00",
     "precio_actual": 0.71,
     "EMA_9": 0.71,
     "EMA_21": 0.72,
-    "RSI": 31.35,
-    "ADX": 27.63,
+    "RSI": 32.8,
+    "ADX": 29.47,
     "ATR": 0.0,
     "stop_loss_long": 0.71,
     "multiplicador_SL": 2.0,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 100.0,
-        "score_anterior": 81.0,
+        "score_actual": 83.0,
+        "score_anterior": 78.0,
         "senal": null
     }
 }
