@@ -1,17 +1,17 @@
 {
-    "id_operacion": "UNI_20260915_184242_670650",
+    "id_operacion": "UNI_20260916_233936_061222",
     "simbolo": "UNI/USDT:USDT",
     "estado": "abierta",
-    "direccion": "SHORT",
-    "precio_entrada": 6.293,
-    "stop_loss_original": 6.658425,
-    "stop_loss_actual": 6.658425,
-    "tp1": 5.927575,
-    "tp2": 5.562149,
-    "tp3": 5.196724,
+    "direccion": "LONG",
+    "precio_entrada": 6.671,
+    "stop_loss_original": 6.289224,
+    "stop_loss_actual": 6.289224,
+    "tp1": 7.052776,
+    "tp2": 7.434552,
+    "tp3": 7.816328,
     "tp1_alcanzado": false,
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-15T18:42:42.670679+00:00"
+    "timestamp_apertura": "2026-09-16T23:39:36.061240+00:00"
 }
