@@ -1,14 +1,17 @@
 {
+    "id_operacion": "AAVE_20260916_164138_647646",
+    "simbolo": "AAVE/USDT:USDT",
     "estado": "abierta",
     "direccion": "SHORT",
-    "precio_entrada": 126.06,
-    "stop_loss_original": 129.710119,
-    "stop_loss_actual": 126.06,
-    "tp1": 122.409881,
-    "tp2": 118.759762,
-    "tp3": 115.109643,
-    "tp1_alcanzado": true,
-    "tp2_alcanzado": true,
-    "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-15T14:36:43.386360+00:00"
+    "precio_entrada": 115.09,
+    "stop_loss_original": 117.392828,
+    "stop_loss_actual": 117.392828,
+    "tp1": 112.787172,
+    "tp2": 110.484345,
+    "tp3": 108.181517,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-16T16:41:38.647669+00:00"
 }
