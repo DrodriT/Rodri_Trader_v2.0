@@ -1,10 +1,10 @@
 {
     "simbolo": "BCH/USDT:USDT",
     "timestamp": "2026-09-16T20:55:00",
-    "precio_actual": 218.64,
+    "precio_actual": 218.65,
     "EMA_9": 218.47,
     "EMA_21": 218.2,
-    "RSI": 55.38,
+    "RSI": 55.46,
     "ADX": 16.44,
     "ATR": 0.8,
     "stop_loss_long": 217.44,
