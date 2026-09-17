@@ -1,13 +1,13 @@
 {
     "simbolo": "INJ/USDT:USDT",
     "timestamp": "2026-09-17T22:20:00",
-    "precio_actual": 5.6,
+    "precio_actual": 5.61,
     "EMA_9": 5.62,
     "EMA_21": 5.64,
-    "RSI": 34.44,
+    "RSI": 36.81,
     "ADX": 25.97,
     "ATR": 0.02,
-    "stop_loss_long": 5.57,
+    "stop_loss_long": 5.58,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 73.0,
+        "score_actual": 78.0,
         "score_anterior": 73.0,
-        "senal": null
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 5.606,
+        "stop_loss": 5.761087,
+        "tp1": 5.450913,
+        "tp2": 5.295826,
+        "tp3": 5.140739,
+        "nivel_estructura_referencia": 5.594,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 2.766,
+        "apalancamiento_sugerido": 3.61,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 361.47,
+        "cantidad_activo": 64.479877
+    }
 }
