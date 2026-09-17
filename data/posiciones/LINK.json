@@ -1,14 +1,17 @@
 {
+    "id_operacion": "LINK_20260917_122840_328565",
+    "simbolo": "LINK/USDT:USDT",
     "estado": "abierta",
-    "direccion": "SHORT",
-    "precio_entrada": 11.276,
-    "stop_loss_original": 11.552272,
-    "stop_loss_actual": 11.276,
-    "tp1": 10.999728,
-    "tp2": 10.723456,
-    "tp3": 10.447184,
-    "tp1_alcanzado": true,
-    "tp2_alcanzado": true,
-    "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-15T14:31:16.785217+00:00"
+    "direccion": "LONG",
+    "precio_entrada": 11.286,
+    "stop_loss_original": 11.052792,
+    "stop_loss_actual": 11.052792,
+    "tp1": 11.519208,
+    "tp2": 11.752415,
+    "tp3": 11.985623,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-17T12:28:40.328584+00:00"
 }
