@@ -1,10 +1,10 @@
 {
     "simbolo": "ARB/USDT:USDT",
     "timestamp": "2026-09-17T23:05:00",
-    "precio_actual": 0.17,
+    "precio_actual": 0.18,
     "EMA_9": 0.18,
     "EMA_21": 0.18,
-    "RSI": 47.16,
+    "RSI": 48.71,
     "ADX": 16.83,
     "ATR": 0.0,
     "stop_loss_long": 0.17,
