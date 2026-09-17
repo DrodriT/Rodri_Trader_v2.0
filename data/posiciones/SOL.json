@@ -1,7 +1,7 @@
 {
     "id_operacion": "SOL_20260917_030544_102763",
     "simbolo": "SOL/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 99.576,
     "stop_loss_original": 98.425828,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-17T03:05:44.102788+00:00"
+    "timestamp_apertura": "2026-09-17T03:05:44.102788+00:00",
+    "motivo_cierre": "BE",
+    "precio_salida": 99.579,
+    "timestamp_cierre": "2026-09-17T10:18:39.008223+00:00"
 }
