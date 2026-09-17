@@ -658,5 +658,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "ARB_USDT_USDT_20260917_174342_835268",
+        "par": "ARB/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-15T22:42:40.575949+00:00",
+        "timestamp_cierre": "2026-09-17T17:43:42.834956+00:00",
+        "precio_entrada": 0.1504,
+        "precio_salida": 0.178,
+        "stop_loss_original": 0.141297,
+        "stop_loss_final": 0.1504,
+        "tp1": 0.159503,
+        "tp2": 0.168607,
+        "tp3": 0.17771,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
