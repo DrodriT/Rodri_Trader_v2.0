@@ -5,7 +5,7 @@
     "EMA_9": 0.2,
     "EMA_21": 0.2,
     "RSI": 57.13,
-    "ADX": 39.63,
+    "ADX": 39.0,
     "ATR": 0.0,
     "stop_loss_long": 0.2,
     "multiplicador_SL": 1.5,
