@@ -1,7 +1,7 @@
 {
     "id_operacion": "INJ_20260917_092055_282992",
     "simbolo": "INJ/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 5.634,
     "stop_loss_original": 5.507673,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-17T09:20:55.283012+00:00"
+    "timestamp_apertura": "2026-09-17T09:20:55.283012+00:00",
+    "motivo_cierre": "BE",
+    "precio_salida": 5.632,
+    "timestamp_cierre": "2026-09-17T21:59:35.089090+00:00"
 }
