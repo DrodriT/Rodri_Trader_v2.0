@@ -1,11 +1,11 @@
 {
     "simbolo": "OP/USDT:USDT",
-    "timestamp": "2026-09-18T03:25:00",
-    "precio_actual": 0.12,
+    "timestamp": "2026-09-18T03:30:00",
+    "precio_actual": 0.11,
     "EMA_9": 0.11,
     "EMA_21": 0.11,
-    "RSI": 89.04,
-    "ADX": 73.3,
+    "RSI": 86.59,
+    "ADX": 74.77,
     "ATR": 0.0,
     "stop_loss_long": 0.11,
     "multiplicador_SL": 1.5,
@@ -14,30 +14,13 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": "LONG",
-        "cumple_mandatory": true,
-        "score_actual": 92.0,
-        "score_anterior": 0.0,
-        "senal": "LONG"
+        "bias_htf": null,
+        "cumple_mandatory": null,
+        "score_actual": null,
+        "score_anterior": null,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición LONG ya abierta desde 2026-09-18T03:29:32.134729+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "LONG",
-        "precio_entrada": 0.1152,
-        "stop_loss": 0.102049,
-        "tp1": 0.128351,
-        "tp2": 0.141502,
-        "tp3": 0.154653,
-        "nivel_estructura_referencia": 0.1136,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 11.416,
-        "apalancamiento_sugerido": 0.88,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 87.6,
-        "cantidad_activo": 760.391578
-    }
+    "riesgo": null
 }
