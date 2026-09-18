@@ -958,5 +958,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "BTC_USDT_USDT_20260918_072245_297332",
+        "par": "BTC/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-15T18:45:56.935477+00:00",
+        "timestamp_cierre": "2026-09-18T07:22:45.296976+00:00",
+        "precio_entrada": 75417.7,
+        "precio_salida": 77712.1,
+        "stop_loss_original": 77771.716379,
+        "stop_loss_final": 77771.716379,
+        "tp1": 73063.683621,
+        "tp2": 70709.667242,
+        "tp3": 68355.650862,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
