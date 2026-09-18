@@ -1,11 +1,11 @@
 {
     "simbolo": "ICP/USDT:USDT",
-    "timestamp": "2026-09-18T13:35:00",
+    "timestamp": "2026-09-18T13:40:00",
     "precio_actual": 2.83,
-    "EMA_9": 2.81,
+    "EMA_9": 2.82,
     "EMA_21": 2.8,
-    "RSI": 67.7,
-    "ADX": 36.94,
+    "RSI": 69.47,
+    "ADX": 38.17,
     "ATR": 0.01,
     "stop_loss_long": 2.81,
     "multiplicador_SL": 1.5,
@@ -14,13 +14,30 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": null,
-        "cumple_mandatory": null,
-        "score_actual": null,
-        "score_anterior": null,
-        "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-09-18T11:59:37.596456+00:00. Esperando SL/TP3."
+        "bias_htf": "LONG",
+        "cumple_mandatory": true,
+        "score_actual": 87.0,
+        "score_anterior": 0.0,
+        "senal": "LONG"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "LONG",
+        "precio_entrada": 2.835,
+        "stop_loss": 2.72569,
+        "tp1": 2.94431,
+        "tp2": 3.05362,
+        "tp3": 3.162931,
+        "nivel_estructura_referencia": 2.834,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 3.856,
+        "apalancamiento_sugerido": 2.59,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 259.35,
+        "cantidad_activo": 91.482743
+    }
 }

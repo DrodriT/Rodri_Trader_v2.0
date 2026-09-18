@@ -1,0 +1,17 @@
+{
+    "id_operacion": "LTC_20260918_134102_788720",
+    "simbolo": "LTC/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "LONG",
+    "precio_entrada": 55.57,
+    "stop_loss_original": 54.643098,
+    "stop_loss_actual": 54.643098,
+    "tp1": 56.496902,
+    "tp2": 57.423805,
+    "tp3": 58.350707,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-18T13:41:02.788741+00:00"
+}
