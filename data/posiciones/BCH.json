@@ -1,17 +1,17 @@
 {
-    "id_operacion": "BCH_20260917_090640_446001",
+    "id_operacion": "BCH_20260918_031335_337248",
     "simbolo": "BCH/USDT:USDT",
     "estado": "abierta",
     "direccion": "LONG",
-    "precio_entrada": 226.11,
-    "stop_loss_original": 219.967003,
-    "stop_loss_actual": 226.11,
-    "tp1": 232.252997,
-    "tp2": 238.395994,
-    "tp3": 244.53899,
-    "tp1_alcanzado": true,
-    "tp2_alcanzado": true,
+    "precio_entrada": 244.62,
+    "stop_loss_original": 233.317114,
+    "stop_loss_actual": 233.317114,
+    "tp1": 255.922886,
+    "tp2": 267.225773,
+    "tp3": 278.528659,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
     "tp3_alcanzado": false,
-    "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-17T09:06:40.446021+00:00"
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-18T03:13:35.337267+00:00"
 }
