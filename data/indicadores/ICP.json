@@ -4,23 +4,21 @@
     "precio_actual": 2.73,
     "EMA_9": 2.76,
     "EMA_21": 2.77,
-    "RSI": 29.12,
-    "ADX": 32.31,
+    "RSI": 27.53,
+    "ADX": 32.53,
     "ATR": 0.01,
-    "stop_loss_long": 2.72,
+    "stop_loss_long": 2.71,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 100,
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": null,
-        "cumple_mandatory": null,
-        "score_actual": null,
-        "score_anterior": null,
-        "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición LONG ya abierta desde 2026-09-18T09:58:39.582278+00:00. Esperando SL/TP3."
+        "bias_htf": "NEUTRAL",
+        "cumple_mandatory": false,
+        "score_actual": 0.0,
+        "score_anterior": 0.0,
+        "senal": null
     },
     "riesgo": null
 }
