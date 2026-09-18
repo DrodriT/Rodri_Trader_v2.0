@@ -1018,5 +1018,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "UNI_USDT_USDT_20260918_084841_490309",
+        "par": "UNI/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-18T00:05:50.902296+00:00",
+        "timestamp_cierre": "2026-09-18T08:48:41.489796+00:00",
+        "precio_entrada": 7.855,
+        "precio_salida": 8.94,
+        "stop_loss_original": 7.484206,
+        "stop_loss_final": 7.855,
+        "tp1": 8.225794,
+        "tp2": 8.596588,
+        "tp3": 8.967382,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
