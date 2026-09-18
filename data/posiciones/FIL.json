@@ -1,0 +1,17 @@
+{
+    "id_operacion": "FIL_20260918_113554_046354",
+    "simbolo": "FIL/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "SHORT",
+    "precio_entrada": 0.8564,
+    "stop_loss_original": 0.886015,
+    "stop_loss_actual": 0.886015,
+    "tp1": 0.826785,
+    "tp2": 0.79717,
+    "tp3": 0.767555,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-18T11:35:54.046378+00:00"
+}

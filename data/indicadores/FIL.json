@@ -1,11 +1,11 @@
 {
     "simbolo": "FIL/USDT:USDT",
-    "timestamp": "2026-09-18T11:30:00",
+    "timestamp": "2026-09-18T11:35:00",
     "precio_actual": 0.86,
     "EMA_9": 0.86,
-    "EMA_21": 0.87,
-    "RSI": 34.34,
-    "ADX": 32.58,
+    "EMA_21": 0.86,
+    "RSI": 33.58,
+    "ADX": 33.36,
     "ATR": 0.0,
     "stop_loss_long": 0.85,
     "multiplicador_SL": 1.5,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 70.0,
-        "score_anterior": 65.0,
-        "senal": null
+        "score_actual": 78.0,
+        "score_anterior": 70.0,
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 0.8564,
+        "stop_loss": 0.886015,
+        "tp1": 0.826785,
+        "tp2": 0.79717,
+        "tp3": 0.767555,
+        "nivel_estructura_referencia": 0.849,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 3.458,
+        "apalancamiento_sugerido": 2.89,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 289.18,
+        "cantidad_activo": 337.66833
+    }
 }
