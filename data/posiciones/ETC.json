@@ -1,0 +1,17 @@
+{
+    "id_operacion": "ETC_20260918_123349_358403",
+    "simbolo": "ETC/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "LONG",
+    "precio_entrada": 7.961,
+    "stop_loss_original": 7.784221,
+    "stop_loss_actual": 7.784221,
+    "tp1": 8.137779,
+    "tp2": 8.314558,
+    "tp3": 8.491337,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-18T12:33:49.358428+00:00"
+}
