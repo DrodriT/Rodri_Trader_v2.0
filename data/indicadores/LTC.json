@@ -1,13 +1,13 @@
 {
     "simbolo": "LTC/USDT:USDT",
     "timestamp": "2026-09-18T00:30:00",
-    "precio_actual": 54.23,
-    "EMA_9": 53.98,
-    "EMA_21": 53.93,
-    "RSI": 70.85,
-    "ADX": 22.15,
+    "precio_actual": 54.29,
+    "EMA_9": 54.0,
+    "EMA_21": 53.94,
+    "RSI": 72.85,
+    "ADX": 22.47,
     "ATR": 0.09,
-    "stop_loss_long": 54.1,
+    "stop_loss_long": 54.15,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 100,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 70.0,
-        "score_anterior": 65.0,
-        "senal": null
+        "score_actual": 76.0,
+        "score_anterior": 70.0,
+        "senal": "LONG"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "LONG",
+        "precio_entrada": 54.29,
+        "stop_loss": 53.637355,
+        "tp1": 54.942645,
+        "tp2": 55.59529,
+        "tp3": 56.247935,
+        "nivel_estructura_referencia": 54.03,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 1.202,
+        "apalancamiento_sugerido": 8.32,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 831.85,
+        "cantidad_activo": 15.322266
+    }
 }
