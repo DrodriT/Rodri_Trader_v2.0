@@ -1,17 +1,17 @@
 {
-    "id_operacion": "OP_20260918_014839_406576",
+    "id_operacion": "OP_20260918_032932_134712",
     "simbolo": "OP/USDT:USDT",
     "estado": "abierta",
     "direccion": "LONG",
-    "precio_entrada": 0.104,
-    "stop_loss_original": 0.100136,
-    "stop_loss_actual": 0.104,
-    "tp1": 0.107864,
-    "tp2": 0.111728,
-    "tp3": 0.115592,
-    "tp1_alcanzado": true,
-    "tp2_alcanzado": true,
+    "precio_entrada": 0.1152,
+    "stop_loss_original": 0.102049,
+    "stop_loss_actual": 0.102049,
+    "tp1": 0.128351,
+    "tp2": 0.141502,
+    "tp3": 0.154653,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
     "tp3_alcanzado": false,
-    "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-18T01:48:39.406595+00:00"
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-18T03:29:32.134729+00:00"
 }
