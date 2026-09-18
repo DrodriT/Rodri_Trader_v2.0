@@ -978,5 +978,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "XMR_USDT_USDT_20260918_074938_406692",
+        "par": "XMR/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-16T20:02:37.015380+00:00",
+        "timestamp_cierre": "2026-09-18T07:49:38.406341+00:00",
+        "precio_entrada": 498.75,
+        "precio_salida": 541.21,
+        "stop_loss_original": 484.454767,
+        "stop_loss_final": 498.75,
+        "tp1": 513.045233,
+        "tp2": 527.340465,
+        "tp3": 541.635698,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
