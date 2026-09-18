@@ -1,17 +1,17 @@
 {
-    "id_operacion": "APT_20260918_003438_324575",
+    "id_operacion": "APT_20260918_024239_882774",
     "simbolo": "APT/USDT:USDT",
     "estado": "abierta",
     "direccion": "LONG",
-    "precio_entrada": 0.6012,
-    "stop_loss_original": 0.582553,
-    "stop_loss_actual": 0.6012,
-    "tp1": 0.619847,
-    "tp2": 0.638494,
-    "tp3": 0.657142,
-    "tp1_alcanzado": true,
-    "tp2_alcanzado": true,
+    "precio_entrada": 0.6564,
+    "stop_loss_original": 0.596477,
+    "stop_loss_actual": 0.596477,
+    "tp1": 0.716323,
+    "tp2": 0.776247,
+    "tp3": 0.83617,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
     "tp3_alcanzado": false,
-    "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-18T00:34:38.324594+00:00"
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-18T02:42:39.882796+00:00"
 }
