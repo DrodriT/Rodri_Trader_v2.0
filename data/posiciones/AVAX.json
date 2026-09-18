@@ -1,0 +1,17 @@
+{
+    "id_operacion": "AVAX_20260918_123842_299950",
+    "simbolo": "AVAX/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "LONG",
+    "precio_entrada": 8.019,
+    "stop_loss_original": 7.874196,
+    "stop_loss_actual": 7.874196,
+    "tp1": 8.163804,
+    "tp2": 8.308609,
+    "tp3": 8.453413,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-18T12:38:42.299976+00:00"
+}
