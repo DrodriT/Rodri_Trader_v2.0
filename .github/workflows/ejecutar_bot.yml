@@ -3,11 +3,10 @@ name: Test Conexion Velas
 on:
   workflow_dispatch:
 
-# Evita que dos ejecuciones de este workflow corran a la vez sobre el mismo repo.
-# Si lanzas una nueva mientras otra sigue corriendo, esta espera en cola en vez
-# de competir por el mismo 'main' y generar conflictos de push.
+# Todos los workflows que escriban en data/ deberían utilizar exactamente
+# este mismo grupo para evitar modificaciones simultáneas sobre main.
 concurrency:
-  group: ejecutar-bot-main
+  group: actualizacion-datos-main
   cancel-in-progress: false
 
 permissions:
@@ -21,9 +20,31 @@ jobs:
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
+        with:
+          # Descargamos el historial completo porque posteriormente será
+          # necesario ejecutar rebase contra la rama remota.
+          fetch-depth: 0
+
+      - name: Marcar el directorio como seguro para Git
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Configurar usuario de GitHub Actions
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Sincronizar con la rama main
+        run: |
+          # Sincronizamos antes de generar los archivos para trabajar sobre
+          # la versión más reciente disponible en el repositorio remoto.
+          git fetch origin main
+          git rebase origin/main
 
       - name: Normalizar el nombre de la imagen a minúsculas
-        run: echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
+        run: |
+          echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
 
       - name: Autenticarse en GitHub Container Registry
         uses: docker/login-action@v3
@@ -34,42 +55,61 @@ jobs:
 
       - name: Ejecutar bot dentro de la imagen ya construida
         run: |
-          docker pull ghcr.io/${{ env.IMAGE_NAME }}:latest
+          docker pull "ghcr.io/${{ env.IMAGE_NAME }}:latest"
+
           docker run --rm \
             -v "$PWD/data:/app/data" \
             -e TELEGRAM_TOKEN="${{ secrets.TELEGRAM_TOKEN }}" \
             -e TELEGRAM_CHAT_ID="${{ secrets.TELEGRAM_CHAT_ID }}" \
-            ghcr.io/${{ env.IMAGE_NAME }}:latest \
+            "ghcr.io/${{ env.IMAGE_NAME }}:latest" \
             python test_conexion_velas.py
 
-      - name: Marcar el directorio como seguro para git
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
-
       - name: Commit y push de los resultados generados
+        shell: bash
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          set -e
 
+          # Añadimos únicamente los archivos generados dentro de data/.
           git add data/
 
+          # Si el bot no ha modificado ningún archivo, finalizamos el
+          # workflow correctamente sin crear un commit vacío.
           if git diff --cached --quiet; then
-            echo "ℹ️ Sin cambios en data/, no se hace commit."
+            echo "ℹ️ Sin cambios en data/, no se realiza ningún commit."
             exit 0
           fi
 
           git commit -m "🤖 Actualiza resultados de indicadores [skip ci]"
 
-          # Reintenta el push hasta 3 veces: si el remoto avanzó entre nuestro
-          # commit y el push (otra ejecución concurrente, o un commit manual),
-          # traemos esos cambios con rebase y reintentamos en vez de fallar.
-          for intento in 1 2 3; do
-            if git push; then
-              echo "✅ Push realizado con éxito (intento $intento)."
+          # El push podría ser rechazado si main cambia después de ejecutar
+          # el bot. Reintentamos hasta cinco veces incorporando esos cambios.
+          for intento in 1 2 3 4 5; do
+            echo "ℹ️ Intento de publicación ${intento}/5..."
+
+            if git push origin HEAD:main; then
+              echo "✅ Push realizado correctamente."
               exit 0
             fi
-            echo "⚠️ Push rechazado, sincronizando con el remoto (intento $intento)..."
-            git pull --rebase origin main
+
+            echo "⚠️ El remoto ha avanzado. Sincronizando con origin/main..."
+
+            git fetch origin main
+
+            # Durante un rebase:
+            # - "ours" representa el contenido actual de origin/main.
+            # - "theirs" representa el commit que estamos reaplicando.
+            #
+            # Puesto que data/ contiene resultados recién calculados,
+            # conservamos la versión creada por esta ejecución cuando
+            # ambos commits hayan modificado el mismo fragmento.
+            if ! git rebase -X theirs origin/main; then
+              echo "❌ El rebase no pudo resolverse automáticamente."
+
+              # Dejamos el repositorio en un estado limpio antes de terminar.
+              git rebase --abort || true
+              exit 1
+            fi
           done
 
-          echo "❌ No se pudo hacer push tras varios intentos."
+          echo "❌ No se pudo publicar después de cinco intentos."
           exit 1
