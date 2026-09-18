@@ -111,8 +111,8 @@ TIMEFRAME_TENDENCIA = "15m"  # Timeframe HTF: define el sesgo (bias) direccional
 #   - TIMEFRAME_ENTRADA (5m): necesita suficiente warm-up para EMA21, ADX(14)
 #     y el lookback de estructura (HIGHEST_LOWEST_PERIODO=20).
 #   - TIMEFRAME_TENDENCIA (15m): solo calcula EMA9/EMA21, necesita menos velas.
-CANTIDAD_VELAS_ENTRADA = 100
-CANTIDAD_VELAS_TENDENCIA = 60
+CANTIDAD_VELAS_ENTRADA = 200
+CANTIDAD_VELAS_TENDENCIA = 120
 
 # --- Mandatory Filter (5m) ---
 # ADX mínimo exigido en el timeframe operativo para considerar que hay
@@ -170,5 +170,22 @@ SL_BUFFER_ATR_MULT = 1.4
 # y se validan contra el próximo nivel de estructura visible (swing
 # high/low reciente) para saber si son realistas o quedan "fuera de rango".
 RR_TP1 = 1.0   # 1:1 -> mismo riesgo que beneficio
-RR_TP2 = 2.0   # 1:1.5
-RR_TP3 = 3.0   # 1:2
+RR_TP2 = 1.5   # 1:2
+RR_TP3 = 2.0   # 1:3
+
+# ==============================================================================
+# 7. COOLDOWN TRAS CIERRE DE POSICIÓN
+# ==============================================================================
+# Tras cerrar una posición, el par queda "en cooldown": no se evalúan nuevas
+# señales de entrada hasta que pase el tiempo indicado. Objetivo: evitar
+# reentradas inmediatas en un mercado que acaba de invalidar la operación.
+
+# Cooldown estándar tras un cierre por BE o TP3 (operación resuelta con éxito
+# o sin pérdida real).
+COOLDOWN_HORAS_NORMAL = 4
+
+# Si el par encadena SL_CONSECUTIVOS_PARA_COOLDOWN_LARGO stop loss SEGUIDOS
+# (sin ningún BE/TP3 de por medio), el cooldown sube a este valor: el modelo
+# está fallando repetidamente en ese par y conviene dejarlo más tiempo fuera.
+COOLDOWN_HORAS_SL_CONSECUTIVOS = 12
+SL_CONSECUTIVOS_PARA_COOLDOWN_LARGO = 2

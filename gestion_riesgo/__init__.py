@@ -1,9 +1,10 @@
 """
 Paquete de gestión de riesgo: calcula Stop Loss, Take Profits (TP1/TP2/TP3)
 y el apalancamiento/tamaño de posición sugeridos para una señal de entrada,
-y gestiona el ciclo de vida de las posiciones abiertas (monitorización de
+gestiona el ciclo de vida de las posiciones abiertas (monitorización de
 SL/TP, movimiento a breakeven tras TP1, y bloqueo de nuevas señales
-mientras una posición sigue abierta para el mismo par).
+mientras una posición sigue abierta para el mismo par), y aplica un
+cooldown tras cada cierre para evitar reentradas inmediatas.
 """
 
 from .stop_loss import calcular_stop_loss
@@ -16,6 +17,7 @@ from .posiciones import (
     cerrar_posicion,
     evaluar_posicion,
 )
+from .cooldown import en_cooldown, registrar_cierre
 
 __all__ = [
     "calcular_gestion_riesgo",
@@ -24,6 +26,8 @@ __all__ = [
     "abrir_posicion",
     "cerrar_posicion",
     "evaluar_posicion",
+    "en_cooldown",
+    "registrar_cierre",
 ]
 
 

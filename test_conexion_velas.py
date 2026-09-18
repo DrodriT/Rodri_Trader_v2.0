@@ -26,6 +26,7 @@ from gestion_riesgo import (
     abrir_posicion,
     cerrar_posicion,
     evaluar_posicion,
+    en_cooldown,
 )
 
 # Importamos las notificaciones (Telegram)
@@ -269,6 +270,7 @@ def analizar_par(exchange, par: str) -> dict | None:
     Devuelve un diccionario con toda la información del par, listo para
     imprimir y guardar en JSON. Devuelve None si falla la descarga de 5m.
     """
+   
     df_5m = descargar_velas(
         exchange, par, config.TIMEFRAME_ENTRADA, config.CANTIDAD_VELAS_ENTRADA
     )
@@ -315,6 +317,33 @@ def analizar_par(exchange, par: str) -> dict | None:
             }
         # Si se cerró en este mismo ciclo (SL/BE/TP3), continuamos abajo
         # con el flujo normal para evaluar si hay una señal NUEVA ya mismo.
+
+                # Si se cerró en este mismo ciclo (SL/BE/TP3), continuamos abajo
+        # con el flujo normal para evaluar si hay una señal NUEVA ya mismo.
+
+    # ---------- 1.5) ¿Está el par en cooldown tras su último cierre? ----------
+    cooldown_activo = en_cooldown(par_base)
+    if cooldown_activo is not None:
+        resultado_estrategia = {
+            "bias_htf": None,
+            "cumple_mandatory": None,
+            "score_actual": None,
+            "score_anterior": None,
+            "senal": None,
+            "en_cooldown": True,
+            "nota": (
+                f"En cooldown ({cooldown_activo['cooldown_horas']}h) tras último cierre "
+                f"por {cooldown_activo['motivo_cierre']}. Termina: {cooldown_activo['cooldown_hasta']}."
+            ),
+        }
+        return {
+            "ultima_vela": ultima_vela,
+            "precio_actual": precio_actual,
+            "sl_long": sl_long,
+            "estrategia": resultado_estrategia,
+            "riesgo": None,
+            "df_5m": None,
+        }
 
     # ---------- Valor por defecto: NUNCA debe quedar como None ----------
     resultado_estrategia = {
@@ -396,6 +425,12 @@ def main():
             # ---------- IMPRESIÓN EN PANTALLA (posición abierta) ----------
             if resultado_estrategia.get("posicion_abierta"):
                 print(f"  🔒 {resultado_estrategia['nota']}\n")
+
+            elif resultado_estrategia.get("en_cooldown"):
+                print(f"  ⏳ {resultado_estrategia['nota']}\n")
+
+            elif resultado_estrategia.get("error"):
+                print(f"  ⚠️ Estrategia: {resultado_estrategia['error']}\n")
 
             # ---------- IMPRESIÓN EN PANTALLA (estrategia) ----------
             elif resultado_estrategia.get("error"):

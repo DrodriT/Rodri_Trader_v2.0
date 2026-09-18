@@ -2,6 +2,7 @@ import json
 import os
 from datetime import datetime, timezone
 from gestion_riesgo.estadistica import registrar_operacion_cerrada
+from gestion_riesgo.cooldown import registrar_cierre as registrar_cierre_cooldown
 
 import pandas as pd
 
@@ -74,10 +75,9 @@ def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: f
     """
     Marca la posición como cerrada (motivo: 'SL', 'BE' o 'TP3') y la persiste.
     A partir de este momento, cargar_posicion() volverá a devolver None para
-    este par, liberándolo para que la estrategia pueda generar nuevas señales.
+    este par, liberándolo para que la estrategia pueda generar nuevas señales
+    — sujeto al cooldown que se registra aquí mismo (ver gestion_riesgo/cooldown.py).
     """
-    from gestion_riesgo.estadistica import (registrar_operacion_cerrada)
-
     posicion["estado"] = "cerrada"
     posicion["motivo_cierre"] = motivo
     posicion["precio_salida"] = float(precio_salida)
@@ -93,6 +93,10 @@ def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: f
         motivo_cierre=motivo,
         precio_salida=float(precio_salida),
     )
+
+    # Registramos el cooldown: 4h normal (BE/TP3), o 12h si van 2 SL seguidos.
+    registrar_cierre_cooldown(par_base, motivo)
+
 
 def evaluar_posicion(posicion: dict, ultima_vela: pd.Series) -> list[str]:
     """
