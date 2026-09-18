@@ -1,17 +1,17 @@
 {
-    "id_operacion": "SOL_20260917_121338_103084",
+    "id_operacion": "SOL_20260918_035257_871875",
     "simbolo": "SOL/USDT:USDT",
     "estado": "abierta",
     "direccion": "LONG",
-    "precio_entrada": 100.656,
-    "stop_loss_original": 99.181613,
-    "stop_loss_actual": 100.656,
-    "tp1": 102.130387,
-    "tp2": 103.604775,
-    "tp3": 105.079162,
-    "tp1_alcanzado": true,
-    "tp2_alcanzado": true,
+    "precio_entrada": 104.855,
+    "stop_loss_original": 101.627997,
+    "stop_loss_actual": 101.627997,
+    "tp1": 108.082003,
+    "tp2": 111.309006,
+    "tp3": 114.536008,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
     "tp3_alcanzado": false,
-    "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-17T12:13:38.103108+00:00"
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-18T03:52:57.871895+00:00"
 }
