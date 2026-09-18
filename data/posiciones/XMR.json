@@ -1,0 +1,17 @@
+{
+    "id_operacion": "XMR_20260918_131243_456250",
+    "simbolo": "XMR/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "SHORT",
+    "precio_entrada": 529.49,
+    "stop_loss_original": 546.040762,
+    "stop_loss_actual": 546.040762,
+    "tp1": 512.939238,
+    "tp2": 496.388475,
+    "tp3": 479.837713,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-18T13:12:43.456274+00:00"
+}
