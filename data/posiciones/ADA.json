@@ -1,7 +1,7 @@
 {
     "id_operacion": "ADA_20260919_063937_317171",
     "simbolo": "ADA/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 0.2232,
     "stop_loss_original": 0.22881,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-19T06:39:37.317194+00:00"
+    "timestamp_apertura": "2026-09-19T06:39:37.317194+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 0.2288,
+    "timestamp_cierre": "2026-09-19T14:21:04.818076+00:00"
 }
