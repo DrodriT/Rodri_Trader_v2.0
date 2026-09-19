@@ -1,7 +1,7 @@
 {
     "id_operacion": "BCH_20260919_211238_714915",
     "simbolo": "BCH/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 251.76,
     "stop_loss_original": 256.459,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-19T21:12:38.714935+00:00"
+    "timestamp_apertura": "2026-09-19T21:12:38.714935+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 256.59,
+    "timestamp_cierre": "2026-09-19T23:46:36.220590+00:00"
 }
