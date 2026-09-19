@@ -578,5 +578,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "BCH_USDT_USDT_20260919_142235_650363",
+        "par": "BCH/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-19T05:21:33.511270+00:00",
+        "timestamp_cierre": "2026-09-19T14:22:35.649946+00:00",
+        "precio_entrada": 247.17,
+        "precio_salida": 254.02,
+        "stop_loss_original": 254.279027,
+        "stop_loss_final": 254.279027,
+        "tp1": 240.060973,
+        "tp2": 236.50646,
+        "tp3": 232.951946,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
