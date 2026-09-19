@@ -1,7 +1,7 @@
 {
     "id_operacion": "XMR_20260918_192102_189319",
     "simbolo": "XMR/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 566.28,
     "stop_loss_original": 539.230843,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-18T19:21:02.189342+00:00"
+    "timestamp_apertura": "2026-09-18T19:21:02.189342+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 538.36,
+    "timestamp_cierre": "2026-09-19T21:18:39.944118+00:00"
 }
