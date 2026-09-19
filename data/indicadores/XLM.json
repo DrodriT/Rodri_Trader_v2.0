@@ -1,10 +1,10 @@
 {
     "simbolo": "XLM/USDT:USDT",
     "timestamp": "2026-09-19T02:30:00",
-    "precio_actual": 0.19,
+    "precio_actual": 0.2,
     "EMA_9": 0.19,
     "EMA_21": 0.19,
-    "RSI": 61.28,
+    "RSI": 61.8,
     "ADX": 17.5,
     "ATR": 0.0,
     "stop_loss_long": 0.19,
