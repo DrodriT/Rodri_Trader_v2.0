@@ -7,7 +7,7 @@
     "RSI": 29.9,
     "ADX": 56.15,
     "ATR": 0.72,
-    "stop_loss_long": 245.49,
+    "stop_loss_long": 245.48,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
