@@ -138,5 +138,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "LTC_USDT_USDT_20260919_000439_575464",
+        "par": "LTC/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-18T13:41:02.788741+00:00",
+        "timestamp_cierre": "2026-09-19T00:04:39.575142+00:00",
+        "precio_entrada": 55.57,
+        "precio_salida": 58.46,
+        "stop_loss_original": 54.643098,
+        "stop_loss_final": 55.57,
+        "tp1": 56.496902,
+        "tp2": 57.423805,
+        "tp3": 58.350707,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
