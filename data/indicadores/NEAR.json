@@ -1,13 +1,13 @@
 {
     "simbolo": "NEAR/USDT:USDT",
     "timestamp": "2026-09-19T12:35:00",
-    "precio_actual": 3.63,
+    "precio_actual": 3.61,
     "EMA_9": 3.64,
     "EMA_21": 3.66,
-    "RSI": 35.18,
-    "ADX": 18.16,
+    "RSI": 31.73,
+    "ADX": 19.02,
     "ATR": 0.02,
-    "stop_loss_long": 3.6,
+    "stop_loss_long": 3.58,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición LONG ya abierta desde 2026-09-18T12:51:09.552867+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-09-19T16:36:40.751489+00:00."
     },
     "riesgo": null
 }
