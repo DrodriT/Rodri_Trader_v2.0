@@ -4,8 +4,8 @@
     "precio_actual": 1.72,
     "EMA_9": 1.72,
     "EMA_21": 1.71,
-    "RSI": 57.12,
-    "ADX": 22.88,
+    "RSI": 61.07,
+    "ADX": 23.56,
     "ATR": 0.0,
     "stop_loss_long": 1.71,
     "multiplicador_SL": 1.5,
@@ -14,13 +14,11 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": null,
-        "cumple_mandatory": null,
-        "score_actual": null,
-        "score_anterior": null,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-09-19T10:25:50.146927+00:00."
+        "bias_htf": "LONG",
+        "cumple_mandatory": true,
+        "score_actual": 64.0,
+        "score_anterior": 0.0,
+        "senal": null
     },
     "riesgo": null
 }
