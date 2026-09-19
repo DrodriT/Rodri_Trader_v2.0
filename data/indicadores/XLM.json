@@ -1,11 +1,11 @@
 {
     "simbolo": "XLM/USDT:USDT",
-    "timestamp": "2026-09-19T21:30:00",
-    "precio_actual": 0.2,
+    "timestamp": "2026-09-19T21:35:00",
+    "precio_actual": 0.19,
     "EMA_9": 0.2,
     "EMA_21": 0.2,
-    "RSI": 31.45,
-    "ADX": 24.27,
+    "RSI": 29.06,
+    "ADX": 27.07,
     "ATR": 0.0,
     "stop_loss_long": 0.19,
     "multiplicador_SL": 1.5,
@@ -14,30 +14,13 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": "SHORT",
-        "cumple_mandatory": true,
-        "score_actual": 76.0,
-        "score_anterior": 71.0,
-        "senal": "SHORT"
+        "bias_htf": null,
+        "cumple_mandatory": null,
+        "score_actual": null,
+        "score_anterior": null,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición SHORT ya abierta desde 2026-09-19T21:34:42.570910+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "SHORT",
-        "precio_entrada": 0.19551,
-        "stop_loss": 0.201616,
-        "tp1": 0.189404,
-        "tp2": 0.186351,
-        "tp3": 0.183298,
-        "nivel_estructura_referencia": 0.19414,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 3.123,
-        "apalancamiento_sugerido": 3.2,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 320.2,
-        "cantidad_activo": 1637.767972
-    }
+    "riesgo": null
 }
