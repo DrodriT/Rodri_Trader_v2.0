@@ -6,7 +6,7 @@
     "EMA_21": 57.96,
     "RSI": 52.78,
     "ADX": 12.33,
-    "ATR": 0.13,
+    "ATR": 0.14,
     "stop_loss_long": 57.8,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
