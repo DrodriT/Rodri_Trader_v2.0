@@ -458,5 +458,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "UNI_USDT_USDT_20260919_104940_378770",
+        "par": "UNI/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-19T02:01:23.686414+00:00",
+        "timestamp_cierre": "2026-09-19T10:49:40.378455+00:00",
+        "precio_entrada": 9.059,
+        "precio_salida": 9.07,
+        "stop_loss_original": 8.713617,
+        "stop_loss_final": 9.059,
+        "tp1": 9.404383,
+        "tp2": 9.577075,
+        "tp3": 9.749766,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]

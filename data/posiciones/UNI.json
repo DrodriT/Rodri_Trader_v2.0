@@ -1,7 +1,7 @@
 {
     "id_operacion": "UNI_20260919_020123_686393",
     "simbolo": "UNI/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 9.059,
     "stop_loss_original": 8.713617,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-19T02:01:23.686414+00:00"
+    "timestamp_apertura": "2026-09-19T02:01:23.686414+00:00",
+    "motivo_cierre": "BE",
+    "precio_salida": 9.07,
+    "timestamp_cierre": "2026-09-19T10:49:40.378455+00:00"
 }
