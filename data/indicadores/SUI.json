@@ -1,11 +1,11 @@
 {
     "simbolo": "SUI/USDT:USDT",
-    "timestamp": "2026-09-19T22:10:00",
+    "timestamp": "2026-09-19T22:15:00",
     "precio_actual": 0.85,
     "EMA_9": 0.85,
     "EMA_21": 0.86,
-    "RSI": 37.21,
-    "ADX": 29.47,
+    "RSI": 38.53,
+    "ADX": 30.48,
     "ATR": 0.01,
     "stop_loss_long": 0.84,
     "multiplicador_SL": 1.5,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 73.0,
+        "score_actual": 78.0,
         "score_anterior": 73.0,
-        "senal": null
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 0.8508,
+        "stop_loss": 0.88221,
+        "tp1": 0.81939,
+        "tp2": 0.803684,
+        "tp3": 0.787979,
+        "nivel_estructura_referencia": 0.847,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 3.692,
+        "apalancamiento_sugerido": 2.71,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 270.87,
+        "cantidad_activo": 318.366438
+    }
 }
