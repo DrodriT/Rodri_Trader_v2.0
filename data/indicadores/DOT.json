@@ -1,10 +1,10 @@
 {
     "simbolo": "DOT/USDT:USDT",
     "timestamp": "2026-09-19T14:35:00",
-    "precio_actual": 1.14,
+    "precio_actual": 1.13,
     "EMA_9": 1.13,
     "EMA_21": 1.13,
-    "RSI": 62.92,
+    "RSI": 59.44,
     "ADX": 17.0,
     "ATR": 0.0,
     "stop_loss_long": 1.13,
