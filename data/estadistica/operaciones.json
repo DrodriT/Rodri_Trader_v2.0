@@ -398,5 +398,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "LINK_USDT_USDT_20260919_102138_481986",
+        "par": "LINK/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-18T13:47:45.685581+00:00",
+        "timestamp_cierre": "2026-09-19T10:21:38.481602+00:00",
+        "precio_entrada": 11.985,
+        "precio_salida": 12.555,
+        "stop_loss_original": 11.699216,
+        "stop_loss_final": 11.985,
+        "tp1": 12.270784,
+        "tp2": 12.413676,
+        "tp3": 12.556567,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
