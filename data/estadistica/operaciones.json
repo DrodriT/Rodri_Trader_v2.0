@@ -1238,5 +1238,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "ETC_USDT_USDT_20260920_154846_010320",
+        "par": "ETC/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-20T10:41:01.593643+00:00",
+        "timestamp_cierre": "2026-09-20T15:48:46.009791+00:00",
+        "precio_entrada": 8.243,
+        "precio_salida": 8.438,
+        "stop_loss_original": 8.4232,
+        "stop_loss_final": 8.4232,
+        "tp1": 8.0628,
+        "tp2": 7.9727,
+        "tp3": 7.8826,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
