@@ -1,7 +1,7 @@
 {
     "id_operacion": "ETH_20260919_212137_760285",
     "simbolo": "ETH/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 2620.01,
     "stop_loss_original": 2646.027137,
@@ -10,8 +10,11 @@
     "tp2": 2580.984295,
     "tp3": 2567.975726,
     "tp1_alcanzado": true,
-    "tp2_alcanzado": false,
-    "tp3_alcanzado": false,
+    "tp2_alcanzado": true,
+    "tp3_alcanzado": true,
     "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-19T21:21:37.760307+00:00"
+    "timestamp_apertura": "2026-09-19T21:21:37.760307+00:00",
+    "motivo_cierre": "TP3",
+    "precio_salida": 2570.32,
+    "timestamp_cierre": "2026-09-20T02:56:43.205267+00:00"
 }
