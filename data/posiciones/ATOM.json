@@ -1,7 +1,7 @@
 {
     "id_operacion": "ATOM_20260920_071104_804775",
     "simbolo": "ATOM/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 1.6918,
     "stop_loss_original": 1.71869,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-20T07:11:04.804796+00:00"
+    "timestamp_apertura": "2026-09-20T07:11:04.804796+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 1.7195,
+    "timestamp_cierre": "2026-09-20T15:26:42.671574+00:00"
 }
