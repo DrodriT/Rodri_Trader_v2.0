@@ -1318,5 +1318,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "XRP_USDT_USDT_20260920_161101_467799",
+        "par": "XRP/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-20T01:37:32.352078+00:00",
+        "timestamp_cierre": "2026-09-20T16:11:01.467395+00:00",
+        "precio_entrada": 1.3968,
+        "precio_salida": 1.3973,
+        "stop_loss_original": 1.415811,
+        "stop_loss_final": 1.3968,
+        "tp1": 1.377789,
+        "tp2": 1.368283,
+        "tp3": 1.358778,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
