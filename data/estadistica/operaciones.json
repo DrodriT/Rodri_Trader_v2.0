@@ -898,5 +898,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "ETC_USDT_USDT_20260920_011057_955344",
+        "par": "ETC/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-19T17:08:54.195933+00:00",
+        "timestamp_cierre": "2026-09-20T01:10:57.954877+00:00",
+        "precio_entrada": 8.512,
+        "precio_salida": 8.517,
+        "stop_loss_original": 8.320528,
+        "stop_loss_final": 8.512,
+        "tp1": 8.703472,
+        "tp2": 8.799209,
+        "tp3": 8.894945,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
