@@ -1,10 +1,10 @@
 {
     "simbolo": "AVAX/USDT:USDT",
     "timestamp": "2026-09-20T13:40:00",
-    "precio_actual": 10.5,
+    "precio_actual": 10.51,
     "EMA_9": 10.49,
     "EMA_21": 10.39,
-    "RSI": 60.55,
+    "RSI": 60.83,
     "ADX": 35.76,
     "ATR": 0.12,
     "stop_loss_long": 10.32,
@@ -14,13 +14,30 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": null,
-        "cumple_mandatory": null,
-        "score_actual": null,
-        "score_anterior": null,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por SL. Termina: 2026-09-20T13:40:59.821680+00:00."
+        "bias_htf": "LONG",
+        "cumple_mandatory": true,
+        "score_actual": 80.0,
+        "score_anterior": 0.0,
+        "senal": "LONG"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "LONG",
+        "precio_entrada": 10.507,
+        "stop_loss": 9.963924,
+        "tp1": 11.050076,
+        "tp2": 11.321614,
+        "tp3": 11.593152,
+        "nivel_estructura_referencia": 10.731,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 5.169,
+        "apalancamiento_sugerido": 1.93,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 193.47,
+        "cantidad_activo": 18.413628
+    }
 }
