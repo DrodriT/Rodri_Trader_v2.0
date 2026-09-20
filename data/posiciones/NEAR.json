@@ -1,7 +1,7 @@
 {
     "id_operacion": "NEAR_20260919_232934_143767",
     "simbolo": "NEAR/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 3.5953,
     "stop_loss_original": 3.507872,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-19T23:29:34.143787+00:00"
+    "timestamp_apertura": "2026-09-19T23:29:34.143787+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 3.5142,
+    "timestamp_cierre": "2026-09-20T02:44:40.122367+00:00"
 }
