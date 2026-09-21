@@ -5,7 +5,7 @@
     "EMA_9": 138.36,
     "EMA_21": 137.92,
     "RSI": 70.84,
-    "ADX": 20.13,
+    "ADX": 20.15,
     "ATR": 0.57,
     "stop_loss_long": 138.83,
     "multiplicador_SL": 1.5,
@@ -14,30 +14,13 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": "LONG",
-        "cumple_mandatory": true,
-        "score_actual": 88.0,
-        "score_anterior": 0.0,
-        "senal": "LONG"
+        "bias_htf": null,
+        "cumple_mandatory": null,
+        "score_actual": null,
+        "score_anterior": null,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición LONG ya abierta desde 2026-09-21T00:22:48.628481+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "LONG",
-        "precio_entrada": 139.68,
-        "stop_loss": 136.334856,
-        "tp1": 143.025144,
-        "tp2": 144.697716,
-        "tp3": 146.370288,
-        "nivel_estructura_referencia": 138.96,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 2.395,
-        "apalancamiento_sugerido": 4.18,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 417.56,
-        "cantidad_activo": 2.989408
-    }
+    "riesgo": null
 }
