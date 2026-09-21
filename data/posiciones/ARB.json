@@ -1,7 +1,7 @@
 {
     "id_operacion": "ARB_20260920_222246_033617",
     "simbolo": "ARB/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 0.2201,
     "stop_loss_original": 0.206302,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": true,
     "tp3_alcanzado": false,
     "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-20T22:22:46.033654+00:00"
+    "timestamp_apertura": "2026-09-20T22:22:46.033654+00:00",
+    "motivo_cierre": "BE",
+    "precio_salida": 0.2211,
+    "timestamp_cierre": "2026-09-21T21:54:49.921526+00:00"
 }
