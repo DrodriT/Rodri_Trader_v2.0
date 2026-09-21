@@ -2058,5 +2058,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "BCH_USDT_USDT_20260921_145639_540652",
+        "par": "BCH/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-21T12:39:40.750264+00:00",
+        "timestamp_cierre": "2026-09-21T14:56:39.539931+00:00",
+        "precio_entrada": 271.14,
+        "precio_salida": 263.78,
+        "stop_loss_original": 262.580593,
+        "stop_loss_final": 262.580593,
+        "tp1": 279.699407,
+        "tp2": 283.979111,
+        "tp3": 288.258815,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
