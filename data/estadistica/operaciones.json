@@ -1898,5 +1898,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "AAVE_USDT_USDT_20260921_092347_502233",
+        "par": "AAVE/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-21T00:22:48.628481+00:00",
+        "timestamp_cierre": "2026-09-21T09:23:47.501452+00:00",
+        "precio_entrada": 139.68,
+        "precio_salida": 146.09,
+        "stop_loss_original": 136.334856,
+        "stop_loss_final": 139.68,
+        "tp1": 143.025144,
+        "tp2": 144.697716,
+        "tp3": 146.370288,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
