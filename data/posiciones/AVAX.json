@@ -1,7 +1,7 @@
 {
     "id_operacion": "AVAX_20260921_113552_546342",
     "simbolo": "AVAX/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 11.528,
     "stop_loss_original": 11.121358,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-21T11:35:52.546362+00:00"
+    "timestamp_apertura": "2026-09-21T11:35:52.546362+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 11.168,
+    "timestamp_cierre": "2026-09-21T13:29:42.385695+00:00"
 }
