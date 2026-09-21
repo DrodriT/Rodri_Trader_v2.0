@@ -2298,5 +2298,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "INJ_USDT_USDT_20260921_230150_300964",
+        "par": "INJ/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-21T21:05:54.697378+00:00",
+        "timestamp_cierre": "2026-09-21T23:01:50.300243+00:00",
+        "precio_entrada": 7.708,
+        "precio_salida": 7.906,
+        "stop_loss_original": 7.904847,
+        "stop_loss_final": 7.904847,
+        "tp1": 7.511153,
+        "tp2": 7.412729,
+        "tp3": 7.314306,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
