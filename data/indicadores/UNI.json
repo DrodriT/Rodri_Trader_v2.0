@@ -1,13 +1,13 @@
 {
     "simbolo": "UNI/USDT:USDT",
-    "timestamp": "2026-09-21T09:05:00",
-    "precio_actual": 8.9,
-    "EMA_9": 8.81,
-    "EMA_21": 8.74,
-    "RSI": 75.51,
-    "ADX": 35.7,
+    "timestamp": "2026-09-21T09:10:00",
+    "precio_actual": 8.92,
+    "EMA_9": 8.83,
+    "EMA_21": 8.76,
+    "RSI": 77.01,
+    "ADX": 36.54,
     "ATR": 0.05,
-    "stop_loss_long": 8.82,
+    "stop_loss_long": 8.84,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-09-21T06:08:45.855866+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (12h) tras último cierre por SL. Termina: 2026-09-21T21:11:02.266627+00:00."
     },
     "riesgo": null
 }
