@@ -1,13 +1,13 @@
 {
     "simbolo": "SOL/USDT:USDT",
     "timestamp": "2026-09-21T16:35:00",
-    "precio_actual": 117.1,
-    "EMA_9": 117.52,
-    "EMA_21": 117.71,
-    "RSI": 39.77,
-    "ADX": 16.65,
-    "ATR": 0.54,
-    "stop_loss_long": 116.3,
+    "precio_actual": 116.84,
+    "EMA_9": 117.47,
+    "EMA_21": 117.68,
+    "RSI": 36.55,
+    "ADX": 16.94,
+    "ATR": 0.56,
+    "stop_loss_long": 116.01,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición LONG ya abierta desde 2026-09-21T12:58:43.337331+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-09-21T20:38:40.275762+00:00."
     },
     "riesgo": null
 }
