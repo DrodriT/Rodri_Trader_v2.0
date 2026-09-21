@@ -1,10 +1,10 @@
 {
     "simbolo": "LTC/USDT:USDT",
     "timestamp": "2026-09-21T15:55:00",
-    "precio_actual": 62.69,
+    "precio_actual": 62.7,
     "EMA_9": 62.53,
     "EMA_21": 62.46,
-    "RSI": 57.74,
+    "RSI": 58.03,
     "ADX": 15.68,
     "ATR": 0.3,
     "stop_loss_long": 62.25,
