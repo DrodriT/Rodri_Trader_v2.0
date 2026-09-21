@@ -2098,5 +2098,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "ETH_USDT_USDT_20260921_155102_453980",
+        "par": "ETH/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-21T08:26:48.955859+00:00",
+        "timestamp_cierre": "2026-09-21T15:51:02.453298+00:00",
+        "precio_entrada": 2678.15,
+        "precio_salida": 2762.4,
+        "stop_loss_original": 2636.515007,
+        "stop_loss_final": 2678.15,
+        "tp1": 2719.784993,
+        "tp2": 2740.60249,
+        "tp3": 2761.419987,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
