@@ -1,10 +1,10 @@
 {
     "simbolo": "AVAX/USDT:USDT",
     "timestamp": "2026-09-21T18:00:00",
-    "precio_actual": 10.87,
+    "precio_actual": 10.86,
     "EMA_9": 10.92,
     "EMA_21": 10.98,
-    "RSI": 35.6,
+    "RSI": 35.36,
     "ADX": 34.14,
     "ATR": 0.07,
     "stop_loss_long": 10.76,
