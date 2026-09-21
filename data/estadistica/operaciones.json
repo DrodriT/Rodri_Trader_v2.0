@@ -1838,5 +1838,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "XLM_USDT_USDT_20260921_085839_863329",
+        "par": "XLM/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-20T22:14:38.576755+00:00",
+        "timestamp_cierre": "2026-09-21T08:58:39.862803+00:00",
+        "precio_entrada": 0.1971,
+        "precio_salida": 0.20736,
+        "stop_loss_original": 0.192083,
+        "stop_loss_final": 0.1971,
+        "tp1": 0.202117,
+        "tp2": 0.204626,
+        "tp3": 0.207135,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
