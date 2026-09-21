@@ -1698,5 +1698,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "XMR_USDT_USDT_20260921_055548_471186",
+        "par": "XMR/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-21T00:21:47.367847+00:00",
+        "timestamp_cierre": "2026-09-21T05:55:48.470573+00:00",
+        "precio_entrada": 569.62,
+        "precio_salida": 592.84,
+        "stop_loss_original": 558.958068,
+        "stop_loss_final": 569.62,
+        "tp1": 580.281932,
+        "tp2": 585.612898,
+        "tp3": 590.943864,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
