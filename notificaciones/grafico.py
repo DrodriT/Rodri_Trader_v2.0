@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import mplfinance as mpf
 import pandas as pd
 
+import config
+
 # Colores usados para cada nivel dibujado en el gráfico.
 COLOR_ENTRADA = "#2962FF"
 COLOR_SL = "#E53935"
@@ -24,12 +26,19 @@ def generar_grafico_operacion(
     par: str,
     direccion: str,
     riesgo: dict,
-    n_velas: int = 60,
+    n_velas: int = config.CANTIDAD_VELAS_TENDENCIA,
+    timeframe: str = config.TIMEFRAME_TENDENCIA,
 ) -> str | None:
     """
     Genera un gráfico de velas (candlestick) de las últimas `n_velas`,
     con líneas horizontales punteadas para Entrada, Stop Loss y TP1/TP2/TP3,
     y lo guarda como PNG temporal.
+
+    Por defecto dibuja el timeframe de TENDENCIA (config.TIMEFRAME_TENDENCIA,
+    ej. 15m) con config.CANTIDAD_VELAS_TENDENCIA velas: da más contexto
+    visual que el timeframe de entrada (5m), aunque los niveles de
+    Entrada/SL/TP siguen siendo los calculados sobre el 5m — aquí solo
+    cambian las velas de fondo, no el plan de riesgo.
 
     Requiere que `df_velas` tenga las columnas 'timestamp', 'open', 'high',
     'low', 'close' (las mismas que devuelve descargar_velas() en
@@ -62,7 +71,7 @@ def generar_grafico_operacion(
     ]
 
     par_compacto = _formatear_par_compacto(par)
-    titulo = f"{par_compacto} {direccion}"
+    titulo = f"{par_compacto} {direccion} ({timeframe})"
 
     fig, ejes = mpf.plot(
         df_grafico,
