@@ -1,11 +1,11 @@
 {
     "simbolo": "XRP/USDT:USDT",
-    "timestamp": "2026-09-21T22:10:00",
+    "timestamp": "2026-09-21T22:15:00",
     "precio_actual": 1.57,
-    "EMA_9": 1.55,
+    "EMA_9": 1.56,
     "EMA_21": 1.54,
-    "RSI": 72.45,
-    "ADX": 43.48,
+    "RSI": 71.29,
+    "ADX": 45.09,
     "ATR": 0.01,
     "stop_loss_long": 1.56,
     "multiplicador_SL": 1.5,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición LONG ya abierta desde 2026-09-21T20:18:41.371917+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-09-22T02:16:02.757957+00:00."
     },
     "riesgo": null
 }
