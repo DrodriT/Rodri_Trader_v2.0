@@ -1978,5 +1978,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "SUI_USDT_USDT_20260921_113849_912756",
+        "par": "SUI/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-21T00:18:39.734564+00:00",
+        "timestamp_cierre": "2026-09-21T11:38:49.912174+00:00",
+        "precio_entrada": 0.9289,
+        "precio_salida": 1.0309,
+        "stop_loss_original": 0.877696,
+        "stop_loss_final": 0.9289,
+        "tp1": 0.980104,
+        "tp2": 1.005706,
+        "tp3": 1.031308,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
