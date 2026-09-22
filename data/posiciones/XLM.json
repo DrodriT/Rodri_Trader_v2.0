@@ -1,7 +1,7 @@
 {
     "id_operacion": "XLM_20260921_145550_800748",
     "simbolo": "XLM/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 0.2115,
     "stop_loss_original": 0.203997,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-21T14:55:50.800771+00:00"
+    "timestamp_apertura": "2026-09-21T14:55:50.800771+00:00",
+    "motivo_cierre": "BE",
+    "precio_salida": 0.21164,
+    "timestamp_cierre": "2026-09-22T01:18:12.155218+00:00"
 }
