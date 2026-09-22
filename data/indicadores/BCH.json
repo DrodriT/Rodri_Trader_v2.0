@@ -1,13 +1,13 @@
 {
     "simbolo": "BCH/USDT:USDT",
-    "timestamp": "2026-09-22T13:15:00",
-    "precio_actual": 317.28,
-    "EMA_9": 306.36,
-    "EMA_21": 292.76,
-    "RSI": 89.93,
-    "ADX": 53.7,
-    "ATR": 6.17,
-    "stop_loss_long": 308.02,
+    "timestamp": "2026-09-22T13:20:00",
+    "precio_actual": 321.0,
+    "EMA_9": 309.3,
+    "EMA_21": 295.33,
+    "RSI": 90.96,
+    "ADX": 55.37,
+    "ATR": 6.45,
+    "stop_loss_long": 311.32,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (12h) tras último cierre por SL. Termina: 2026-09-22T13:19:27.264100+00:00."
+        "posicion_abierta": true,
+        "nota": "Posición LONG ya abierta desde 2026-09-22T13:20:15.282737+00:00. Esperando SL/TP3."
     },
     "riesgo": null
 }
