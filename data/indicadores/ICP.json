@@ -1,13 +1,13 @@
 {
     "simbolo": "ICP/USDT:USDT",
     "timestamp": "2026-09-22T20:00:00",
-    "precio_actual": 2.99,
+    "precio_actual": 3.0,
     "EMA_9": 2.98,
     "EMA_21": 2.97,
-    "RSI": 62.67,
-    "ADX": 14.26,
+    "RSI": 68.29,
+    "ADX": 14.48,
     "ATR": 0.01,
-    "stop_loss_long": 2.97,
+    "stop_loss_long": 2.98,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-09-22T05:06:41.641944+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por SL. Termina: 2026-09-23T00:02:46.368238+00:00."
     },
     "riesgo": null
 }
