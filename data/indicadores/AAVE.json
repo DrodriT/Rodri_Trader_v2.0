@@ -1,13 +1,13 @@
 {
     "simbolo": "AAVE/USDT:USDT",
     "timestamp": "2026-09-22T01:15:00",
-    "precio_actual": 143.65,
-    "EMA_9": 144.73,
-    "EMA_21": 145.24,
-    "RSI": 34.89,
-    "ADX": 27.6,
-    "ATR": 0.74,
-    "stop_loss_long": 142.54,
+    "precio_actual": 142.96,
+    "EMA_9": 144.6,
+    "EMA_21": 145.18,
+    "RSI": 31.25,
+    "ADX": 28.08,
+    "ATR": 0.81,
+    "stop_loss_long": 141.75,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 73.0,
+        "score_actual": 80.0,
         "score_anterior": 73.0,
-        "senal": null
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 142.96,
+        "stop_loss": 147.777518,
+        "tp1": 138.142482,
+        "tp2": 135.733723,
+        "tp3": 133.324964,
+        "nivel_estructura_referencia": 143.29,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 3.37,
+        "apalancamiento_sugerido": 2.97,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 296.75,
+        "cantidad_activo": 2.075758
+    }
 }

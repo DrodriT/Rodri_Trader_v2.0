@@ -1,13 +1,13 @@
 {
     "simbolo": "ETH/USDT:USDT",
     "timestamp": "2026-09-22T01:15:00",
-    "precio_actual": 2744.39,
-    "EMA_9": 2755.63,
-    "EMA_21": 2763.18,
-    "RSI": 35.28,
-    "ADX": 27.4,
-    "ATR": 8.86,
-    "stop_loss_long": 2731.1,
+    "precio_actual": 2739.79,
+    "EMA_9": 2754.71,
+    "EMA_21": 2762.76,
+    "RSI": 33.25,
+    "ADX": 27.72,
+    "ATR": 9.29,
+    "stop_loss_long": 2725.85,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 73.0,
+        "score_actual": 88.0,
         "score_anterior": 73.0,
-        "senal": null
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 2739.79,
+        "stop_loss": 2790.466835,
+        "tp1": 2689.113165,
+        "tp2": 2663.774748,
+        "tp3": 2638.43633,
+        "nivel_estructura_referencia": 2738.12,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 1.85,
+        "apalancamiento_sugerido": 5.41,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 540.64,
+        "cantidad_activo": 0.197329
+    }
 }
