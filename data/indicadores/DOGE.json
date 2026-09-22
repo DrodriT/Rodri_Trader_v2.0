@@ -1,11 +1,11 @@
 {
     "simbolo": "DOGE/USDT:USDT",
-    "timestamp": "2026-09-22T14:20:00",
+    "timestamp": "2026-09-22T14:25:00",
     "precio_actual": 0.1,
     "EMA_9": 0.1,
     "EMA_21": 0.1,
-    "RSI": 53.84,
-    "ADX": 33.08,
+    "RSI": 52.1,
+    "ADX": 32.13,
     "ATR": 0.0,
     "stop_loss_long": 0.1,
     "multiplicador_SL": 1.5,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-09-22T14:25:49.521128+00:00."
+        "posicion_abierta": true,
+        "nota": "Posición LONG ya abierta desde 2026-09-22T14:26:04.077654+00:00. Esperando SL/TP3."
     },
     "riesgo": null
 }
