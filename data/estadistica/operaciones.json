@@ -2738,5 +2738,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "ARB_USDT_USDT_20260922_130243_971330",
+        "par": "ARB/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-22T02:01:29.261304+00:00",
+        "timestamp_cierre": "2026-09-22T13:02:43.970891+00:00",
+        "precio_entrada": 0.2225,
+        "precio_salida": 0.2223,
+        "stop_loss_original": 0.230321,
+        "stop_loss_final": 0.2225,
+        "tp1": 0.214679,
+        "tp2": 0.210769,
+        "tp3": 0.206858,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
