@@ -385,11 +385,10 @@ def analizar_par(exchange, par: str) -> dict | None:
         "sl_long": sl_long,
         "estrategia": resultado_estrategia,
         "riesgo": plan_riesgo,
-        # Solo se incluye el DataFrame de velas cuando hay señal: es lo único
-        # que necesita notificaciones/telegram_bot.py para dibujar el gráfico
-        # de Entrada/SL/TP, y evita cargar el DataFrame completo en el resto
-        # de casos (sin señal, o con posición ya abierta).
-        "df_5m": df_5m if plan_riesgo else None,  # <-- CAMBIO
+        # Solo se incluye cuando hay señal: es lo único que necesita
+        # notificaciones/telegram_bot.py para dibujar el gráfico (velas del
+        # timeframe de TENDENCIA, ej. 15m — ver notificaciones/grafico.py).
+        "df_15m": df_15m if plan_riesgo else None,
     }
 
 
@@ -467,7 +466,7 @@ def main():
                         precio=float(precio_actual),
                         timeframe_entrada=config.TIMEFRAME_ENTRADA,
                         riesgo=riesgo,
-                        df_5m=analisis.get("df_5m"),  # <-- CAMBIO
+                        df_htf=analisis.get("df_15m"),
                     )
                 else:
                     print("  Señal de entrada:      Ninguna (sin cruce de umbral)")
