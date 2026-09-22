@@ -5,13 +5,13 @@
     "direccion": "LONG",
     "precio_entrada": 62.21,
     "stop_loss_original": 61.155614,
-    "stop_loss_actual": 61.155614,
+    "stop_loss_actual": 62.21,
     "tp1": 63.264386,
     "tp2": 63.791579,
     "tp3": 64.318772,
-    "tp1_alcanzado": false,
+    "tp1_alcanzado": true,
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
-    "sl_movido_be": false,
+    "sl_movido_be": true,
     "timestamp_apertura": "2026-09-22T18:25:51.226389+00:00"
 }
