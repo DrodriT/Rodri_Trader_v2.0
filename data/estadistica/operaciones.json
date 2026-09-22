@@ -2858,5 +2858,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "NEAR_USDT_USDT_20260922_200938_875563",
+        "par": "NEAR/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-22T09:01:30.653880+00:00",
+        "timestamp_cierre": "2026-09-22T20:09:38.874567+00:00",
+        "precio_entrada": 4.5255,
+        "precio_salida": 4.2428,
+        "stop_loss_original": 4.234467,
+        "stop_loss_final": 4.234467,
+        "tp1": 4.816533,
+        "tp2": 4.962049,
+        "tp3": 5.107565,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
