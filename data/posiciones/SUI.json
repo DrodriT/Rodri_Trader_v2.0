@@ -1,7 +1,7 @@
 {
     "id_operacion": "SUI_20260921_175547_400012",
     "simbolo": "SUI/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 0.9925,
     "stop_loss_original": 1.054202,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-21T17:55:47.400036+00:00"
+    "timestamp_apertura": "2026-09-21T17:55:47.400036+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 1.0543,
+    "timestamp_cierre": "2026-09-22T00:29:51.663990+00:00"
 }
