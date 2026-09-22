@@ -1,7 +1,7 @@
 {
     "id_operacion": "FIL_20260921_212245_028124",
     "simbolo": "FIL/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 0.9823,
     "stop_loss_original": 0.9573,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-21T21:22:45.028167+00:00"
+    "timestamp_apertura": "2026-09-21T21:22:45.028167+00:00",
+    "motivo_cierre": "BE",
+    "precio_salida": 0.9818,
+    "timestamp_cierre": "2026-09-22T05:31:16.929853+00:00"
 }
