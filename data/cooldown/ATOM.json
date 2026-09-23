@@ -1,6 +1,6 @@
 {
-    "motivo_cierre": "SL",
-    "sl_consecutivos": 4,
-    "cooldown_horas": 12,
-    "cooldown_hasta": "2026-09-22T16:50:56.338934+00:00"
+    "motivo_cierre": "BE",
+    "sl_consecutivos": 0,
+    "cooldown_horas": 4,
+    "cooldown_hasta": "2026-09-23T18:09:49.204206+00:00"
 }

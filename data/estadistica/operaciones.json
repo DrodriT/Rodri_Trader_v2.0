@@ -3298,5 +3298,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "ATOM_USDT_USDT_20260923_140949_201732",
+        "par": "ATOM/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-22T17:33:42.673171+00:00",
+        "timestamp_cierre": "2026-09-23T14:09:49.200696+00:00",
+        "precio_entrada": 1.777,
+        "precio_salida": 1.7839,
+        "stop_loss_original": 1.727044,
+        "stop_loss_final": 1.777,
+        "tp1": 1.826956,
+        "tp2": 1.851935,
+        "tp3": 1.876913,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
