@@ -1,13 +1,13 @@
 {
     "simbolo": "NEAR/USDT:USDT",
     "timestamp": "2026-09-23T14:30:00",
-    "precio_actual": 4.5,
+    "precio_actual": 4.52,
     "EMA_9": 4.56,
     "EMA_21": 4.62,
-    "RSI": 36.68,
+    "RSI": 39.25,
     "ADX": 28.33,
     "ATR": 0.08,
-    "stop_loss_long": 4.38,
+    "stop_loss_long": 4.4,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 73.0,
+        "score_actual": 78.0,
         "score_anterior": 73.0,
-        "senal": null
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 4.5211,
+        "stop_loss": 4.890866,
+        "tp1": 4.151334,
+        "tp2": 3.96645,
+        "tp3": 3.781567,
+        "nivel_estructura_referencia": 4.4072,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 8.179,
+        "apalancamiento_sugerido": 1.22,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 122.27,
+        "cantidad_activo": 27.044103
+    }
 }
