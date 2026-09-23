@@ -3518,5 +3518,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "ETH_USDT_USDT_20260923_160159_509407",
+        "par": "ETH/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-22T01:19:05.946852+00:00",
+        "timestamp_cierre": "2026-09-23T16:01:59.508452+00:00",
+        "precio_entrada": 2739.79,
+        "precio_salida": 2643.23,
+        "stop_loss_original": 2790.466835,
+        "stop_loss_final": 2739.79,
+        "tp1": 2689.113165,
+        "tp2": 2663.774748,
+        "tp3": 2638.43633,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
