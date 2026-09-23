@@ -1,11 +1,11 @@
 {
     "simbolo": "XRP/USDT:USDT",
-    "timestamp": "2026-09-23T15:35:00",
-    "precio_actual": 1.51,
+    "timestamp": "2026-09-23T15:40:00",
+    "precio_actual": 1.52,
     "EMA_9": 1.52,
     "EMA_21": 1.53,
-    "RSI": 31.28,
-    "ADX": 48.12,
+    "RSI": 33.72,
+    "ADX": 48.75,
     "ATR": 0.01,
     "stop_loss_long": 1.5,
     "multiplicador_SL": 1.5,
@@ -14,13 +14,30 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": null,
-        "cumple_mandatory": null,
-        "score_actual": null,
-        "score_anterior": null,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-09-23T15:37:40.261384+00:00."
+        "bias_htf": "SHORT",
+        "cumple_mandatory": true,
+        "score_actual": 80.0,
+        "score_anterior": 0.0,
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 1.516,
+        "stop_loss": 1.595446,
+        "tp1": 1.436554,
+        "tp2": 1.39683,
+        "tp3": 1.357107,
+        "nivel_estructura_referencia": 1.5041,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 5.241,
+        "apalancamiento_sugerido": 1.91,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 190.82,
+        "cantidad_activo": 125.870946
+    }
 }
