@@ -264,13 +264,13 @@ def analizar_par(exchange, par: str) -> dict | None:
     siga abierta — evita señales repetidas sobre la misma moneda.
 
     Si no hay posición abierta (o se acaba de cerrar en este mismo ciclo),
-    evalúa la estrategia con normalidad y, si genera una señal nueva, abre
-    la posición correspondiente.
+    comprueba si el par sigue en cooldown tras su último cierre; si no lo
+    está, evalúa la estrategia con normalidad y, si genera una señal nueva,
+    abre la posición correspondiente.
 
     Devuelve un diccionario con toda la información del par, listo para
     imprimir y guardar en JSON. Devuelve None si falla la descarga de 5m.
     """
-   
     df_5m = descargar_velas(
         exchange, par, config.TIMEFRAME_ENTRADA, config.CANTIDAD_VELAS_ENTRADA
     )
@@ -314,11 +314,9 @@ def analizar_par(exchange, par: str) -> dict | None:
                 "sl_long": sl_long,
                 "estrategia": resultado_estrategia,
                 "riesgo": None,
+                "df_15m": None,
             }
         # Si se cerró en este mismo ciclo (SL/BE/TP3), continuamos abajo
-        # con el flujo normal para evaluar si hay una señal NUEVA ya mismo.
-
-                # Si se cerró en este mismo ciclo (SL/BE/TP3), continuamos abajo
         # con el flujo normal para evaluar si hay una señal NUEVA ya mismo.
 
     # ---------- 1.5) ¿Está el par en cooldown tras su último cierre? ----------
@@ -342,7 +340,7 @@ def analizar_par(exchange, par: str) -> dict | None:
             "sl_long": sl_long,
             "estrategia": resultado_estrategia,
             "riesgo": None,
-            "df_5m": None,
+            "df_15m": None,
         }
 
     # ---------- Valor por defecto: NUNCA debe quedar como None ----------
@@ -421,7 +419,7 @@ def main():
             print(f"  ADX({config.ADX_PERIODO}):         {ultima_vela['ADX']:.2f}")
             print(f"  SL sugerido LONG:  ${sl_long:,.2f} (a {config.ATR_MULTIPLICADOR_SL}x ATR)")
 
-            # ---------- IMPRESIÓN EN PANTALLA (posición abierta) ----------
+            # ---------- IMPRESIÓN EN PANTALLA (posición abierta / cooldown / error / estrategia) ----------
             if resultado_estrategia.get("posicion_abierta"):
                 print(f"  🔒 {resultado_estrategia['nota']}\n")
 
@@ -431,9 +429,6 @@ def main():
             elif resultado_estrategia.get("error"):
                 print(f"  ⚠️ Estrategia: {resultado_estrategia['error']}\n")
 
-            # ---------- IMPRESIÓN EN PANTALLA (estrategia) ----------
-            elif resultado_estrategia.get("error"):
-                print(f"  ⚠️ Estrategia: {resultado_estrategia['error']}\n")
             else:
                 print(f"  --- Estrategia ({config.TIMEFRAME_ENTRADA}/{config.TIMEFRAME_TENDENCIA}) ---")
                 print(f"  Sesgo HTF ({config.TIMEFRAME_TENDENCIA}):     {resultado_estrategia['bias_htf']}")

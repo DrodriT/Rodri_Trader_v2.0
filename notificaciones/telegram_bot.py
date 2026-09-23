@@ -132,7 +132,7 @@ def enviar_alerta(
     precio: float,
     timeframe_entrada: str,
     riesgo: dict | None = None,
-    df_5m=None,
+    df_htf=None,
 ) -> None:
     """
     Envía una alerta de Telegram cuando la estrategia detecta una NUEVA
@@ -142,11 +142,13 @@ def enviar_alerta(
     que ya calculamos en el propio bot: no se inventan campos como
     'Probabilidad', 'Setup' o 'Semáforo' que no forman parte del modelo.
 
-    Si se recibe 'df_5m' (el DataFrame de velas del timeframe de entrada)
-    y hay plan de riesgo, se genera y se envía un gráfico de velas con
-    Entrada/SL/TP1/TP2/TP3 marcados, usando el texto de abajo como caption.
-    Si no hay velas, o falla la generación/envío de la imagen, se hace
-    fallback automático al mensaje de solo texto.
+    Si se recibe 'df_htf' (el DataFrame de velas del timeframe de TENDENCIA,
+    ej. 15m) y hay plan de riesgo, se genera y se envía un gráfico de velas
+    de ese timeframe con Entrada/SL/TP1/TP2/TP3 marcados (los niveles se
+    siguen calculando sobre el 5m; solo las velas de fondo son del HTF),
+    usando el texto de abajo como caption. Si no hay velas, o falla la
+    generación/envío de la imagen, se hace fallback automático al mensaje
+    de solo texto.
     """
     emoji = EMOJI_POR_DIRECCION.get(senal, "⚪")
     par_compacto = _formatear_par_compacto(par)
@@ -185,8 +187,8 @@ def enviar_alerta(
     # Si tenemos velas y plan de riesgo, intentamos enviar el gráfico con
     # el mensaje como caption. Si algo falla (sin velas, sin crédito de
     # Telegram, error de red...), caemos al mensaje de solo texto de siempre.
-    if df_5m is not None and riesgo:
-        ruta_grafico = generar_grafico_operacion(df_5m, par, senal, riesgo)
+    if df_htf is not None and riesgo:
+        ruta_grafico = generar_grafico_operacion(df_htf, par, senal, riesgo)
         if ruta_grafico and _enviar_foto(ruta_grafico, mensaje, contexto=f"entrada {par}"):
             return
 
