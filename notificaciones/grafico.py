@@ -45,70 +45,80 @@ def generar_grafico_operacion(
     test_conexion_velas.py). No se necesitan los indicadores.
 
     Devuelve la ruta al archivo PNG generado, o None si no hay datos
-    suficientes para dibujar el gráfico.
+    suficientes para dibujar el gráfico O si algo falla al generarlo:
+    esta función NUNCA lanza una excepción hacia arriba a propósito, para
+    que un fallo al dibujar (ej. velas insuficientes, NaN puntual) no tumbe
+    el envío de la alerta entera — telegram_bot.py hace fallback a texto
+    plano cuando esto devuelve None.
     """
     if df_velas is None or df_velas.empty or riesgo is None:
         return None
 
-    df_grafico = df_velas.tail(n_velas).copy()
-    df_grafico = df_grafico.set_index("timestamp")
-    df_grafico = df_grafico.rename(
-        columns={
-            "open": "Open",
-            "high": "High",
-            "low": "Low",
-            "close": "Close",
-        }
-    )[["Open", "High", "Low", "Close"]]
+    try:
+        df_grafico = df_velas.tail(n_velas).copy()
+        df_grafico = df_grafico.set_index("timestamp")
+        df_grafico = df_grafico.rename(
+            columns={
+                "open": "Open",
+                "high": "High",
+                "low": "Low",
+                "close": "Close",
+            }
+        )[["Open", "High", "Low", "Close"]]
 
-    # Niveles a dibujar: (valor, color, etiqueta)
-    niveles = [
-        (riesgo["precio_entrada"], COLOR_ENTRADA, "Entrada"),
-        (riesgo["stop_loss"], COLOR_SL, "SL"),
-        (riesgo["tp1"], COLOR_TP, "TP1"),
-        (riesgo["tp2"], COLOR_TP, "TP2"),
-        (riesgo["tp3"], COLOR_TP, "TP3"),
-    ]
+        # Niveles a dibujar: (valor, color, etiqueta)
+        niveles = [
+            (riesgo["precio_entrada"], COLOR_ENTRADA, "Entrada"),
+            (riesgo["stop_loss"], COLOR_SL, "SL"),
+            (riesgo["tp1"], COLOR_TP, "TP1"),
+            (riesgo["tp2"], COLOR_TP, "TP2"),
+            (riesgo["tp3"], COLOR_TP, "TP3"),
+        ]
 
-    par_compacto = _formatear_par_compacto(par)
-    titulo = f"{par_compacto} {direccion} ({timeframe})"
+        par_compacto = _formatear_par_compacto(par)
+        titulo = f"{par_compacto} {direccion} ({timeframe})"
 
-    fig, ejes = mpf.plot(
-        df_grafico,
-        type="candle",
-        style="charles",
-        title=titulo,
-        hlines=dict(
-            hlines=[nivel[0] for nivel in niveles],
-            colors=[nivel[1] for nivel in niveles],
-            linestyle="--",
-            linewidths=1,
-        ),
-        volume=False,
-        returnfig=True,
-        figsize=(9, 5.5),
-    )
-
-    # Anotamos cada línea con su etiqueta y precio, dejando un margen extra
-    # a la derecha del gráfico para que el texto no choque con los ticks
-    # de precio del propio eje (que mplfinance dibuja a la derecha).
-    eje_precio = ejes[0]
-    x_borde_derecho = len(df_grafico) - 1
-    eje_precio.set_xlim(right=x_borde_derecho + max(12, n_velas * 0.2))
-    for valor, color, etiqueta in niveles:
-        eje_precio.annotate(
-            f"{etiqueta}: {valor:,.4f}",
-            xy=(x_borde_derecho, valor),
-            xytext=(10, 0),
-            textcoords="offset points",
-            color=color,
-            fontsize=8,
-            va="center",
-            fontweight="bold",
+        fig, ejes = mpf.plot(
+            df_grafico,
+            type="candle",
+            style="charles",
+            title=titulo,
+            hlines=dict(
+                hlines=[nivel[0] for nivel in niveles],
+                colors=[nivel[1] for nivel in niveles],
+                linestyle="--",
+                linewidths=1,
+            ),
+            volume=False,
+            returnfig=True,
+            figsize=(9, 5.5),
         )
 
-    ruta_temp = os.path.join(tempfile.gettempdir(), f"grafico_{par_compacto}.png")
-    fig.savefig(ruta_temp, dpi=130, bbox_inches="tight")
-    plt.close(fig)  # liberamos memoria: el bot genera un gráfico por cada par en cada ciclo
+        # Anotamos cada línea con su etiqueta y precio, dejando un margen extra
+        # a la derecha del gráfico para que el texto no choque con los ticks
+        # de precio del propio eje (que mplfinance dibuja a la derecha).
+        eje_precio = ejes[0]
+        x_borde_derecho = len(df_grafico) - 1
+        eje_precio.set_xlim(right=x_borde_derecho + max(12, n_velas * 0.2))
+        for valor, color, etiqueta in niveles:
+            eje_precio.annotate(
+                f"{etiqueta}: {valor:,.4f}",
+                xy=(x_borde_derecho, valor),
+                xytext=(10, 0),
+                textcoords="offset points",
+                color=color,
+                fontsize=8,
+                va="center",
+                fontweight="bold",
+            )
 
-    return ruta_temp
+        ruta_temp = os.path.join(tempfile.gettempdir(), f"grafico_{par_compacto}.png")
+        fig.savefig(ruta_temp, dpi=130, bbox_inches="tight")
+        plt.close(fig)  # liberamos memoria: el bot genera un gráfico por cada par en cada ciclo
+
+        return ruta_temp
+
+    except Exception as e:
+        print(f"  ❌ Error generando el gráfico de {par}: {type(e).__name__} - {e}")
+        plt.close("all")  # por si la figura quedó a medio crear, no se acumula en memoria
+        return None
