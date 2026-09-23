@@ -1,11 +1,11 @@
 {
     "simbolo": "ICP/USDT:USDT",
-    "timestamp": "2026-09-23T15:50:00",
+    "timestamp": "2026-09-23T15:55:00",
     "precio_actual": 2.88,
     "EMA_9": 2.9,
     "EMA_21": 2.94,
     "RSI": 26.54,
-    "ADX": 42.45,
+    "ADX": 43.66,
     "ATR": 0.03,
     "stop_loss_long": 2.83,
     "multiplicador_SL": 1.5,
@@ -14,13 +14,30 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": null,
-        "cumple_mandatory": null,
-        "score_actual": null,
-        "score_anterior": null,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-09-23T15:55:50.767364+00:00."
+        "bias_htf": "SHORT",
+        "cumple_mandatory": true,
+        "score_actual": 75.0,
+        "score_anterior": 0.0,
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 2.878,
+        "stop_loss": 3.056722,
+        "tp1": 2.699278,
+        "tp2": 2.609917,
+        "tp3": 2.520556,
+        "nivel_estructura_referencia": 2.863,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 6.21,
+        "apalancamiento_sugerido": 1.61,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 161.03,
+        "cantidad_activo": 55.952762
+    }
 }
