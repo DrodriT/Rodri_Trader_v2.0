@@ -1,13 +1,13 @@
 {
     "simbolo": "BTC/USDT:USDT",
     "timestamp": "2026-09-24T09:30:00",
-    "precio_actual": 83089.5,
-    "EMA_9": 83417.2,
-    "EMA_21": 83667.59,
-    "RSI": 28.86,
-    "ADX": 39.77,
-    "ATR": 194.39,
-    "stop_loss_long": 82797.92,
+    "precio_actual": 82966.9,
+    "EMA_9": 83392.68,
+    "EMA_21": 83656.44,
+    "RSI": 26.88,
+    "ADX": 39.97,
+    "ATR": 201.67,
+    "stop_loss_long": 82664.4,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-09-23T14:11:00.479788+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-09-24T13:33:37.345640+00:00."
     },
     "riesgo": null
 }
