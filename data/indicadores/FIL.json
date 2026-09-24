@@ -1,13 +1,13 @@
 {
     "simbolo": "FIL/USDT:USDT",
     "timestamp": "2026-09-24T09:45:00",
-    "precio_actual": 0.96,
+    "precio_actual": 0.95,
     "EMA_9": 0.96,
     "EMA_21": 0.97,
-    "RSI": 32.33,
-    "ADX": 28.05,
+    "RSI": 30.75,
+    "ADX": 28.14,
     "ATR": 0.01,
-    "stop_loss_long": 0.95,
+    "stop_loss_long": 0.94,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición LONG ya abierta desde 2026-09-24T04:41:47.915603+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-09-24T13:47:38.989337+00:00."
     },
     "riesgo": null
 }
