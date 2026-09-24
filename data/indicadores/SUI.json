@@ -1,10 +1,10 @@
 {
     "simbolo": "SUI/USDT:USDT",
     "timestamp": "2026-09-24T19:45:00",
-    "precio_actual": 1.02,
+    "precio_actual": 1.01,
     "EMA_9": 1.01,
     "EMA_21": 1.01,
-    "RSI": 59.6,
+    "RSI": 58.7,
     "ADX": 15.37,
     "ATR": 0.01,
     "stop_loss_long": 1.01,
