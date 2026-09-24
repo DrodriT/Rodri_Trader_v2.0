@@ -4158,5 +4158,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "AVAX_USDT_USDT_20260924_213340_605788",
+        "par": "AVAX/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-23T16:04:42.422258+00:00",
+        "timestamp_cierre": "2026-09-24T21:33:40.604511+00:00",
+        "precio_entrada": 10.2,
+        "precio_salida": 10.65,
+        "stop_loss_original": 10.627123,
+        "stop_loss_final": 10.627123,
+        "tp1": 9.772877,
+        "tp2": 9.559316,
+        "tp3": 9.345754,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
