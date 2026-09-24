@@ -1,7 +1,7 @@
 {
     "id_operacion": "DOGE_20260923_181441_817380",
     "simbolo": "DOGE/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 0.09193,
     "stop_loss_original": 0.093493,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-23T18:14:41.817399+00:00"
+    "timestamp_apertura": "2026-09-23T18:14:41.817399+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 0.09349,
+    "timestamp_cierre": "2026-09-24T02:41:44.347005+00:00"
 }
