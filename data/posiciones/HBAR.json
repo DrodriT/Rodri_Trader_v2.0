@@ -1,7 +1,7 @@
 {
     "id_operacion": "HBAR_20260923_181939_704279",
     "simbolo": "HBAR/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 0.09016,
     "stop_loss_original": 0.091219,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": true,
-    "timestamp_apertura": "2026-09-23T18:19:39.704299+00:00"
+    "timestamp_apertura": "2026-09-23T18:19:39.704299+00:00",
+    "motivo_cierre": "BE",
+    "precio_salida": 0.09028,
+    "timestamp_cierre": "2026-09-24T02:33:37.199072+00:00"
 }
