@@ -1,10 +1,10 @@
 {
     "simbolo": "ICP/USDT:USDT",
     "timestamp": "2026-09-24T06:15:00",
-    "precio_actual": 2.95,
+    "precio_actual": 2.96,
     "EMA_9": 2.97,
-    "EMA_21": 2.96,
-    "RSI": 44.92,
+    "EMA_21": 2.97,
+    "RSI": 47.34,
     "ADX": 19.16,
     "ATR": 0.01,
     "stop_loss_long": 2.94,
