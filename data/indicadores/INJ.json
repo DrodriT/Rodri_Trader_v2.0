@@ -1,13 +1,13 @@
 {
     "simbolo": "INJ/USDT:USDT",
     "timestamp": "2026-09-24T15:30:00",
-    "precio_actual": 8.27,
-    "EMA_9": 8.2,
-    "EMA_21": 8.16,
-    "RSI": 63.21,
-    "ADX": 31.67,
-    "ATR": 0.08,
-    "stop_loss_long": 8.16,
+    "precio_actual": 8.44,
+    "EMA_9": 8.23,
+    "EMA_21": 8.17,
+    "RSI": 71.78,
+    "ADX": 32.8,
+    "ATR": 0.09,
+    "stop_loss_long": 8.3,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-09-23T14:22:13.795467+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (12h) tras último cierre por SL. Termina: 2026-09-25T03:33:40.719572+00:00."
     },
     "riesgo": null
 }
