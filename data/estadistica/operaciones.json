@@ -4098,5 +4098,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "ADA_USDT_USDT_20260924_141745_151164",
+        "par": "ADA/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-24T08:49:46.319264+00:00",
+        "timestamp_cierre": "2026-09-24T14:17:45.150002+00:00",
+        "precio_entrada": 0.237,
+        "precio_salida": 0.2445,
+        "stop_loss_original": 0.244118,
+        "stop_loss_final": 0.244118,
+        "tp1": 0.229882,
+        "tp2": 0.226324,
+        "tp3": 0.222765,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
