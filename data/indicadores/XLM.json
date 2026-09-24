@@ -1,11 +1,11 @@
 {
     "simbolo": "XLM/USDT:USDT",
-    "timestamp": "2026-09-24T18:20:00",
+    "timestamp": "2026-09-24T18:25:00",
     "precio_actual": 0.21,
     "EMA_9": 0.21,
     "EMA_21": 0.21,
-    "RSI": 58.05,
-    "ADX": 30.04,
+    "RSI": 60.58,
+    "ADX": 30.64,
     "ATR": 0.0,
     "stop_loss_long": 0.21,
     "multiplicador_SL": 1.5,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 74.0,
-        "score_anterior": 69.0,
-        "senal": null
+        "score_actual": 76.0,
+        "score_anterior": 74.0,
+        "senal": "LONG"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "LONG",
+        "precio_entrada": 0.21253,
+        "stop_loss": 0.20686,
+        "tp1": 0.2182,
+        "tp2": 0.221035,
+        "tp3": 0.22387,
+        "nivel_estructura_referencia": 0.21459,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 2.668,
+        "apalancamiento_sugerido": 3.75,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 374.85,
+        "cantidad_activo": 1763.733216
+    }
 }
