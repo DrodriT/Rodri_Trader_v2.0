@@ -1,11 +1,11 @@
 {
     "simbolo": "SUI/USDT:USDT",
-    "timestamp": "2026-09-24T09:05:00",
+    "timestamp": "2026-09-24T09:10:00",
     "precio_actual": 0.95,
     "EMA_9": 0.96,
     "EMA_21": 0.96,
-    "RSI": 40.19,
-    "ADX": 24.68,
+    "RSI": 39.03,
+    "ADX": 25.1,
     "ATR": 0.0,
     "stop_loss_long": 0.95,
     "multiplicador_SL": 1.5,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 64.0,
-        "score_anterior": 71.0,
-        "senal": null
+        "score_actual": 78.0,
+        "score_anterior": 64.0,
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 0.9529,
+        "stop_loss": 0.977071,
+        "tp1": 0.928729,
+        "tp2": 0.916644,
+        "tp3": 0.904559,
+        "nivel_estructura_referencia": 0.9481,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 2.537,
+        "apalancamiento_sugerido": 3.94,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 394.24,
+        "cantidad_activo": 413.724998
+    }
 }
