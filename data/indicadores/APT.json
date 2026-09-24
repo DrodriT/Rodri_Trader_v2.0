@@ -1,10 +1,10 @@
 {
     "simbolo": "APT/USDT:USDT",
     "timestamp": "2026-09-24T00:05:00",
-    "precio_actual": 0.76,
+    "precio_actual": 0.75,
     "EMA_9": 0.75,
     "EMA_21": 0.76,
-    "RSI": 47.48,
+    "RSI": 46.37,
     "ADX": 16.49,
     "ATR": 0.0,
     "stop_loss_long": 0.75,
