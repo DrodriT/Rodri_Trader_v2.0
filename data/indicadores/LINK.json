@@ -1,13 +1,13 @@
 {
     "simbolo": "LINK/USDT:USDT",
     "timestamp": "2026-09-25T08:25:00",
-    "precio_actual": 13.79,
+    "precio_actual": 13.82,
     "EMA_9": 13.63,
     "EMA_21": 13.53,
-    "RSI": 80.02,
-    "ADX": 27.44,
-    "ATR": 0.06,
-    "stop_loss_long": 13.7,
+    "RSI": 81.04,
+    "ADX": 27.61,
+    "ATR": 0.07,
+    "stop_loss_long": 13.72,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición LONG ya abierta desde 2026-09-24T21:41:47.866171+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-09-25T12:28:42.567685+00:00."
     },
     "riesgo": null
 }
