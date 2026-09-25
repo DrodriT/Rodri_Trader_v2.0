@@ -1,7 +1,7 @@
 {
     "id_operacion": "ETC_20260925_013159_744097",
     "simbolo": "ETC/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 9.332,
     "stop_loss_original": 9.531293,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-25T01:31:59.744122+00:00"
+    "timestamp_apertura": "2026-09-25T01:31:59.744122+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 9.521,
+    "timestamp_cierre": "2026-09-25T06:22:43.697562+00:00"
 }
