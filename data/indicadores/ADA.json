@@ -1,11 +1,11 @@
 {
     "simbolo": "ADA/USDT:USDT",
-    "timestamp": "2026-09-25T09:00:00",
+    "timestamp": "2026-09-25T09:05:00",
     "precio_actual": 0.25,
     "EMA_9": 0.25,
     "EMA_21": 0.25,
-    "RSI": 66.21,
-    "ADX": 23.6,
+    "RSI": 67.72,
+    "ADX": 24.53,
     "ATR": 0.0,
     "stop_loss_long": 0.25,
     "multiplicador_SL": 1.5,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-09-25T03:31:10.686403+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (12h) tras último cierre por SL. Termina: 2026-09-25T21:05:45.408604+00:00."
     },
     "riesgo": null
 }
