@@ -4,7 +4,7 @@
     "precio_actual": 10.43,
     "EMA_9": 10.39,
     "EMA_21": 10.34,
-    "RSI": 66.87,
+    "RSI": 67.26,
     "ADX": 23.59,
     "ATR": 0.04,
     "stop_loss_long": 10.37,
@@ -14,13 +14,30 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": null,
-        "cumple_mandatory": null,
-        "score_actual": null,
-        "score_anterior": null,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (12h) tras último cierre por SL. Termina: 2026-09-25T09:33:40.609541+00:00."
+        "bias_htf": "LONG",
+        "cumple_mandatory": true,
+        "score_actual": 76.0,
+        "score_anterior": 0.0,
+        "senal": "LONG"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "LONG",
+        "precio_entrada": 10.433,
+        "stop_loss": 10.0734,
+        "tp1": 10.7926,
+        "tp2": 10.9724,
+        "tp3": 11.1522,
+        "nivel_estructura_referencia": 10.454,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 3.447,
+        "apalancamiento_sugerido": 2.9,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 290.13,
+        "cantidad_activo": 27.808692
+    }
 }
