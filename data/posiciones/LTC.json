@@ -1,7 +1,7 @@
 {
     "id_operacion": "LTC_20260925_041559_240839",
     "simbolo": "LTC/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 70.3,
     "stop_loss_original": 71.742753,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-25T04:15:59.240861+00:00"
+    "timestamp_apertura": "2026-09-25T04:15:59.240861+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 71.66,
+    "timestamp_cierre": "2026-09-25T22:13:36.299344+00:00"
 }
