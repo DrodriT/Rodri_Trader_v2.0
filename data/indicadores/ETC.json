@@ -1,11 +1,11 @@
 {
     "simbolo": "ETC/USDT:USDT",
-    "timestamp": "2026-09-25T04:50:00",
+    "timestamp": "2026-09-25T04:55:00",
     "precio_actual": 9.41,
     "EMA_9": 9.42,
     "EMA_21": 9.41,
     "RSI": 51.32,
-    "ADX": 10.75,
+    "ADX": 10.22,
     "ATR": 0.03,
     "stop_loss_long": 9.37,
     "multiplicador_SL": 1.5,
