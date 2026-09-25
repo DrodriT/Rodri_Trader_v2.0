@@ -118,7 +118,7 @@ CANTIDAD_VELAS_TENDENCIA = 120
 # ADX mínimo exigido en el timeframe operativo para considerar que hay
 # tendencia suficiente como para operar (más permisivo que ADX_UMBRAL_TENDENCIA,
 # que se sigue usando para el análisis de 1h en test_conexion_velas.py).
-ADX_MINIMO_MANDATORY = 20.0
+ADX_MINIMO_MANDATORY = 25.0
 
 # --- Componente STRUCTURE (Breakout) ---
 # Nº de velas hacia atrás (excluyendo la actual) para calcular el máximo/mínimo
