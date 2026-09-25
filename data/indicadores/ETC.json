@@ -1,11 +1,11 @@
 {
     "simbolo": "ETC/USDT:USDT",
     "timestamp": "2026-09-25T14:00:00",
-    "precio_actual": 9.3,
+    "precio_actual": 9.29,
     "EMA_9": 9.47,
     "EMA_21": 9.52,
-    "RSI": 27.58,
-    "ADX": 31.61,
+    "RSI": 27.29,
+    "ADX": 31.66,
     "ATR": 0.07,
     "stop_loss_long": 9.19,
     "multiplicador_SL": 1.5,
@@ -14,30 +14,13 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": "SHORT",
-        "cumple_mandatory": true,
-        "score_actual": 90.0,
-        "score_anterior": 66.0,
-        "senal": "SHORT"
+        "bias_htf": null,
+        "cumple_mandatory": null,
+        "score_actual": null,
+        "score_anterior": null,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición SHORT ya abierta desde 2026-09-25T14:03:57.249605+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "SHORT",
-        "precio_entrada": 9.298,
-        "stop_loss": 9.681141,
-        "tp1": 8.914859,
-        "tp2": 8.723289,
-        "tp3": 8.531719,
-        "nivel_estructura_referencia": 9.424,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 4.121,
-        "apalancamiento_sugerido": 2.43,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 242.68,
-        "cantidad_activo": 26.10008
-    }
+    "riesgo": null
 }
