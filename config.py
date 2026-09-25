@@ -134,7 +134,7 @@ VOLUME_SMA_PERIODO = 20
 # Puntuación mínima (sobre 100) que debe alcanzar el score compuesto para
 # considerar una entrada válida. La señal se dispara solo en el CRUCE hacia
 # arriba de este umbral (score actual >= umbral Y score anterior < umbral).
-SCORE_ENTRADA_MINIMO = 75.0
+SCORE_ENTRADA_MINIMO = 80.0
 
 # --- Desglose de puntos máximos por componente del score (deben sumar 100) ---
 PUNTOS_HTF_BIAS = 20
@@ -163,7 +163,7 @@ APALANCAMIENTO_MAXIMO = 50.0
 # lookback que ya usa el componente STRUCTURE de la estrategia: config.HIGHEST_LOWEST_PERIODO),
 # con un pequeño buffer adicional en múltiplos de ATR para no quedar pegado
 # exactamente al nivel (evita saltos por 'spikes' de mecha).
-SL_BUFFER_ATR_MULT = 1.4
+SL_BUFFER_ATR_MULT = 1.0
 
 # --- Take Profit (Riesgo:Beneficio) ---
 # TP1/TP2/TP3 se calculan como múltiplos de la distancia al SL (riesgo),
