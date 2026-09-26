@@ -4,9 +4,9 @@
     "precio_actual": 1.84,
     "EMA_9": 1.84,
     "EMA_21": 1.83,
-    "RSI": 62.65,
-    "ADX": 22.57,
-    "ATR": 0.0,
+    "RSI": 62.82,
+    "ADX": 22.62,
+    "ATR": 0.01,
     "stop_loss_long": 1.83,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-09-25T14:15:18.205432+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (12h) tras último cierre por SL. Termina: 2026-09-26T23:51:14.333634+00:00."
     },
     "riesgo": null
 }
