@@ -4938,5 +4938,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "OP_USDT_USDT_20260926_164628_301285",
+        "par": "OP/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-26T13:24:41.566282+00:00",
+        "timestamp_cierre": "2026-09-26T16:46:28.299825+00:00",
+        "precio_entrada": 0.1471,
+        "precio_salida": 0.1472,
+        "stop_loss_original": 0.144242,
+        "stop_loss_final": 0.1471,
+        "tp1": 0.149958,
+        "tp2": 0.151388,
+        "tp3": 0.152817,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
