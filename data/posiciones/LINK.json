@@ -1,7 +1,7 @@
 {
     "id_operacion": "LINK_20260926_105643_403611",
     "simbolo": "LINK/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 14.236,
     "stop_loss_original": 13.879383,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-26T10:56:43.403634+00:00"
+    "timestamp_apertura": "2026-09-26T10:56:43.403634+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 13.897,
+    "timestamp_cierre": "2026-09-26T20:47:42.642044+00:00"
 }
