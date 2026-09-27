@@ -1,11 +1,11 @@
 {
     "simbolo": "XRP/USDT:USDT",
-    "timestamp": "2026-09-27T18:30:00",
+    "timestamp": "2026-09-27T18:35:00",
     "precio_actual": 1.54,
     "EMA_9": 1.53,
     "EMA_21": 1.53,
-    "RSI": 69.34,
-    "ADX": 26.85,
+    "RSI": 69.46,
+    "ADX": 29.33,
     "ATR": 0.0,
     "stop_loss_long": 1.53,
     "multiplicador_SL": 1.5,
@@ -14,30 +14,13 @@
     "estrategia": {
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
-        "bias_htf": "LONG",
-        "cumple_mandatory": true,
-        "score_actual": 83.0,
-        "score_anterior": 78.0,
-        "senal": "LONG"
+        "bias_htf": null,
+        "cumple_mandatory": null,
+        "score_actual": null,
+        "score_anterior": null,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición LONG ya abierta desde 2026-09-27T18:34:52.052031+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "LONG",
-        "precio_entrada": 1.5357,
-        "stop_loss": 1.513257,
-        "tp1": 1.558143,
-        "tp2": 1.569365,
-        "tp3": 1.580586,
-        "nivel_estructura_referencia": 1.5381,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 1.461,
-        "apalancamiento_sugerido": 6.84,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 684.27,
-        "cantidad_activo": 445.5727
-    }
+    "riesgo": null
 }
