@@ -5518,5 +5518,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "XLM_USDT_USDT_20260927_182739_489909",
+        "par": "XLM/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-27T15:01:59.434609+00:00",
+        "timestamp_cierre": "2026-09-27T18:27:39.488464+00:00",
+        "precio_entrada": 0.21334,
+        "precio_salida": 0.21754,
+        "stop_loss_original": 0.217838,
+        "stop_loss_final": 0.217838,
+        "tp1": 0.208842,
+        "tp2": 0.206594,
+        "tp3": 0.204345,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
