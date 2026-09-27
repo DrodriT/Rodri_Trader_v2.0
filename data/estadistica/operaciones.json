@@ -5598,5 +5598,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "XRP_USDT_USDT_20260927_213740_112989",
+        "par": "XRP/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-27T18:34:52.052031+00:00",
+        "timestamp_cierre": "2026-09-27T21:37:40.111507+00:00",
+        "precio_entrada": 1.5357,
+        "precio_salida": 1.5173,
+        "stop_loss_original": 1.513257,
+        "stop_loss_final": 1.513257,
+        "tp1": 1.558143,
+        "tp2": 1.569365,
+        "tp3": 1.580586,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
