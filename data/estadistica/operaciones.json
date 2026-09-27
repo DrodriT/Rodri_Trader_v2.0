@@ -5398,5 +5398,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "DOGE_USDT_USDT_20260927_131245_783915",
+        "par": "DOGE/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-27T10:16:46.802517+00:00",
+        "timestamp_cierre": "2026-09-27T13:12:45.782526+00:00",
+        "precio_entrada": 0.09807,
+        "precio_salida": 0.09702,
+        "stop_loss_original": 0.097039,
+        "stop_loss_final": 0.097039,
+        "tp1": 0.099101,
+        "tp2": 0.099616,
+        "tp3": 0.100132,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
