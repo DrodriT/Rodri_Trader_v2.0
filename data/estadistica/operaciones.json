@@ -5658,5 +5658,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "HBAR_USDT_USDT_20260928_024335_415128",
+        "par": "HBAR/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-27T18:56:42.552912+00:00",
+        "timestamp_cierre": "2026-09-28T02:43:35.413906+00:00",
+        "precio_entrada": 0.09492,
+        "precio_salida": 0.0951,
+        "stop_loss_original": 0.093107,
+        "stop_loss_final": 0.09492,
+        "tp1": 0.096733,
+        "tp2": 0.09764,
+        "tp3": 0.098547,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
