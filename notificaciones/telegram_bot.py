@@ -4,6 +4,12 @@ import requests
 
 import config
 from .grafico import generar_grafico_operacion
+from informes.calculo import (
+    calcular_duracion,
+    calcular_pnl_operacion,
+    formatear_duracion,
+    pnl_del_dia,
+)
 
 TELEGRAM_API_URL = "https://api.telegram.org/bot{token}/sendMessage"
 TELEGRAM_API_URL_FOTO = "https://api.telegram.org/bot{token}/sendPhoto"
@@ -25,6 +31,13 @@ EVENTOS_POSICION = {
     "SL_TOCADO": ("❌", "SL tocado. Trade cerrado."),
     "BE_TOCADO": ("⚖️", "BE tocado. Trade cerrado en breakeven."),
 }
+
+# Eventos que cierran la posición: a estos se les añade el resumen rápido.
+EVENTOS_CIERRE = ("SL_TOCADO", "BE_TOCADO", "TP3_TOCADO")
+
+# Telegram limita el pie de foto a 1024 caracteres y los mensajes a 4096.
+LIMITE_CAPTION = 1000
+LIMITE_MENSAJE = 4000
 
 
 def _obtener_credenciales() -> tuple[str, str] | None:
@@ -195,6 +208,33 @@ def enviar_alerta(
     _enviar_mensaje(mensaje, contexto=f"entrada {par}")
 
 
+def _resumen_cierre(posicion: dict) -> str:
+    """
+    Resumen rápido de una operación recién cerrada: resultado en USDT y en %
+    del margen, duración y PnL acumulado del día. Si algo falla al calcularlo
+    devuelve cadena vacía: nunca debe impedir que salga el aviso de cierre.
+    """
+    try:
+        pnl = calcular_pnl_operacion(posicion)
+        if abs(pnl) < 0.005:
+            pnl = 0.0  # evita mostrar "-0.00" en cierres en breakeven
+        pct_margen = pnl / config.CAPITAL_POR_OPERACION_USDT * 100
+        lineas = [f"💰 Resultado: {pnl:+.2f} USDT ({pct_margen:+.1f}% del margen)"]
+
+        duracion = calcular_duracion(posicion)
+        if duracion is not None:
+            lineas.append(f"⏱ Duración: {formatear_duracion(duracion)}")
+
+        pnl_hoy, cerradas_hoy = pnl_del_dia()
+        if abs(pnl_hoy) < 0.005:
+            pnl_hoy = 0.0
+        lineas.append(f"📅 Hoy: {cerradas_hoy} cerradas | {pnl_hoy:+.2f} USDT")
+        return "\n".join(lineas)
+    except Exception as e:
+        print(f"  ⚠️ No se pudo calcular el resumen de cierre: {type(e).__name__} - {e}")
+        return ""
+
+
 def enviar_actualizacion_posicion(
     par: str,
     evento: str,
@@ -205,10 +245,10 @@ def enviar_actualizacion_posicion(
     Envía una notificación de Telegram sobre una posición YA ABIERTA:
     TP1/TP2/TP3 alcanzado, SL tocado, o cierre en breakeven.
 
-    Formato compacto de una sola línea (estilo panel de señales).
-    'posicion' y 'precio_actual' se mantienen como parámetros por si en el
-    futuro se necesitan, pero no se muestran: en este punto del ciclo de
-    vida de la operación no aportan información nueva.
+    Formato compacto (estilo panel de señales). Si el evento CIERRA la
+    posición (SL, BE o TP3) se añade debajo un resumen rápido: resultado,
+    duración y PnL del día. 'precio_actual' se mantiene como parámetro por
+    compatibilidad, pero no se muestra.
 
     'evento' debe ser una de las claves de EVENTOS_POSICION (ver arriba).
     """
@@ -217,4 +257,44 @@ def enviar_actualizacion_posicion(
 
     mensaje = f"{emoji} *{par_compacto}* – {texto}"
 
+    if evento in EVENTOS_CIERRE:
+        resumen = _resumen_cierre(posicion)
+        if resumen:
+            mensaje += "\n" + resumen
+
     _enviar_mensaje(mensaje, contexto=f"{evento} {par}")
+
+
+def _dividir_mensaje(texto: str, limite: int = LIMITE_MENSAJE) -> list[str]:
+    """
+    Parte un texto largo en trozos de como máximo 'limite' caracteres,
+    cortando siempre entre líneas para no romper el formato Markdown.
+    """
+    trozos, actual = [], ""
+    for linea in texto.split("\n"):
+        if actual and len(actual) + len(linea) + 1 > limite:
+            trozos.append(actual)
+            actual = linea
+        else:
+            actual = f"{actual}\n{linea}" if actual else linea
+    if actual:
+        trozos.append(actual)
+    return trozos
+
+
+def enviar_informe(
+    mensaje: str,
+    ruta_grafico: str | None = None,
+    caption: str = "",
+    contexto: str = "informe",
+) -> None:
+    """
+    Envía un informe periódico (diario o semanal). Si hay gráfico se manda
+    primero como foto con un pie corto, y después el texto completo, dividido
+    en varios mensajes si superara el límite de Telegram.
+    """
+    if ruta_grafico:
+        _enviar_foto(ruta_grafico, caption[:LIMITE_CAPTION], contexto=contexto)
+
+    for trozo in _dividir_mensaje(mensaje):
+        _enviar_mensaje(trozo, contexto=contexto)

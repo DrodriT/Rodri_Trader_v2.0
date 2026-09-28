@@ -196,3 +196,10 @@ COOLDOWN_HORAS_NORMAL = 4
 # está fallando repetidamente en ese par y conviene dejarlo más tiempo fuera.
 COOLDOWN_HORAS_SL_CONSECUTIVOS = 12
 SL_CONSECUTIVOS_PARA_COOLDOWN_LARGO = 2
+
+# ==============================================================================
+# 8. INFORMES
+# ==============================================================================
+# Zona horaria que define cuándo empieza y acaba el "día" y la "semana" en los
+# informes (la semana va de lunes a domingo).
+ZONA_HORARIA_INFORMES = "Europe/Madrid"

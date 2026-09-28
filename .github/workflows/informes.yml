@@ -1,0 +1,35 @@
+name: Informes
+
+# Se lanza a mano o desde cron-job.org (workflow_dispatch), igual que el bot.
+on:
+  workflow_dispatch:
+    inputs:
+      tipo:
+        description: "Tipo de informe"
+        required: true
+        type: choice
+        options:
+          - diario
+          - semanal
+
+jobs:
+  informe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Generar y enviar el informe
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python informe.py ${{ inputs.tipo }}

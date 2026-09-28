@@ -122,3 +122,64 @@ def generar_grafico_operacion(
         print(f"  ❌ Error generando el gráfico de {par}: {type(e).__name__} - {e}")
         plt.close("all")  # por si la figura quedó a medio crear, no se acumula en memoria
         return None
+    
+def generar_grafico_semanal(
+    capitales: list[float],
+    indice_inicio_semana: int,
+    etiquetas_dias: list[str],
+    pnl_dias: list[float],
+    capital_inicial: float,
+) -> str | None:
+    """
+    Genera la imagen del informe semanal con dos paneles:
+      - Arriba: curva de capital operación a operación desde el inicio del
+        test, con una línea vertical donde empieza la semana.
+      - Abajo: PnL de cada día de la semana (verde si gana, rojo si pierde).
+
+    Devuelve la ruta del PNG temporal, o None si algo falla (nunca lanza
+    excepción: el informe de texto se envía igualmente).
+    """
+    try:
+        fig, (eje_capital, eje_dias) = plt.subplots(
+            2, 1, figsize=(9, 7), gridspec_kw={"height_ratios": [3, 2]}
+        )
+
+        x = list(range(len(capitales)))
+        eje_capital.plot(x, capitales, color=COLOR_ENTRADA, linewidth=1.6)
+        eje_capital.axhline(capital_inicial, color="#9E9E9E", linestyle="--", linewidth=1)
+        eje_capital.fill_between(
+            x, capital_inicial, capitales,
+            where=[c >= capital_inicial for c in capitales],
+            color=COLOR_TP, alpha=0.15, interpolate=True,
+        )
+        eje_capital.fill_between(
+            x, capital_inicial, capitales,
+            where=[c < capital_inicial for c in capitales],
+            color=COLOR_SL, alpha=0.15, interpolate=True,
+        )
+        if 0 < indice_inicio_semana < len(capitales):
+            eje_capital.axvline(indice_inicio_semana, color="#FB8C00", linestyle=":", linewidth=1.3)
+            eje_capital.annotate(
+                "inicio de semana", xy=(indice_inicio_semana, capitales[indice_inicio_semana]),
+                xytext=(5, 10), textcoords="offset points", color="#FB8C00", fontsize=8,
+            )
+        eje_capital.set_title("Evolución del capital (USDT)")
+        eje_capital.set_xlabel("Operaciones cerradas")
+        eje_capital.grid(alpha=0.3)
+
+        colores = [COLOR_TP if v >= 0 else COLOR_SL for v in pnl_dias]
+        eje_dias.bar(etiquetas_dias, pnl_dias, color=colores)
+        eje_dias.axhline(0, color="#9E9E9E", linewidth=1)
+        eje_dias.set_title("PnL por día (USDT)")
+        eje_dias.grid(axis="y", alpha=0.3)
+
+        fig.tight_layout()
+        ruta_temp = os.path.join(tempfile.gettempdir(), "grafico_semanal.png")
+        fig.savefig(ruta_temp, dpi=130, bbox_inches="tight")
+        plt.close(fig)
+        return ruta_temp
+
+    except Exception as e:
+        print(f"  ❌ Error generando el gráfico semanal: {type(e).__name__} - {e}")
+        plt.close("all")
+        return None
