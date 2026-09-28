@@ -144,6 +144,13 @@ PUNTOS_ADX = 15
 PUNTOS_VOLUME = 10
 PUNTOS_STRUCTURE = 15
 
+# --- Calentamiento tras un reinicio ---
+# Si es True, el primer análisis de un par SIN snapshot previo (primera
+# ejecución tras un reset, o par recién añadido) solo guarda su score como
+# referencia: no envía alerta ni abre posición. Evita una ráfaga de entradas
+# tardías en pares cuya tendencia ya llevaba horas en marcha.
+CALENTAMIENTO_PRIMERA_EJECUCION = True
+
 # ==============================================================================
 # 6. GESTIÓN DE RIESGO (SL / TP / Apalancamiento)
 # ==============================================================================

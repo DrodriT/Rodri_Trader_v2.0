@@ -363,10 +363,23 @@ def analizar_par(exchange, par: str) -> dict | None:
 
         estrategia_previa = leer_estrategia_previa(par)
 
+        # Calentamiento: si este par NO tiene snapshot previo (primera
+        # ejecución tras un reinicio, o par recién añadido a la lista), el
+        # 'score anterior' partiría de 0.0 y cualquier par que ya estuviera
+        # por encima del umbral dispararía una entrada tardía. En ese caso
+        # solo calculamos y guardamos el score como referencia.
+        es_calentamiento = (
+            config.CALENTAMIENTO_PRIMERA_EJECUCION and estrategia_previa is None
+        )
+
         resultado_estrategia = generar_senal(
             par, df_5m, df_15m, resultado_previo=estrategia_previa
         )
         resultado_estrategia.pop("par", None)
+
+        if es_calentamiento:
+            resultado_estrategia["senal"] = None  # sin alerta ni posición
+            resultado_estrategia["calentamiento"] = True
 
     # ---------- 2) Gestión de riesgo + apertura de posición si hay señal ----------
     plan_riesgo = None
@@ -463,6 +476,9 @@ def main():
                         riesgo=riesgo,
                         df_htf=analisis.get("df_15m"),
                     )
+                elif resultado_estrategia.get("calentamiento"):
+                    print("  🔥 Calentamiento: primer análisis del par, score guardado como "
+                          "referencia (sin señal).")
                 else:
                     print("  Señal de entrada:      Ninguna (sin cruce de umbral)")
                 print()
