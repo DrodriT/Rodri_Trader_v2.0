@@ -1,0 +1,17 @@
+{
+    "id_operacion": "ADA_20260928_120645_842186",
+    "simbolo": "ADA/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "LONG",
+    "precio_entrada": 0.2492,
+    "stop_loss_original": 0.243321,
+    "stop_loss_actual": 0.243321,
+    "tp1": 0.255079,
+    "tp2": 0.258019,
+    "tp3": 0.260959,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-28T12:06:45.842207+00:00"
+}
