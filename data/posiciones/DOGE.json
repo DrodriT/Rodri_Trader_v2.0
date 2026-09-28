@@ -1,0 +1,17 @@
+{
+    "id_operacion": "DOGE_20260928_123649_072160",
+    "simbolo": "DOGE/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "LONG",
+    "precio_entrada": 0.09435,
+    "stop_loss_original": 0.092596,
+    "stop_loss_actual": 0.092596,
+    "tp1": 0.096104,
+    "tp2": 0.096982,
+    "tp3": 0.097859,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-28T12:36:49.072180+00:00"
+}
