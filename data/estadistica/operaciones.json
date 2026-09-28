@@ -5638,5 +5638,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "BTC_USDT_USDT_20260928_002140_750448",
+        "par": "BTC/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-27T22:35:50.729364+00:00",
+        "timestamp_cierre": "2026-09-28T00:21:40.748962+00:00",
+        "precio_entrada": 84192.6,
+        "precio_salida": 84955.0,
+        "stop_loss_original": 84845.684855,
+        "stop_loss_final": 84845.684855,
+        "tp1": 83539.515145,
+        "tp2": 83212.972718,
+        "tp3": 82886.430291,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
