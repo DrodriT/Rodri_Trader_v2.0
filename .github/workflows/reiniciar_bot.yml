@@ -1,0 +1,60 @@
+name: Reiniciar bot
+
+# Solo se lanza a mano desde la pestaña Actions.
+on:
+  workflow_dispatch:
+    inputs:
+      confirmacion:
+        description: "Escribe RESET para confirmar el borrado de todo el estado del bot"
+        required: true
+        type: string
+      guardar_copia:
+        description: "Guardar copia del histórico en data/historico/ antes de borrar"
+        required: true
+        type: boolean
+        default: true
+
+# Necesario para poder commitear el borrado al repo.
+permissions:
+  contents: write
+
+jobs:
+  reiniciar:
+    runs-on: ubuntu-latest
+    steps:
+      # Seguridad: si no se escribe exactamente RESET, el workflow falla sin tocar nada.
+      - name: Comprobar confirmación
+        if: ${{ inputs.confirmacion != 'RESET' }}
+        run: |
+          echo "Confirmación incorrecta: hay que escribir RESET. No se ha borrado nada."
+          exit 1
+
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reiniciar el estado del bot
+        run: |
+          if [ "${{ inputs.guardar_copia }}" = "true" ]; then
+            python3 reset_bot.py --si --guardar-copia
+          else
+            python3 reset_bot.py --si
+          fi
+
+      - name: Commit y push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data
+          if git diff --cached --quiet; then
+            echo "No hay cambios que commitear."
+            exit 0
+          fi
+          git commit -m "Reinicio del test: ADX 25 / score 80"
+          for i in 1 2 3 4 5; do
+            git pull --rebase && git push && exit 0
+            echo "Reintento $i..."
+            sleep 5
+          done
+          exit 1
