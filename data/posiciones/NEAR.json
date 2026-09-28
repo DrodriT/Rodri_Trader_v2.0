@@ -1,0 +1,17 @@
+{
+    "id_operacion": "NEAR_20260928_094600_425589",
+    "simbolo": "NEAR/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "SHORT",
+    "precio_entrada": 4.946,
+    "stop_loss_original": 5.232963,
+    "stop_loss_actual": 5.232963,
+    "tp1": 4.659037,
+    "tp2": 4.515555,
+    "tp3": 4.372074,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-28T09:46:00.425613+00:00"
+}
