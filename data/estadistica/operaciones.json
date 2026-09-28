@@ -1,0 +1,22 @@
+[
+    {
+        "id_operacion": "ARB_USDT_USDT_20260928_095445_617792",
+        "par": "ARB/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-09-28T06:53:45.052842+00:00",
+        "timestamp_cierre": "2026-09-28T09:54:45.617415+00:00",
+        "precio_entrada": 0.21204,
+        "precio_salida": 0.20499,
+        "stop_loss_original": 0.215587,
+        "stop_loss_final": 0.21204,
+        "tp1": 0.208493,
+        "tp2": 0.206719,
+        "tp3": 0.204945,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
+    }
+]
