@@ -198,5 +198,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "DOGE_USDT_USDT_20260928_142849_735067",
+        "par": "DOGE/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-28T12:36:49.072180+00:00",
+        "timestamp_cierre": "2026-09-28T14:28:49.734738+00:00",
+        "precio_entrada": 0.09435,
+        "precio_salida": 0.09261,
+        "stop_loss_original": 0.092596,
+        "stop_loss_final": 0.092596,
+        "tp1": 0.096104,
+        "tp2": 0.096982,
+        "tp3": 0.097859,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
