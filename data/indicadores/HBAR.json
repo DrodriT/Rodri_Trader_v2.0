@@ -1,11 +1,11 @@
 {
     "simbolo": "HBAR/USDT:USDT",
-    "timestamp": "2026-09-28T12:15:00",
+    "timestamp": "2026-09-28T12:20:00",
     "precio_actual": 0.12,
     "EMA_9": 0.12,
     "EMA_21": 0.12,
-    "RSI": 76.2,
-    "ADX": 34.62,
+    "RSI": 78.89,
+    "ADX": 36.13,
     "ATR": 0.0,
     "stop_loss_long": 0.12,
     "multiplicador_SL": 1.5,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición LONG ya abierta desde 2026-09-28T08:41:01.330672+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-09-28T16:21:04.586861+00:00."
     },
     "riesgo": null
 }
