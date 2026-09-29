@@ -1,7 +1,7 @@
 {
     "id_operacion": "XRP_20260928_195949_575680",
     "simbolo": "XRP/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 1.4853,
     "stop_loss_original": 1.523407,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-28T19:59:49.575703+00:00"
+    "timestamp_apertura": "2026-09-28T19:59:49.575703+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 1.5359,
+    "timestamp_cierre": "2026-09-29T12:34:56.620364+00:00"
 }
