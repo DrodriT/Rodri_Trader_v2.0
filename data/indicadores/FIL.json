@@ -1,10 +1,10 @@
 {
     "simbolo": "FIL/USDT:USDT",
-    "timestamp": "2026-09-29T08:50:00",
+    "timestamp": "2026-09-29T08:55:00",
     "precio_actual": 1.06,
     "EMA_9": 1.06,
     "EMA_21": 1.06,
-    "RSI": 60.91,
+    "RSI": 60.97,
     "ADX": 29.9,
     "ATR": 0.0,
     "stop_loss_long": 1.06,
