@@ -1,7 +1,7 @@
 {
     "id_operacion": "APT_20260928_234143_414972",
     "simbolo": "APT/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 0.8283,
     "stop_loss_original": 0.798569,
@@ -13,5 +13,8 @@
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
     "sl_movido_be": false,
-    "timestamp_apertura": "2026-09-28T23:41:43.414993+00:00"
+    "timestamp_apertura": "2026-09-28T23:41:43.414993+00:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 0.8035,
+    "timestamp_cierre": "2026-09-29T02:23:21.328070+00:00"
 }
