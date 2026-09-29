@@ -1,13 +1,13 @@
 {
     "simbolo": "XMR/USDT:USDT",
     "timestamp": "2026-09-29T06:05:00",
-    "precio_actual": 542.37,
-    "EMA_9": 541.07,
-    "EMA_21": 540.91,
-    "RSI": 58.28,
-    "ADX": 19.72,
-    "ATR": 1.05,
-    "stop_loss_long": 540.8,
+    "precio_actual": 543.66,
+    "EMA_9": 541.33,
+    "EMA_21": 541.03,
+    "RSI": 62.84,
+    "ADX": 20.49,
+    "ATR": 1.14,
+    "stop_loss_long": 541.95,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-09-29T01:36:54.361601+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (12h) tras último cierre por SL. Termina: 2026-09-29T18:07:38.366041+00:00."
     },
     "riesgo": null
 }
