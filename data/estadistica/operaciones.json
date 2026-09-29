@@ -1038,5 +1038,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "ICP_USDT_USDT_20260929_202646_612342",
+        "par": "ICP/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-29T03:41:37.080397+00:00",
+        "timestamp_cierre": "2026-09-29T20:26:46.611743+00:00",
+        "precio_entrada": 3.191,
+        "precio_salida": 3.547,
+        "stop_loss_original": 3.02474,
+        "stop_loss_final": 3.191,
+        "tp1": 3.35726,
+        "tp2": 3.44039,
+        "tp3": 3.523521,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
