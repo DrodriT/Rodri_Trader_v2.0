@@ -858,5 +858,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "SUI_USDT_USDT_20260929_134742_583952",
+        "par": "SUI/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-29T11:33:39.621576+00:00",
+        "timestamp_cierre": "2026-09-29T13:47:42.583350+00:00",
+        "precio_entrada": 1.1765,
+        "precio_salida": 1.16,
+        "stop_loss_original": 1.156693,
+        "stop_loss_final": 1.156693,
+        "tp1": 1.196307,
+        "tp2": 1.20621,
+        "tp3": 1.216114,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
