@@ -18,6 +18,8 @@ from .posiciones import (
     evaluar_posicion,
 )
 from .cooldown import en_cooldown, registrar_cierre
+from .limites import comprobar_limites_entrada 
+
 
 __all__ = [
     "calcular_gestion_riesgo",
@@ -28,6 +30,7 @@ __all__ = [
     "evaluar_posicion",
     "en_cooldown",
     "registrar_cierre",
+    "comprobar_limites_entrada",
 ]
 
 

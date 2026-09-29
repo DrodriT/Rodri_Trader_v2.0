@@ -203,3 +203,22 @@ SL_CONSECUTIVOS_PARA_COOLDOWN_LARGO = 2
 # Zona horaria que define cuándo empieza y acaba el "día" y la "semana" en los
 # informes (la semana va de lunes a domingo).
 ZONA_HORARIA_INFORMES = "Europe/Madrid"
+
+# ==============================================================================
+# 9. LÍMITES DE ENTRADA (cartera y horario)
+# ==============================================================================
+
+# Máximo de posiciones abiertas a la vez, sumando TODOS los pares. Con el
+# tope alcanzado, las señales nuevas se bloquean hasta que se cierre alguna.
+MAX_POSICIONES_SIMULTANEAS = 4
+
+# Filtro de fin de semana: ventana sin señales NUEVAS. Las posiciones ya
+# abiertas se siguen monitorizando (SL/TP/BE) con normalidad.
+FILTRO_FIN_DE_SEMANA_ACTIVO = True
+ZONA_HORARIA_FILTRO = "Europe/Madrid"
+
+# Días según datetime.weekday(): 0=lunes ... 4=viernes, 6=domingo
+FIN_SEMANA_INICIO_DIA = 4     # viernes
+FIN_SEMANA_INICIO_HORA = 20   # 20:00
+FIN_SEMANA_FIN_DIA = 6        # domingo
+FIN_SEMANA_FIN_HORA = 7       # 07:00

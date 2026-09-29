@@ -27,6 +27,7 @@ from gestion_riesgo import (
     cerrar_posicion,
     evaluar_posicion,
     en_cooldown,
+    comprobar_limites_entrada, 
 )
 
 # Importamos las notificaciones (Telegram)
@@ -257,16 +258,20 @@ def gestionar_posicion_abierta(par: str, par_base: str, posicion: dict, ultima_v
 
 def analizar_par(exchange, par: str) -> dict | None:
     """
-    Descarga las velas de 5m (entrada) y 15m (tendencia) para el par.
+    Descarga las velas de 5m (entrada) y 15m (tendencia) para el par y evalúa
+    la estrategia SIEMPRE, en cada ciclo.
 
-    Si ya existe una posición ABIERTA para este par, la monitoriza (SL/TP1/
-    TP2/TP3/BE) y NO evalúa ni genera una nueva señal de entrada mientras
-    siga abierta — evita señales repetidas sobre la misma moneda.
+    Si el par no puede abrir una señal nueva (posición abierta o cooldown
+    activo), la estrategia se calcula igualmente y su score se guarda como
+    referencia real; lo único que cambia es que la señal se anula. Así, al
+    terminar el bloqueo, 'score_anterior' es un valor real y no 0.0 (lo que
+    provocaría una entrada tardía en un par cuyo score ya estaba por encima
+    del umbral).
 
-    Si no hay posición abierta (o se acaba de cerrar en este mismo ciclo),
-    comprueba si el par sigue en cooldown tras su último cierre; si no lo
-    está, evalúa la estrategia con normalidad y, si genera una señal nueva,
-    abre la posición correspondiente.
+    Orden de comprobaciones sobre una señal ya generada:
+        1. Posición abierta / cooldown  -> señal anulada
+        2. Calentamiento (sin referencia previa) -> señal anulada
+        3. Límites de cartera y horario -> señal anulada
 
     Devuelve un diccionario con toda la información del par, listo para
     imprimir y guardar en JSON. Devuelve None si falla la descarga de 5m.
@@ -290,6 +295,11 @@ def analizar_par(exchange, par: str) -> dict | None:
 
     par_base = obtener_simbolo_base(par)
 
+    # 'bloqueo' es None si el par puede abrir una señal nueva, o un dict con
+    # el motivo (y una nota legible) si no puede. NO corta el análisis: solo
+    # anula la señal más abajo.
+    bloqueo = None
+
     # ---------- 1) ¿Hay ya una posición abierta para este par? ----------
     posicion_abierta = cargar_posicion(par_base)
 
@@ -297,53 +307,32 @@ def analizar_par(exchange, par: str) -> dict | None:
         posicion_actualizada = gestionar_posicion_abierta(par, par_base, posicion_abierta, ultima_vela)
 
         if posicion_actualizada.get("estado") == "abierta":
-            # Sigue abierta tras esta vela: NO evaluamos nueva señal.
-            resultado_estrategia = {
-                "bias_htf": None,
-                "cumple_mandatory": None,
-                "score_actual": None,
-                "score_anterior": None,
-                "senal": None,
+            bloqueo = {
                 "posicion_abierta": True,
                 "nota": f"Posición {posicion_actualizada['direccion']} ya abierta desde "
                         f"{posicion_actualizada['timestamp_apertura']}. Esperando SL/TP3.",
             }
-            return {
-                "ultima_vela": ultima_vela,
-                "precio_actual": precio_actual,
-                "sl_long": sl_long,
-                "estrategia": resultado_estrategia,
-                "riesgo": None,
-                "df_15m": None,
-            }
-        # Si se cerró en este mismo ciclo (SL/BE/TP3), continuamos abajo
-        # con el flujo normal para evaluar si hay una señal NUEVA ya mismo.
+        # Si se cerró en este mismo ciclo (SL/BE/TP3), el cooldown que se
+        # acaba de registrar se detecta justo debajo.
 
     # ---------- 1.5) ¿Está el par en cooldown tras su último cierre? ----------
-    cooldown_activo = en_cooldown(par_base)
-    if cooldown_activo is not None:
-        resultado_estrategia = {
-            "bias_htf": None,
-            "cumple_mandatory": None,
-            "score_actual": None,
-            "score_anterior": None,
-            "senal": None,
-            "en_cooldown": True,
-            "nota": (
-                f"En cooldown ({cooldown_activo['cooldown_horas']}h) tras último cierre "
-                f"por {cooldown_activo['motivo_cierre']}. Termina: {cooldown_activo['cooldown_hasta']}."
-            ),
-        }
-        return {
-            "ultima_vela": ultima_vela,
-            "precio_actual": precio_actual,
-            "sl_long": sl_long,
-            "estrategia": resultado_estrategia,
-            "riesgo": None,
-            "df_15m": None,
-        }
+    if bloqueo is None:
+        cooldown_activo = en_cooldown(par_base)
+        if cooldown_activo is not None:
+            bloqueo = {
+                "en_cooldown": True,
+                "nota": (
+                    f"En cooldown ({cooldown_activo['cooldown_horas']}h) tras último cierre "
+                    f"por {cooldown_activo['motivo_cierre']}. Termina: {cooldown_activo['cooldown_hasta']}."
+                ),
+            }
+
+    # ---------- Snapshot de la ejecución anterior (referencia del score) ----------
+    estrategia_previa = leer_estrategia_previa(par)
 
     # ---------- Valor por defecto: NUNCA debe quedar como None ----------
+    # Se usa si falla la descarga de 15m. Conservamos el último bias/score
+    # real conocido para no perder la referencia por un fallo puntual de red.
     resultado_estrategia = {
         "bias_htf": None,
         "cumple_mandatory": None,
@@ -352,24 +341,25 @@ def analizar_par(exchange, par: str) -> dict | None:
         "senal": None,
         "error": "No se pudieron descargar velas de 15m para evaluar la estrategia.",
     }
+    if estrategia_previa is not None and estrategia_previa.get("score_actual") is not None:
+        resultado_estrategia["bias_htf"] = estrategia_previa.get("bias_htf")
+        resultado_estrategia["score_actual"] = estrategia_previa["score_actual"]
 
-    # ---------- Timeframe HTF (15m) ----------
+    # ---------- Timeframe HTF (15m) + evaluación de la estrategia ----------
     df_15m = descargar_velas(
         exchange, par, config.TIMEFRAME_TENDENCIA, config.CANTIDAD_VELAS_TENDENCIA
     )
 
+    es_calentamiento = False
     if df_15m is not None:
         df_15m = calcular_indicadores_tendencia(df_15m)
 
-        estrategia_previa = leer_estrategia_previa(par)
-
-        # Calentamiento: si este par NO tiene snapshot previo (primera
-        # ejecución tras un reinicio, o par recién añadido a la lista), el
-        # 'score anterior' partiría de 0.0 y cualquier par que ya estuviera
-        # por encima del umbral dispararía una entrada tardía. En ese caso
-        # solo calculamos y guardamos el score como referencia.
-        es_calentamiento = (
-            config.CALENTAMIENTO_PRIMERA_EJECUCION and estrategia_previa is None
+        # Calentamiento: no hay una referencia real de score (primera
+        # ejecución tras un reinicio, par nuevo, o snapshot antiguo sin
+        # score). Sin referencia, 'score anterior' partiría de 0.0 y un par
+        # ya por encima del umbral dispararía una entrada tardía.
+        es_calentamiento = config.CALENTAMIENTO_PRIMERA_EJECUCION and (
+            estrategia_previa is None or estrategia_previa.get("score_actual") is None
         )
 
         resultado_estrategia = generar_senal(
@@ -377,9 +367,26 @@ def analizar_par(exchange, par: str) -> dict | None:
         )
         resultado_estrategia.pop("par", None)
 
+    # ---------- Anulación de la señal según el estado del par ----------
+    if bloqueo is not None:
+        # Posición abierta o cooldown: el score ya está calculado y se
+        # guardará como referencia; solo anulamos la señal.
+        resultado_estrategia["senal"] = None
+        resultado_estrategia.update(bloqueo)
+
+    elif df_15m is not None:
         if es_calentamiento:
             resultado_estrategia["senal"] = None  # sin alerta ni posición
             resultado_estrategia["calentamiento"] = True
+
+        elif resultado_estrategia.get("senal"):
+            # Límites de cartera y horario. El score sí se persiste, así que
+            # la señal no se dispara tarde cuando se libere un hueco.
+            permitido, motivo = comprobar_limites_entrada()
+            if not permitido:
+                resultado_estrategia["senal_bloqueada"] = resultado_estrategia["senal"]
+                resultado_estrategia["motivo_bloqueo"] = motivo
+                resultado_estrategia["senal"] = None
 
     # ---------- 2) Gestión de riesgo + apertura de posición si hay señal ----------
     plan_riesgo = None
@@ -401,7 +408,6 @@ def analizar_par(exchange, par: str) -> dict | None:
         # timeframe de TENDENCIA, ej. 15m — ver notificaciones/grafico.py).
         "df_15m": df_15m if plan_riesgo else None,
     }
-
 
 def main():
     exchange = inicializar_exchange()
@@ -434,10 +440,12 @@ def main():
 
             # ---------- IMPRESIÓN EN PANTALLA (posición abierta / cooldown / error / estrategia) ----------
             if resultado_estrategia.get("posicion_abierta"):
-                print(f"  🔒 {resultado_estrategia['nota']}\n")
+                print(f"  🔒 {resultado_estrategia['nota']}")
+                print(f"  Score (referencia):    {resultado_estrategia['score_actual']}/100\n")
 
             elif resultado_estrategia.get("en_cooldown"):
-                print(f"  ⏳ {resultado_estrategia['nota']}\n")
+                print(f"  ⏳ {resultado_estrategia['nota']}")
+                print(f"  Score (referencia):    {resultado_estrategia['score_actual']}/100\n")
 
             elif resultado_estrategia.get("error"):
                 print(f"  ⚠️ Estrategia: {resultado_estrategia['error']}\n")
@@ -476,9 +484,14 @@ def main():
                         riesgo=riesgo,
                         df_htf=analisis.get("df_15m"),
                     )
+                elif resultado_estrategia.get("senal_bloqueada"):
+                    print(f"  ⛔ Señal {resultado_estrategia['senal_bloqueada']} bloqueada: "
+                          f"{resultado_estrategia['motivo_bloqueo']}")
+                    
                 elif resultado_estrategia.get("calentamiento"):
-                    print("  🔥 Calentamiento: primer análisis del par, score guardado como "
-                          "referencia (sin señal).")
+                    print("  🔥 Calentamiento: sin score de referencia previo, score guardado "
+                          "como referencia (sin señal).")
+                    
                 else:
                     print("  Señal de entrada:      Ninguna (sin cruce de umbral)")
                 print()
