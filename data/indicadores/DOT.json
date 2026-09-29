@@ -1,13 +1,13 @@
 {
     "simbolo": "DOT/USDT:USDT",
-    "timestamp": "2026-09-29T07:20:00",
+    "timestamp": "2026-09-29T07:25:00",
     "precio_actual": 1.18,
     "EMA_9": 1.18,
     "EMA_21": 1.17,
-    "RSI": 68.43,
-    "ADX": 20.5,
+    "RSI": 68.2,
+    "ADX": 22.41,
     "ATR": 0.01,
-    "stop_loss_long": 1.17,
+    "stop_loss_long": 1.18,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": null,
         "score_anterior": null,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-09-28T09:46:03.278798+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-09-29T11:25:53.788869+00:00."
     },
     "riesgo": null
 }
