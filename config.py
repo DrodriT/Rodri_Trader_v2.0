@@ -71,8 +71,8 @@ RSI_SOBRECOMPRA = 70.0  # Nivel por encima del cual se considera sobrecomprado
 RSI_SOBREVENTA = 30.0   # Nivel por debajo del cual se considera sobrevendido
 
 # --- Medias Móviles (EMA) ---
-EMA_RAPIDA_PERIODO = 9    # Periodo de la EMA rápida (ej. 9 o 20)
-EMA_LENTA_PERIODO = 21   # Periodo de la EMA lenta (ej. 21 o 50)
+EMA_RAPIDA_PERIODO = 21  #9    # Periodo de la EMA rápida (ej. 9 o 20)
+EMA_LENTA_PERIODO = 55 #21   # Periodo de la EMA lenta (ej. 21 o 50)
 EMA_TENDENCIA_PERIODO = 200  # EMA institucional para filtro de tendencia mayor
 
 # --- Medias Móviles Simples (SMA) ---
