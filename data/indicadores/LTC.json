@@ -5,7 +5,7 @@
     "EMA_21": 67.02,
     "EMA_55": 67.24,
     "RSI": 38.1,
-    "ADX": 40.49,
+    "ADX": 40.43,
     "ATR": 0.32,
     "stop_loss_long": 66.13,
     "multiplicador_SL": 1.5,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 62.0,
-        "score_anterior": 70.0,
+        "score_anterior": 62.0,
         "senal": null
     },
     "riesgo": null
