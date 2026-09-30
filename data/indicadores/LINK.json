@@ -1,13 +1,13 @@
 {
     "simbolo": "LINK/USDT:USDT",
     "timestamp": "2026-09-30T00:10:00",
-    "precio_actual": 14.45,
+    "precio_actual": 14.43,
     "EMA_9": 14.56,
     "EMA_21": 14.62,
-    "RSI": 21.58,
-    "ADX": 26.07,
+    "RSI": 20.54,
+    "ADX": 26.13,
     "ATR": 0.05,
-    "stop_loss_long": 14.38,
+    "stop_loss_long": 14.36,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,27 +17,10 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 90.0,
-        "score_anterior": 0.0,
-        "senal": "SHORT"
+        "score_anterior": 90.0,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición SHORT ya abierta desde 2026-09-30T00:11:37.930576+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "SHORT",
-        "precio_entrada": 14.448,
-        "stop_loss": 14.813933,
-        "tp1": 14.082067,
-        "tp2": 13.899101,
-        "tp3": 13.716135,
-        "nivel_estructura_referencia": 14.461,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 2.533,
-        "apalancamiento_sugerido": 3.95,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 394.83,
-        "cantidad_activo": 27.327433
-    }
+    "riesgo": null
 }
