@@ -4,7 +4,7 @@
     "precio_actual": 3.5,
     "EMA_21": 3.49,
     "EMA_55": 3.46,
-    "RSI": 56.52,
+    "RSI": 57.65,
     "ADX": 33.58,
     "ATR": 0.02,
     "stop_loss_long": 3.47,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 76.0,
-        "score_anterior": 68.0,
+        "score_anterior": 76.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (4h) tras último cierre por SL. Termina: 2026-09-30T16:47:50.428015+00:00."
