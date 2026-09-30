@@ -3,8 +3,8 @@
     "timestamp": "2026-09-30T09:25:00",
     "precio_actual": 0.23,
     "EMA_9": 0.23,
-    "EMA_21": 0.23,
-    "RSI": 68.27,
+    "EMA_21": 0.22,
+    "RSI": 67.34,
     "ADX": 28.43,
     "ATR": 0.0,
     "stop_loss_long": 0.23,
@@ -16,11 +16,9 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 90.0,
-        "score_anterior": 83.0,
-        "senal": null,
-        "senal_bloqueada": "LONG",
-        "motivo_bloqueo": "máximo de posiciones simultáneas alcanzado (4/4)"
+        "score_actual": 83.0,
+        "score_anterior": 90.0,
+        "senal": null
     },
     "riesgo": null
 }
