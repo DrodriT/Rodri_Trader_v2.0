@@ -1,13 +1,13 @@
 {
     "simbolo": "AVAX/USDT:USDT",
     "timestamp": "2026-09-30T14:20:00",
-    "precio_actual": 10.99,
+    "precio_actual": 10.94,
     "EMA_21": 11.13,
     "EMA_55": 11.16,
-    "RSI": 29.36,
-    "ADX": 36.28,
-    "ATR": 0.06,
-    "stop_loss_long": 10.89,
+    "RSI": 26.31,
+    "ADX": 36.85,
+    "ATR": 0.07,
+    "stop_loss_long": 10.83,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 75.0,
-        "score_anterior": 80.0,
-        "senal": null
+        "score_actual": 92.0,
+        "score_anterior": 75.0,
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 10.94,
+        "stop_loss": 11.437843,
+        "tp1": 10.442157,
+        "tp2": 10.193235,
+        "tp3": 9.944314,
+        "nivel_estructura_referencia": 10.976,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 4.551,
+        "apalancamiento_sugerido": 2.2,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 219.75,
+        "cantidad_activo": 20.08665
+    }
 }
