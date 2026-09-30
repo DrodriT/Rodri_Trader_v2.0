@@ -4,8 +4,8 @@
     "precio_actual": 7.35,
     "EMA_21": 7.54,
     "EMA_55": 7.61,
-    "RSI": 23.32,
-    "ADX": 33.21,
+    "RSI": 23.21,
+    "ADX": 33.41,
     "ATR": 0.06,
     "stop_loss_long": 7.26,
     "multiplicador_SL": 1.5,
@@ -17,27 +17,10 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 85.0,
-        "score_anterior": 78.0,
-        "senal": "SHORT"
+        "score_anterior": 85.0,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición SHORT ya abierta desde 2026-09-30T14:28:45.976159+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "SHORT",
-        "precio_entrada": 7.352,
-        "stop_loss": 7.822628,
-        "tp1": 6.881372,
-        "tp2": 6.646058,
-        "tp3": 6.410744,
-        "nivel_estructura_referencia": 7.37,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 6.401,
-        "apalancamiento_sugerido": 1.56,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 156.22,
-        "cantidad_activo": 21.248213
-    }
+    "riesgo": null
 }
