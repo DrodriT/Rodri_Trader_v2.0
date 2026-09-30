@@ -1,7 +1,7 @@
 {
     "id_operacion": "BTC_20260930_124849_717361",
     "simbolo": "BTC/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 85088.9,
     "stop_loss_original": 83480.671552,
@@ -14,5 +14,8 @@
     "tp3_alcanzado": false,
     "sl_movido_be": false,
     "timestamp_apertura": "2026-09-30T12:48:49.717383+00:00",
-    "ultima_vela_1m": "2026-09-30T14:30:00"
+    "ultima_vela_1m": "2026-09-30T14:31:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 83480.671552,
+    "timestamp_cierre": "2026-09-30T14:33:00+00:00"
 }
