@@ -1,7 +1,7 @@
 {
     "id_operacion": "ETH_20260930_123126_662302",
     "simbolo": "ETH/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 2718.42,
     "stop_loss_original": 2678.04575,
@@ -14,5 +14,8 @@
     "tp3_alcanzado": false,
     "sl_movido_be": false,
     "timestamp_apertura": "2026-09-30T12:31:26.662326+00:00",
-    "ultima_vela_1m": "2026-09-30T14:22:00"
+    "ultima_vela_1m": "2026-09-30T14:22:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 2678.04575,
+    "timestamp_cierre": "2026-09-30T14:24:00+00:00"
 }
