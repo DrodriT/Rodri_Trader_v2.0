@@ -1,13 +1,13 @@
 {
     "simbolo": "BTC/USDT:USDT",
     "timestamp": "2026-09-30T12:45:00",
-    "precio_actual": 85088.9,
-    "EMA_21": 84127.85,
-    "EMA_55": 83811.12,
-    "RSI": 82.39,
-    "ADX": 35.32,
-    "ATR": 188.93,
-    "stop_loss_long": 84805.51,
+    "precio_actual": 85128.9,
+    "EMA_21": 84131.48,
+    "EMA_55": 83812.55,
+    "RSI": 82.79,
+    "ADX": 35.43,
+    "ATR": 195.59,
+    "stop_loss_long": 84835.52,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,27 +17,10 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 87.0,
-        "score_anterior": 70.0,
-        "senal": "LONG"
+        "score_anterior": 87.0,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición LONG ya abierta desde 2026-09-30T12:48:49.717383+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "LONG",
-        "precio_entrada": 85088.9,
-        "stop_loss": 83480.671552,
-        "tp1": 86697.128448,
-        "tp2": 87501.242672,
-        "tp3": 88305.356896,
-        "nivel_estructura_referencia": 85053.0,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 1.89,
-        "apalancamiento_sugerido": 5.29,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 529.08,
-        "cantidad_activo": 0.006218
-    }
+    "riesgo": null
 }
