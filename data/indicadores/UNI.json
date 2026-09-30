@@ -1,13 +1,13 @@
 {
     "simbolo": "UNI/USDT:USDT",
     "timestamp": "2026-09-30T12:55:00",
-    "precio_actual": 9.13,
-    "EMA_21": 8.96,
+    "precio_actual": 9.19,
+    "EMA_21": 8.97,
     "EMA_55": 8.9,
-    "RSI": 79.17,
-    "ADX": 30.17,
-    "ATR": 0.05,
-    "stop_loss_long": 9.06,
+    "RSI": 81.86,
+    "ADX": 30.58,
+    "ATR": 0.06,
+    "stop_loss_long": 9.1,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 90.0,
-        "score_anterior": 85.0,
+        "score_anterior": 90.0,
         "senal": null
     },
     "riesgo": null
