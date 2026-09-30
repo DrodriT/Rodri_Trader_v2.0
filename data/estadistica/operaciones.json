@@ -138,5 +138,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "ADA_USDT_USDT_20260930_134107_016374",
+        "par": "ADA/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-09-30T09:38:46.390641+00:00",
+        "timestamp_cierre": "2026-09-30T13:41:00+00:00",
+        "precio_entrada": 0.2484,
+        "precio_salida": 0.2484,
+        "stop_loss_original": 0.242163,
+        "stop_loss_final": 0.2484,
+        "tp1": 0.254637,
+        "tp2": 0.257756,
+        "tp3": 0.260875,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
