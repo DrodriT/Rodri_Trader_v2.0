@@ -1,11 +1,11 @@
 {
     "simbolo": "DOGE/USDT:USDT",
-    "timestamp": "2026-09-30T10:20:00",
+    "timestamp": "2026-09-30T10:25:00",
     "precio_actual": 0.09,
     "EMA_9": 0.09,
     "EMA_21": 0.09,
-    "RSI": 69.92,
-    "ADX": 39.69,
+    "RSI": 69.95,
+    "ADX": 41.74,
     "ATR": 0.0,
     "stop_loss_long": 0.09,
     "multiplicador_SL": 1.5,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 92.0,
-        "score_anterior": 87.0,
+        "score_actual": 75.0,
+        "score_anterior": 92.0,
         "senal": null
     },
     "riesgo": null
