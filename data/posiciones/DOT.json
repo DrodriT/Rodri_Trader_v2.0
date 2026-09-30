@@ -1,0 +1,18 @@
+{
+    "id_operacion": "DOT_20260930_164421_142218",
+    "simbolo": "DOT/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "LONG",
+    "precio_entrada": 1.252,
+    "stop_loss_original": 1.201254,
+    "stop_loss_actual": 1.201254,
+    "tp1": 1.302746,
+    "tp2": 1.328118,
+    "tp3": 1.353491,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-09-30T16:44:21.142237+00:00",
+    "ultima_vela_1m": "2026-09-30T16:44:00"
+}
