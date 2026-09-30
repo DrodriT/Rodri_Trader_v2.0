@@ -208,47 +208,125 @@ def guardar_resultado_par(par: str, datos: dict) -> None:
         print(f"  ❌ Error al guardar JSON en {ruta_json}: {e}")
 
 
-def gestionar_posicion_abierta(par: str, par_base: str, posicion: dict, ultima_vela: pd.Series) -> dict:
+def _referencia_seguimiento(posicion: dict) -> pd.Timestamp:
     """
-    Monitoriza una posición ya abierta contra la última vela descargada:
-    detecta si tocó SL, TP1, TP2, TP3 o Breakeven, actualiza/persiste su
-    estado, y envía las notificaciones de Telegram correspondientes.
+    Devuelve la hora de apertura (UTC, sin zona) de la última vela de 1m ya
+    revisada para esta posición. Solo se procesarán velas POSTERIORES a ella.
 
-    Procesa los eventos en orden de prioridad: SL/BE (cierre inmediato,
-    no sigue evaluando TPs) antes que TP1/TP2/TP3.
-
-    Devuelve el diccionario 'posicion' actualizado (o el mismo, si no hubo
-    eventos este ciclo). Si la posición se cerró, su 'estado' pasa a
-    'cerrada' en el propio diccionario devuelto.
+    Las posiciones abiertas antes de existir el seguimiento en 1m no tienen
+    ese campo: en ese caso se parte del minuto de su apertura, con lo que
+    en el primer ciclo se "ponen al día" con todo lo ocurrido desde entonces.
     """
-    precio_actual = float(ultima_vela["close"])
-    eventos = evaluar_posicion(posicion, ultima_vela)
+    ref = posicion.get("ultima_vela_1m")
+    if ref:
+        return pd.Timestamp(ref)
 
-    for evento in eventos:
-        if evento in ("SL_TOCADO", "BE_TOCADO"):
-            motivo = "SL" if evento == "SL_TOCADO" else "BE"
-            cerrar_posicion(par_base, posicion, motivo=motivo, precio_salida=precio_actual, par=par,)
-            enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
-            break  # posición cerrada: no seguimos evaluando más eventos
+    apertura = pd.Timestamp(posicion["timestamp_apertura"])
+    if apertura.tzinfo is not None:
+        apertura = apertura.tz_convert("UTC").tz_localize(None)
+    return apertura.floor("min")
 
-        elif evento == "TP1_TOCADO":
-            posicion["tp1_alcanzado"] = True
-            posicion["stop_loss_actual"] = posicion["precio_entrada"]  # mover SL a breakeven
-            posicion["sl_movido_be"] = True
-            enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
 
-        elif evento == "TP2_TOCADO":
-            posicion["tp2_alcanzado"] = True
-            enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
+def descargar_velas_seguimiento(exchange, par: str, posicion: dict) -> pd.DataFrame | None:
+    """
+    Descarga las velas de 1m (config.TIMEFRAME_SEGUIMIENTO) ya CERRADAS y
+    posteriores a la última revisada para una posición abierta.
 
-        elif evento == "TP3_TOCADO":
-            posicion["tp3_alcanzado"] = True
-            cerrar_posicion(par_base, posicion, motivo="TP3", precio_salida=precio_actual, par=par,)
-            enviar_actualizacion_posicion(par, evento, posicion, precio_actual)
-            break  # posición cerrada
+    Solo se devuelven velas cerradas: sus máximos/mínimos son definitivos.
+    Con una vela en formación, el orden en que se tocan SL y TP dentro de
+    ella es incierto y se reevaluaría cada ciclo. El coste es como mucho
+    ~1 minuto de retraso en detectar un evento.
 
-    # Si la posición sigue abierta tras procesar eventos (o no hubo ninguno),
-    # persistimos el estado actualizado (ej. tp1_alcanzado, nuevo SL en BE).
+    Pide exactamente las velas pendientes (más un pequeño margen), así que
+    si algún cron se salta, el siguiente ciclo recupera lo que faltaba (hasta
+    config.VELAS_SEGUIMIENTO_MAX minutos).
+
+    Devuelve None si falla la descarga (la posición no se evalúa este ciclo
+    y se retoma en el siguiente sin perder nada).
+    """
+    ref = _referencia_seguimiento(posicion)
+    ahora = pd.Timestamp.now(tz="UTC").tz_localize(None)
+
+    minutos_pendientes = int((ahora - ref) / pd.Timedelta(minutes=1))
+    if minutos_pendientes + 2 > config.VELAS_SEGUIMIENTO_MAX:
+        print(f"  ⚠️ {par}: hay {minutos_pendientes} min sin revisar; solo se recuperan "
+              f"los últimos {config.VELAS_SEGUIMIENTO_MAX}.")
+    limite = max(3, min(minutos_pendientes + 2, config.VELAS_SEGUIMIENTO_MAX))
+
+    df = descargar_velas(exchange, par, config.TIMEFRAME_SEGUIMIENTO, limite)
+    if df is None:
+        return None
+
+    una_vela = pd.Timedelta(minutes=1)
+    cerradas = df[(df["timestamp"] > ref) & (df["timestamp"] + una_vela <= ahora)]
+    return cerradas.sort_values("timestamp").reset_index(drop=True)
+
+
+def gestionar_posicion_abierta(par: str, par_base: str, posicion: dict, velas_1m: pd.DataFrame | None) -> dict:
+    """
+    Monitoriza una posición ya abierta recorriendo, EN ORDEN, las velas de 1m
+    cerradas desde la última revisión: detecta si tocó SL, TP1, TP2, TP3 o
+    Breakeven, actualiza/persiste su estado y envía las notificaciones.
+
+    Reglas:
+      - SL/BE tienen prioridad sobre los TP dentro de una misma vela
+        (criterio conservador: no se puede saber cuál se tocó antes).
+      - Tras TP1 el SL pasa a breakeven y aplica desde la vela SIGUIENTE.
+      - El precio de salida es el NIVEL tocado (SL, entrada en BE, o TP3),
+        no el cierre de la vela. No se modela el deslizamiento (slippage).
+      - Si velas_1m es None (falló la descarga), no se evalúa nada y se
+        conserva el estado; el siguiente ciclo recupera las velas pendientes.
+
+    Devuelve el diccionario 'posicion' actualizado. Si se cerró, su 'estado'
+    pasa a 'cerrada'.
+    """
+    if velas_1m is None:
+        print(f"  ⚠️ {par}: sin velas de seguimiento este ciclo; se reintenta en el siguiente.")
+        return posicion
+
+    for _, vela in velas_1m.iterrows():
+        eventos = evaluar_posicion(posicion, vela)
+        # Hora de cierre de la vela de 1m (apertura + 1 minuto), en UTC
+        cierre_vela = vela["timestamp"].tz_localize("UTC") + pd.Timedelta(minutes=1)
+        cerrada = False
+
+        for evento in eventos:
+            if evento in ("SL_TOCADO", "BE_TOCADO"):
+                motivo = "SL" if evento == "SL_TOCADO" else "BE"
+                nivel = float(posicion["stop_loss_actual"])  # en BE coincide con la entrada
+                cerrar_posicion(par_base, posicion, motivo=motivo, precio_salida=nivel,
+                                par=par, timestamp_cierre=cierre_vela.to_pydatetime())
+                enviar_actualizacion_posicion(par, evento, posicion, nivel)
+                cerrada = True
+                break  # posición cerrada: no seguimos evaluando más eventos
+
+            elif evento == "TP1_TOCADO":
+                posicion["tp1_alcanzado"] = True
+                posicion["stop_loss_actual"] = posicion["precio_entrada"]  # mover SL a breakeven
+                posicion["sl_movido_be"] = True
+                enviar_actualizacion_posicion(par, evento, posicion, float(posicion["tp1"]))
+
+            elif evento == "TP2_TOCADO":
+                posicion["tp2_alcanzado"] = True
+                enviar_actualizacion_posicion(par, evento, posicion, float(posicion["tp2"]))
+
+            elif evento == "TP3_TOCADO":
+                posicion["tp3_alcanzado"] = True
+                nivel = float(posicion["tp3"])
+                cerrar_posicion(par_base, posicion, motivo="TP3", precio_salida=nivel,
+                                par=par, timestamp_cierre=cierre_vela.to_pydatetime())
+                enviar_actualizacion_posicion(par, evento, posicion, nivel)
+                cerrada = True
+                break  # posición cerrada
+
+        if cerrada:
+            break  # las velas restantes son posteriores al cierre
+
+        # Vela revisada por completo: la siguiente revisión partirá de aquí
+        posicion["ultima_vela_1m"] = vela["timestamp"].isoformat()
+
+    # Si la posición sigue abierta, persistimos el estado actualizado (ej.
+    # tp1_alcanzado, SL en BE, última vela revisada).
     if posicion.get("estado") == "abierta":
         from gestion_riesgo import guardar_posicion
         guardar_posicion(par_base, posicion)
@@ -304,8 +382,9 @@ def analizar_par(exchange, par: str) -> dict | None:
     posicion_abierta = cargar_posicion(par_base)
 
     if posicion_abierta is not None:
-        posicion_actualizada = gestionar_posicion_abierta(par, par_base, posicion_abierta, ultima_vela)
-
+        velas_seguimiento = descargar_velas_seguimiento(exchange, par, posicion_abierta)
+        posicion_actualizada = gestionar_posicion_abierta(par, par_base, posicion_abierta, velas_seguimiento)
+        
         if posicion_actualizada.get("estado") == "abierta":
             bloqueo = {
                 "posicion_abierta": True,

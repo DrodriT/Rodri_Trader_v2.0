@@ -66,12 +66,19 @@ def abrir_posicion(par_base: str, direccion: str, riesgo: dict, par: str | None 
         "tp3_alcanzado": False,
         "sl_movido_be": False,
         "timestamp_apertura": datetime.now(timezone.utc).isoformat(),
+        # Hora de apertura (UTC, sin zona) de la última vela de 1m ya revisada
+        # para SL/TP. Se inicializa con el minuto de la entrada: esa vela se
+        # descarta (parte de su rango es anterior a la entrada) y el
+        # seguimiento arranca en la vela siguiente.
+        "ultima_vela_1m": timestamp_apertura.replace(
+            second=0, microsecond=0, tzinfo=None
+        ).isoformat(),
     }
     guardar_posicion(par_base, posicion)
     return posicion
 
 
-def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: float, par: str,) -> None:
+def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: float, par: str, timestamp_cierre: datetime | None = None,) -> None:
     """
     Marca la posición como cerrada (motivo: 'SL', 'BE' o 'TP3') y la persiste.
     A partir de este momento, cargar_posicion() volverá a devolver None para
@@ -81,7 +88,11 @@ def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: f
     posicion["estado"] = "cerrada"
     posicion["motivo_cierre"] = motivo
     posicion["precio_salida"] = float(precio_salida)
-    posicion["timestamp_cierre"] = datetime.now(timezone.utc).isoformat()
+    # Si el seguimiento en 1m detecta el cierre en una vela concreta, se
+    # registra la hora de esa vela (no la de la ejecución, que puede ir
+    # retrasada si se saltó algún cron).
+    momento = timestamp_cierre or datetime.now(timezone.utc)
+    posicion["timestamp_cierre"] = momento.isoformat()
 
     # Persistir posición cerrada
     guardar_posicion(par_base, posicion)
@@ -96,7 +107,6 @@ def cerrar_posicion(par_base: str, posicion: dict, motivo: str, precio_salida: f
 
     # Registramos el cooldown: 4h normal (BE/TP3), o 12h si van 2 SL seguidos.
     registrar_cierre_cooldown(par_base, motivo)
-
 
 def evaluar_posicion(posicion: dict, ultima_vela: pd.Series) -> list[str]:
     """

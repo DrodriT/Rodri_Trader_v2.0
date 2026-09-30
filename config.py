@@ -222,3 +222,12 @@ FIN_SEMANA_INICIO_DIA = 4     # viernes
 FIN_SEMANA_INICIO_HORA = 20   # 20:00
 FIN_SEMANA_FIN_DIA = 6        # domingo
 FIN_SEMANA_FIN_HORA = 7       # 07:00
+
+# ==============================================================================
+# 10. SEGUIMIENTO DE POSICIONES ABIERTAS
+# ==============================================================================
+# Timeframe de las velas con las que se vigilan SL/TP de las posiciones abiertas.
+TIMEFRAME_SEGUIMIENTO = "1m"
+# Máximo de velas a recuperar de una vez si hay muchos minutos sin revisar
+# (ej. varios crons saltados). Si se supera, se avisa por consola.
+VELAS_SEGUIMIENTO_MAX = 500
