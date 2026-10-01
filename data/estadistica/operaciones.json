@@ -318,5 +318,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "DOT_USDT_USDT_20261001_183952_074931",
+        "par": "DOT/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-10-01T16:41:09.710355+00:00",
+        "timestamp_cierre": "2026-10-01T18:39:00+00:00",
+        "precio_entrada": 1.162,
+        "precio_salida": 1.187007,
+        "stop_loss_original": 1.187007,
+        "stop_loss_final": 1.187007,
+        "tp1": 1.136993,
+        "tp2": 1.12449,
+        "tp3": 1.111987,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
