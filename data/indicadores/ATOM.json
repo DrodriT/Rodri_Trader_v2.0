@@ -1,11 +1,11 @@
 {
     "simbolo": "ATOM/USDT:USDT",
-    "timestamp": "2026-10-01T19:05:00",
-    "precio_actual": 1.71,
+    "timestamp": "2026-10-01T19:10:00",
+    "precio_actual": 1.72,
     "EMA_21": 1.71,
     "EMA_55": 1.72,
-    "RSI": 48.95,
-    "ADX": 10.8,
+    "RSI": 59.45,
+    "ADX": 11.26,
     "ATR": 0.0,
     "stop_loss_long": 1.71,
     "multiplicador_SL": 1.5,
@@ -18,9 +18,7 @@
         "cumple_mandatory": false,
         "score_actual": 0.0,
         "score_anterior": 0.0,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-10-01T19:11:09.004367+00:00."
+        "senal": null
     },
     "riesgo": null
 }
