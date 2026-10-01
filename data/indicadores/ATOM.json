@@ -1,12 +1,12 @@
 {
     "simbolo": "ATOM/USDT:USDT",
-    "timestamp": "2026-10-01T12:40:00",
+    "timestamp": "2026-10-01T12:45:00",
     "precio_actual": 1.74,
     "EMA_21": 1.75,
     "EMA_55": 1.75,
-    "RSI": 34.47,
-    "ADX": 26.95,
-    "ATR": 0.01,
+    "RSI": 36.73,
+    "ADX": 28.83,
+    "ATR": 0.0,
     "stop_loss_long": 1.73,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
@@ -16,28 +16,11 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 90.0,
-        "score_anterior": 0.0,
-        "senal": "SHORT"
+        "score_actual": 83.0,
+        "score_anterior": 90.0,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición SHORT ya abierta desde 2026-10-01T12:44:51.448608+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "SHORT",
-        "precio_entrada": 1.7384,
-        "stop_loss": 1.759408,
-        "tp1": 1.717392,
-        "tp2": 1.706889,
-        "tp3": 1.696385,
-        "nivel_estructura_referencia": 1.7414,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 1.208,
-        "apalancamiento_sugerido": 8.28,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 827.51,
-        "cantidad_activo": 476.020045
-    }
+    "riesgo": null
 }
