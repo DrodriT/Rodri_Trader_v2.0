@@ -18,9 +18,7 @@
         "cumple_mandatory": false,
         "score_actual": 0.0,
         "score_anterior": 0.0,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-10-02T22:41:05.597114+00:00."
+        "senal": null
     },
     "riesgo": null
 }
