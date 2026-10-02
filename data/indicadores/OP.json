@@ -4,7 +4,7 @@
     "precio_actual": 0.13,
     "EMA_21": 0.13,
     "EMA_55": 0.13,
-    "RSI": 70.18,
+    "RSI": 69.32,
     "ADX": 26.12,
     "ATR": 0.0,
     "stop_loss_long": 0.13,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 78.0,
+        "score_actual": 93.0,
         "score_anterior": 78.0,
-        "senal": null
+        "senal": "LONG"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "LONG",
+        "precio_entrada": 0.1336,
+        "stop_loss": 0.130709,
+        "tp1": 0.136491,
+        "tp2": 0.137936,
+        "tp3": 0.139382,
+        "nivel_estructura_referencia": 0.1338,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 2.164,
+        "apalancamiento_sugerido": 4.62,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 462.13,
+        "cantidad_activo": 3459.05094
+    }
 }
