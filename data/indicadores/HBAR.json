@@ -4,7 +4,7 @@
     "precio_actual": 0.1,
     "EMA_21": 0.1,
     "EMA_55": 0.1,
-    "RSI": 50.93,
+    "RSI": 50.64,
     "ADX": 24.8,
     "ATR": 0.0,
     "stop_loss_long": 0.1,
@@ -18,8 +18,7 @@
         "cumple_mandatory": false,
         "score_actual": 0.0,
         "score_anterior": 0.0,
-        "senal": null,
-        "calentamiento": true
+        "senal": null
     },
     "riesgo": null
 }
