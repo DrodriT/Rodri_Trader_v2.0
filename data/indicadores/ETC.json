@@ -4,7 +4,7 @@
     "precio_actual": 8.99,
     "EMA_21": 9.01,
     "EMA_55": 9.05,
-    "RSI": 45.35,
+    "RSI": 45.0,
     "ADX": 31.09,
     "ATR": 0.03,
     "stop_loss_long": 8.94,
