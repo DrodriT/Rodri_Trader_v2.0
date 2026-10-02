@@ -1,7 +1,7 @@
 {
     "id_operacion": "LTC_20261001_200742_128489",
     "simbolo": "LTC/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 68.21,
     "stop_loss_original": 67.284154,
@@ -11,8 +11,11 @@
     "tp3": 70.061692,
     "tp1_alcanzado": true,
     "tp2_alcanzado": true,
-    "tp3_alcanzado": false,
+    "tp3_alcanzado": true,
     "sl_movido_be": true,
     "timestamp_apertura": "2026-10-01T20:07:42.128508+00:00",
-    "ultima_vela_1m": "2026-10-02T05:27:00"
+    "ultima_vela_1m": "2026-10-02T05:27:00",
+    "motivo_cierre": "TP3",
+    "precio_salida": 70.061692,
+    "timestamp_cierre": "2026-10-02T05:29:00+00:00"
 }
