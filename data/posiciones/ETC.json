@@ -1,0 +1,18 @@
+{
+    "id_operacion": "ETC_20261002_171611_650298",
+    "simbolo": "ETC/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "SHORT",
+    "precio_entrada": 8.918,
+    "stop_loss_original": 9.078063,
+    "stop_loss_actual": 9.078063,
+    "tp1": 8.757937,
+    "tp2": 8.677905,
+    "tp3": 8.597873,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-10-02T17:16:11.650316+00:00",
+    "ultima_vela_1m": "2026-10-02T17:16:00"
+}
