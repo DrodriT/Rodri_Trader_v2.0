@@ -1,7 +1,7 @@
 {
     "id_operacion": "ETC_20261002_171611_650298",
     "simbolo": "ETC/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 8.918,
     "stop_loss_original": 9.078063,
@@ -10,9 +10,12 @@
     "tp2": 8.677905,
     "tp3": 8.597873,
     "tp1_alcanzado": true,
-    "tp2_alcanzado": false,
-    "tp3_alcanzado": false,
+    "tp2_alcanzado": true,
+    "tp3_alcanzado": true,
     "sl_movido_be": true,
     "timestamp_apertura": "2026-10-02T17:16:11.650316+00:00",
-    "ultima_vela_1m": "2026-10-02T18:38:00"
+    "ultima_vela_1m": "2026-10-02T18:38:00",
+    "motivo_cierre": "TP3",
+    "precio_salida": 8.597873,
+    "timestamp_cierre": "2026-10-02T18:40:00+00:00"
 }
