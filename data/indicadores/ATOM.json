@@ -1,11 +1,11 @@
 {
     "simbolo": "ATOM/USDT:USDT",
     "timestamp": "2026-10-02T19:45:00",
-    "precio_actual": 1.63,
+    "precio_actual": 1.64,
     "EMA_21": 1.64,
     "EMA_55": 1.68,
-    "RSI": 36.75,
-    "ADX": 49.43,
+    "RSI": 39.01,
+    "ADX": 49.05,
     "ATR": 0.01,
     "stop_loss_long": 1.62,
     "multiplicador_SL": 1.5,
@@ -16,7 +16,7 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 80.0,
+        "score_actual": 72.0,
         "score_anterior": 80.0,
         "senal": null
     },
