@@ -1,7 +1,7 @@
 {
     "id_operacion": "APT_20261002_020849_826187",
     "simbolo": "APT/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 0.7894,
     "stop_loss_original": 0.770693,
@@ -11,8 +11,11 @@
     "tp3": 0.826813,
     "tp1_alcanzado": true,
     "tp2_alcanzado": true,
-    "tp3_alcanzado": false,
+    "tp3_alcanzado": true,
     "sl_movido_be": true,
     "timestamp_apertura": "2026-10-02T02:08:49.826206+00:00",
-    "ultima_vela_1m": "2026-10-02T04:50:00"
+    "ultima_vela_1m": "2026-10-02T04:50:00",
+    "motivo_cierre": "TP3",
+    "precio_salida": 0.826813,
+    "timestamp_cierre": "2026-10-02T04:52:00+00:00"
 }
