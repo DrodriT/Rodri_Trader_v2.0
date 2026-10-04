@@ -1,0 +1,18 @@
+{
+    "id_operacion": "SOL_20261004_094849_924195",
+    "simbolo": "SOL/USDT:USDT",
+    "estado": "abierta",
+    "direccion": "LONG",
+    "precio_entrada": 121.428,
+    "stop_loss_original": 120.597854,
+    "stop_loss_actual": 120.597854,
+    "tp1": 122.258146,
+    "tp2": 122.673219,
+    "tp3": 123.088293,
+    "tp1_alcanzado": false,
+    "tp2_alcanzado": false,
+    "tp3_alcanzado": false,
+    "sl_movido_be": false,
+    "timestamp_apertura": "2026-10-04T09:48:49.924215+00:00",
+    "ultima_vela_1m": "2026-10-04T09:48:00"
+}
