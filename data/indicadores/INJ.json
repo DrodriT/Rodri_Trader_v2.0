@@ -1,13 +1,13 @@
 {
     "simbolo": "INJ/USDT:USDT",
     "timestamp": "2026-10-04T19:50:00",
-    "precio_actual": 7.41,
+    "precio_actual": 7.39,
     "EMA_21": 7.42,
     "EMA_55": 7.46,
-    "RSI": 41.76,
-    "ADX": 25.74,
+    "RSI": 36.9,
+    "ADX": 26.71,
     "ATR": 0.02,
-    "stop_loss_long": 7.38,
+    "stop_loss_long": 7.37,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -16,9 +16,11 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 76.0,
-        "score_anterior": 83.0,
-        "senal": null
+        "score_actual": 93.0,
+        "score_anterior": 76.0,
+        "senal": null,
+        "senal_bloqueada": "SHORT",
+        "motivo_bloqueo": "máximo de posiciones simultáneas alcanzado (4/4)"
     },
     "riesgo": null
 }
