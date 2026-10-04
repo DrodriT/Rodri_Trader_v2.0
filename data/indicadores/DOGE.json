@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 87.0,
-        "score_anterior": 92.0,
+        "score_anterior": 87.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición LONG ya abierta desde 2026-10-04T20:57:46.124884+00:00. Esperando SL/TP3."
