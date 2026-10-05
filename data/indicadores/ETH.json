@@ -1,13 +1,13 @@
 {
     "simbolo": "ETH/USDT:USDT",
     "timestamp": "2026-10-05T08:35:00",
-    "precio_actual": 2723.8,
-    "EMA_21": 2723.42,
-    "EMA_55": 2719.27,
-    "RSI": 52.34,
+    "precio_actual": 2722.14,
+    "EMA_21": 2723.27,
+    "EMA_55": 2719.21,
+    "RSI": 50.03,
     "ADX": 29.08,
-    "ATR": 4.89,
-    "stop_loss_long": 2716.46,
+    "ATR": 4.94,
+    "stop_loss_long": 2714.73,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 59.0,
-        "score_anterior": 51.0,
+        "score_anterior": 59.0,
         "senal": null
     },
     "riesgo": null
