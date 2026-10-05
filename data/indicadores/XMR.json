@@ -1,13 +1,13 @@
 {
     "simbolo": "XMR/USDT:USDT",
     "timestamp": "2026-10-05T04:55:00",
-    "precio_actual": 539.16,
-    "EMA_21": 544.41,
-    "EMA_55": 546.08,
-    "RSI": 20.93,
-    "ADX": 34.49,
-    "ATR": 1.02,
-    "stop_loss_long": 537.64,
+    "precio_actual": 538.77,
+    "EMA_21": 544.38,
+    "EMA_55": 546.07,
+    "RSI": 20.2,
+    "ADX": 34.81,
+    "ATR": 1.13,
+    "stop_loss_long": 537.08,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,27 +17,10 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 90.0,
-        "score_anterior": 85.0,
-        "senal": "SHORT"
+        "score_anterior": 90.0,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición SHORT ya abierta desde 2026-10-05T04:56:47.361688+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "SHORT",
-        "precio_entrada": 539.16,
-        "stop_loss": 550.035846,
-        "tp1": 528.284154,
-        "tp2": 522.846231,
-        "tp3": 517.408308,
-        "nivel_estructura_referencia": 540.63,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 2.017,
-        "apalancamiento_sugerido": 4.96,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 495.74,
-        "cantidad_activo": 0.919469
-    }
+    "riesgo": null
 }
