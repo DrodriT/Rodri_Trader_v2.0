@@ -1,7 +1,7 @@
 {
     "id_operacion": "APT_20261005_043453_341645",
     "simbolo": "APT/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 0.7885,
     "stop_loss_original": 0.810205,
@@ -14,5 +14,8 @@
     "tp3_alcanzado": false,
     "sl_movido_be": false,
     "timestamp_apertura": "2026-10-05T04:34:53.341665+00:00",
-    "ultima_vela_1m": "2026-10-05T07:28:00"
+    "ultima_vela_1m": "2026-10-05T07:28:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 0.810205,
+    "timestamp_cierre": "2026-10-05T07:30:00+00:00"
 }
