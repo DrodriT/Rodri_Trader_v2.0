@@ -1,10 +1,10 @@
 {
     "simbolo": "SUI/USDT:USDT",
     "timestamp": "2026-10-05T01:20:00",
-    "precio_actual": 1.23,
+    "precio_actual": 1.24,
     "EMA_21": 1.22,
     "EMA_55": 1.22,
-    "RSI": 68.54,
+    "RSI": 74.32,
     "ADX": 27.01,
     "ATR": 0.01,
     "stop_loss_long": 1.23,
@@ -16,28 +16,11 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 93.0,
-        "score_anterior": 78.0,
-        "senal": "LONG"
+        "score_actual": 88.0,
+        "score_anterior": 93.0,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición LONG ya abierta desde 2026-10-05T01:23:39.422152+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "LONG",
-        "precio_entrada": 1.2338,
-        "stop_loss": 1.197898,
-        "tp1": 1.269702,
-        "tp2": 1.287653,
-        "tp3": 1.305604,
-        "nivel_estructura_referencia": 1.2388,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 2.91,
-        "apalancamiento_sugerido": 3.44,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 343.66,
-        "cantidad_activo": 278.536802
-    }
+    "riesgo": null
 }
