@@ -1,13 +1,13 @@
 {
     "simbolo": "BTC/USDT:USDT",
     "timestamp": "2026-10-06T10:25:00",
-    "precio_actual": 86047.3,
-    "EMA_21": 85928.56,
-    "EMA_55": 85768.09,
-    "RSI": 60.78,
+    "precio_actual": 86090.0,
+    "EMA_21": 85932.45,
+    "EMA_55": 85769.61,
+    "RSI": 62.81,
     "ADX": 31.26,
-    "ATR": 129.2,
-    "stop_loss_long": 85853.49,
+    "ATR": 131.03,
+    "stop_loss_long": 85893.46,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 58.0,
-        "score_anterior": 51.0,
+        "score_anterior": 58.0,
         "senal": null
     },
     "riesgo": null
