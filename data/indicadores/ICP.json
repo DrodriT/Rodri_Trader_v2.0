@@ -1,10 +1,10 @@
 {
     "simbolo": "ICP/USDT:USDT",
     "timestamp": "2026-10-06T21:30:00",
-    "precio_actual": 3.39,
+    "precio_actual": 3.4,
     "EMA_21": 3.4,
     "EMA_55": 3.41,
-    "RSI": 45.2,
+    "RSI": 46.13,
     "ADX": 25.55,
     "ATR": 0.01,
     "stop_loss_long": 3.38,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 76.0,
-        "score_anterior": 68.0,
+        "score_anterior": 76.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición SHORT ya abierta desde 2026-10-06T20:42:53.854804+00:00. Esperando SL/TP3."
