@@ -4,8 +4,8 @@
     "precio_actual": 0.1,
     "EMA_21": 0.1,
     "EMA_55": 0.1,
-    "RSI": 31.16,
-    "ADX": 35.4,
+    "RSI": 27.46,
+    "ADX": 35.83,
     "ATR": 0.0,
     "stop_loss_long": 0.1,
     "multiplicador_SL": 1.5,
@@ -16,11 +16,9 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 90.0,
-        "score_anterior": 80.0,
-        "senal": null,
-        "senal_bloqueada": "SHORT",
-        "motivo_bloqueo": "máximo de posiciones simultáneas alcanzado (4/4)"
+        "score_actual": 92.0,
+        "score_anterior": 90.0,
+        "senal": null
     },
     "riesgo": null
 }
