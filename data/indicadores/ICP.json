@@ -1,10 +1,10 @@
 {
     "simbolo": "ICP/USDT:USDT",
     "timestamp": "2026-10-07T02:05:00",
-    "precio_actual": 3.25,
+    "precio_actual": 3.26,
     "EMA_21": 3.32,
     "EMA_55": 3.35,
-    "RSI": 25.95,
+    "RSI": 28.76,
     "ADX": 44.87,
     "ATR": 0.02,
     "stop_loss_long": 3.22,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 80.0,
-        "score_anterior": 75.0,
+        "score_anterior": 80.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-10-07T06:02:25.908258+00:00."
