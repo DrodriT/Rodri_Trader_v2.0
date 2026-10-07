@@ -1,11 +1,11 @@
 {
     "simbolo": "LINK/USDT:USDT",
     "timestamp": "2026-10-07T10:50:00",
-    "precio_actual": 13.47,
+    "precio_actual": 13.48,
     "EMA_21": 13.55,
     "EMA_55": 13.62,
-    "RSI": 32.54,
-    "ADX": 46.03,
+    "RSI": 34.77,
+    "ADX": 45.3,
     "ATR": 0.04,
     "stop_loss_long": 13.42,
     "multiplicador_SL": 1.5,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 72.0,
-        "score_anterior": 67.0,
+        "score_anterior": 72.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición SHORT ya abierta desde 2026-10-05T14:51:57.173625+00:00. Esperando SL/TP3."
