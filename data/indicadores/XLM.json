@@ -1,11 +1,11 @@
 {
     "simbolo": "XLM/USDT:USDT",
-    "timestamp": "2026-10-07T15:15:00",
+    "timestamp": "2026-10-07T15:20:00",
     "precio_actual": 0.2,
     "EMA_21": 0.2,
     "EMA_55": 0.2,
-    "RSI": 26.24,
-    "ADX": 27.14,
+    "RSI": 28.78,
+    "ADX": 28.64,
     "ATR": 0.0,
     "stop_loss_long": 0.2,
     "multiplicador_SL": 1.5,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 78.0,
-        "score_anterior": 83.0,
+        "score_anterior": 78.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición SHORT ya abierta desde 2026-10-05T15:54:46.049387+00:00. Esperando SL/TP3."
