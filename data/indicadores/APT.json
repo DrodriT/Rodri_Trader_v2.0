@@ -1,11 +1,11 @@
 {
     "simbolo": "APT/USDT:USDT",
     "timestamp": "2026-10-07T04:00:00",
-    "precio_actual": 0.77,
+    "precio_actual": 0.76,
     "EMA_21": 0.78,
     "EMA_55": 0.8,
-    "RSI": 27.52,
-    "ADX": 57.73,
+    "RSI": 25.98,
+    "ADX": 57.88,
     "ATR": 0.0,
     "stop_loss_long": 0.76,
     "multiplicador_SL": 1.5,
@@ -17,10 +17,8 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 92.0,
-        "score_anterior": 87.0,
-        "senal": null,
-        "senal_bloqueada": "SHORT",
-        "motivo_bloqueo": "máximo de posiciones simultáneas alcanzado (4/4)"
+        "score_anterior": 92.0,
+        "senal": null
     },
     "riesgo": null
 }
