@@ -18,9 +18,7 @@
         "cumple_mandatory": true,
         "score_actual": 83.0,
         "score_anterior": 83.0,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por SL. Termina: 2026-10-08T08:21:11.438923+00:00."
+        "senal": null
     },
     "riesgo": null
 }
