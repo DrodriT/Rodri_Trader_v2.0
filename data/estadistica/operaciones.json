@@ -558,5 +558,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "LINK_USDT_USDT_20261008_030449_596106",
+        "par": "LINK/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-10-05T14:51:57.173625+00:00",
+        "timestamp_cierre": "2026-10-08T03:04:00+00:00",
+        "precio_entrada": 13.85,
+        "precio_salida": 13.217626,
+        "stop_loss_original": 14.166187,
+        "stop_loss_final": 13.85,
+        "tp1": 13.533813,
+        "tp2": 13.375719,
+        "tp3": 13.217626,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": true,
+        "sl_movido_be": true,
+        "motivo_cierre": "TP3",
+        "resultado": "GANANCIA"
     }
 ]
