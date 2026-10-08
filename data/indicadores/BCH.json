@@ -1,13 +1,13 @@
 {
     "simbolo": "BCH/USDT:USDT",
     "timestamp": "2026-10-08T06:45:00",
-    "precio_actual": 295.16,
+    "precio_actual": 295.19,
     "EMA_21": 295.53,
-    "EMA_55": 296.91,
-    "RSI": 45.16,
+    "EMA_55": 296.92,
+    "RSI": 45.39,
     "ADX": 41.41,
     "ATR": 0.84,
-    "stop_loss_long": 293.9,
+    "stop_loss_long": 293.93,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 73.0,
-        "score_anterior": 70.0,
+        "score_anterior": 73.0,
         "senal": null
     },
     "riesgo": null
