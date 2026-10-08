@@ -7,7 +7,7 @@
     "RSI": 39.33,
     "ADX": 44.01,
     "ATR": 0.85,
-    "stop_loss_long": 293.85,
+    "stop_loss_long": 293.84,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 80.0,
-        "score_anterior": 85.0,
+        "score_anterior": 80.0,
         "senal": null
     },
     "riesgo": null
