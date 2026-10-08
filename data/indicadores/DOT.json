@@ -1,11 +1,11 @@
 {
     "simbolo": "DOT/USDT:USDT",
-    "timestamp": "2026-10-08T18:10:00",
+    "timestamp": "2026-10-08T18:15:00",
     "precio_actual": 1.02,
     "EMA_21": 1.02,
     "EMA_55": 1.05,
-    "RSI": 41.92,
-    "ADX": 50.77,
+    "RSI": 45.87,
+    "ADX": 48.92,
     "ATR": 0.01,
     "stop_loss_long": 1.01,
     "multiplicador_SL": 1.5,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 65.0,
-        "score_anterior": 72.0,
+        "score_anterior": 65.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-10-08T21:27:50.482896+00:00."
