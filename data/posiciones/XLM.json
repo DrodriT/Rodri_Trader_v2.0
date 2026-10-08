@@ -1,7 +1,7 @@
 {
     "id_operacion": "XLM_20261005_155446_049369",
     "simbolo": "XLM/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 0.21184,
     "stop_loss_original": 0.222076,
@@ -11,8 +11,11 @@
     "tp3": 0.191369,
     "tp1_alcanzado": true,
     "tp2_alcanzado": true,
-    "tp3_alcanzado": false,
+    "tp3_alcanzado": true,
     "sl_movido_be": true,
     "timestamp_apertura": "2026-10-05T15:54:46.049387+00:00",
-    "ultima_vela_1m": "2026-10-08T15:22:00"
+    "ultima_vela_1m": "2026-10-08T15:22:00",
+    "motivo_cierre": "TP3",
+    "precio_salida": 0.191369,
+    "timestamp_cierre": "2026-10-08T15:24:00+00:00"
 }
