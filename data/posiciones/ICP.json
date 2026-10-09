@@ -1,7 +1,7 @@
 {
     "id_operacion": "ICP_20261008_213110_200126",
     "simbolo": "ICP/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 2.924,
     "stop_loss_original": 2.981726,
@@ -14,5 +14,8 @@
     "tp3_alcanzado": false,
     "sl_movido_be": false,
     "timestamp_apertura": "2026-10-08T21:31:10.200145+00:00",
-    "ultima_vela_1m": "2026-10-09T01:25:00"
+    "ultima_vela_1m": "2026-10-09T01:25:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 2.981726,
+    "timestamp_cierre": "2026-10-09T01:27:00+00:00"
 }
