@@ -4,7 +4,7 @@
     "precio_actual": 2.03,
     "EMA_21": 2.01,
     "EMA_55": 2.01,
-    "RSI": 68.95,
+    "RSI": 69.5,
     "ADX": 26.02,
     "ATR": 0.01,
     "stop_loss_long": 2.02,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 57.0,
-        "score_anterior": 52.0,
+        "score_anterior": 57.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición LONG ya abierta desde 2026-10-09T16:46:49.022665+00:00. Esperando SL/TP3."
