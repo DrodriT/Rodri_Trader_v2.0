@@ -4,7 +4,7 @@
     "precio_actual": 7.25,
     "EMA_21": 7.18,
     "EMA_55": 7.12,
-    "RSI": 68.35,
+    "RSI": 68.89,
     "ADX": 35.92,
     "ATR": 0.03,
     "stop_loss_long": 7.21,
@@ -17,10 +17,8 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 90.0,
-        "score_anterior": 85.0,
-        "senal": null,
-        "senal_bloqueada": "LONG",
-        "motivo_bloqueo": "filtro de fin de semana (vie 20:00 -> dom 07:00)"
+        "score_anterior": 90.0,
+        "senal": null
     },
     "riesgo": null
 }
