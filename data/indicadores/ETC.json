@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 60.0,
-        "score_anterior": 0.0,
+        "score_anterior": 60.0,
         "senal": null
     },
     "riesgo": null
