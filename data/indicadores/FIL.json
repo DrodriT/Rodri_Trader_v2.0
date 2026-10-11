@@ -1,10 +1,10 @@
 {
     "simbolo": "FIL/USDT:USDT",
     "timestamp": "2026-10-11T17:25:00",
-    "precio_actual": 1.14,
+    "precio_actual": 1.13,
     "EMA_21": 1.13,
     "EMA_55": 1.12,
-    "RSI": 61.02,
+    "RSI": 59.05,
     "ADX": 42.04,
     "ATR": 0.0,
     "stop_loss_long": 1.13,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 72.0,
-        "score_anterior": 65.0,
+        "score_actual": 65.0,
+        "score_anterior": 72.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (12h) tras último cierre por SL. Termina: 2026-10-12T02:29:42.417781+00:00."
