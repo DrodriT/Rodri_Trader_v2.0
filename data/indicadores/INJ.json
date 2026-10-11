@@ -1,10 +1,10 @@
 {
     "simbolo": "INJ/USDT:USDT",
     "timestamp": "2026-10-11T02:50:00",
-    "precio_actual": 7.64,
+    "precio_actual": 7.65,
     "EMA_21": 7.7,
-    "EMA_55": 7.69,
-    "RSI": 38.82,
+    "EMA_55": 7.7,
+    "RSI": 39.61,
     "ADX": 27.88,
     "ATR": 0.04,
     "stop_loss_long": 7.59,
