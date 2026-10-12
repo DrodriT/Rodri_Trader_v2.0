@@ -1,11 +1,11 @@
 {
     "simbolo": "OP/USDT:USDT",
-    "timestamp": "2026-10-12T03:25:00",
+    "timestamp": "2026-10-12T03:30:00",
     "precio_actual": 0.14,
     "EMA_21": 0.14,
     "EMA_55": 0.14,
     "RSI": 36.46,
-    "ADX": 27.4,
+    "ADX": 28.46,
     "ATR": 0.0,
     "stop_loss_long": 0.14,
     "multiplicador_SL": 1.5,
@@ -16,9 +16,28 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 80.0,
+        "score_actual": 93.0,
         "score_anterior": 80.0,
-        "senal": null
+        "senal": "SHORT"
     },
-    "riesgo": null
+    "riesgo": {
+        "direccion": "SHORT",
+        "precio_entrada": 0.1402,
+        "stop_loss": 0.142963,
+        "tp1": 0.137437,
+        "tp2": 0.136056,
+        "tp3": 0.134675,
+        "nivel_estructura_referencia": 0.14,
+        "tp1_validado_por_estructura": false,
+        "tp2_validado_por_estructura": false,
+        "tp3_validado_por_estructura": false,
+        "distancia_sl_pct": 1.97,
+        "apalancamiento_sugerido": 5.07,
+        "apalancamiento_limitado": false,
+        "perdida_estimada_pct_margen": 10.0,
+        "perdida_estimada_usdt": 10.0,
+        "capital_entrada_usdt": 100.0,
+        "tamano_posicion_usdt": 507.49,
+        "cantidad_activo": 3619.784734
+    }
 }
