@@ -7,7 +7,7 @@
     "RSI": 59.75,
     "ADX": 28.89,
     "ATR": 0.27,
-    "stop_loss_long": 112.41,
+    "stop_loss_long": 112.4,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 76.0,
-        "score_anterior": 83.0,
+        "score_anterior": 76.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición SHORT ya abierta desde 2026-10-08T15:29:39.661250+00:00. Esperando SL/TP3."
