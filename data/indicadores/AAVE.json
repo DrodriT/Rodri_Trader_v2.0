@@ -1,13 +1,13 @@
 {
     "simbolo": "AAVE/USDT:USDT",
     "timestamp": "2026-10-13T00:05:00",
-    "precio_actual": 156.02,
-    "EMA_21": 157.55,
-    "EMA_55": 159.06,
-    "RSI": 29.17,
-    "ADX": 70.15,
-    "ATR": 0.66,
-    "stop_loss_long": 155.03,
+    "precio_actual": 155.75,
+    "EMA_21": 157.53,
+    "EMA_55": 159.05,
+    "RSI": 27.63,
+    "ADX": 70.5,
+    "ATR": 0.72,
+    "stop_loss_long": 154.67,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -16,11 +16,11 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 75.0,
+        "score_actual": 82.0,
         "score_anterior": 75.0,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-10-12T14:41:50.297662+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por TP3. Termina: 2026-10-13T04:07:46.806925+00:00."
     },
     "riesgo": null
 }
