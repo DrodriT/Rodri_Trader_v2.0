@@ -4,7 +4,7 @@
     "precio_actual": 1.81,
     "EMA_21": 1.82,
     "EMA_55": 1.83,
-    "RSI": 35.11,
+    "RSI": 35.81,
     "ADX": 27.3,
     "ATR": 0.01,
     "stop_loss_long": 1.8,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 73.0,
-        "score_anterior": 65.0,
+        "score_anterior": 73.0,
         "senal": null
     },
     "riesgo": null
