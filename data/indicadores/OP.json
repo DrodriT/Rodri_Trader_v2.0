@@ -1,11 +1,11 @@
 {
     "simbolo": "OP/USDT:USDT",
-    "timestamp": "2026-10-13T19:10:00",
+    "timestamp": "2026-10-13T19:15:00",
     "precio_actual": 0.15,
     "EMA_21": 0.15,
     "EMA_55": 0.15,
-    "RSI": 68.04,
-    "ADX": 36.89,
+    "RSI": 70.27,
+    "ADX": 38.35,
     "ATR": 0.0,
     "stop_loss_long": 0.15,
     "multiplicador_SL": 1.5,
@@ -16,11 +16,9 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 90.0,
-        "score_anterior": 85.0,
-        "senal": null,
-        "senal_bloqueada": "LONG",
-        "motivo_bloqueo": "máximo de posiciones simultáneas alcanzado (4/4)"
+        "score_actual": 67.0,
+        "score_anterior": 90.0,
+        "senal": null
     },
     "riesgo": null
 }
