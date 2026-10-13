@@ -1,10 +1,10 @@
 {
     "simbolo": "OP/USDT:USDT",
     "timestamp": "2026-10-13T20:05:00",
-    "precio_actual": 0.15,
+    "precio_actual": 0.16,
     "EMA_21": 0.15,
     "EMA_55": 0.15,
-    "RSI": 67.13,
+    "RSI": 68.26,
     "ADX": 34.51,
     "ATR": 0.0,
     "stop_loss_long": 0.15,
