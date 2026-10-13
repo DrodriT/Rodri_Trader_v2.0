@@ -1,11 +1,11 @@
 {
     "simbolo": "SOL/USDT:USDT",
     "timestamp": "2026-10-13T23:00:00",
-    "precio_actual": 106.65,
+    "precio_actual": 106.66,
     "EMA_21": 106.95,
     "EMA_55": 107.13,
-    "RSI": 37.42,
-    "ADX": 28.17,
+    "RSI": 37.55,
+    "ADX": 28.32,
     "ATR": 0.18,
     "stop_loss_long": 106.39,
     "multiplicador_SL": 1.5,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 83.0,
-        "score_anterior": 59.0,
+        "score_anterior": 83.0,
         "senal": null
     },
     "riesgo": null
