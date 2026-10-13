@@ -1,10 +1,10 @@
 {
     "simbolo": "NEAR/USDT:USDT",
     "timestamp": "2026-10-13T09:20:00",
-    "precio_actual": 5.13,
+    "precio_actual": 5.14,
     "EMA_21": 5.18,
     "EMA_55": 5.22,
-    "RSI": 37.44,
+    "RSI": 38.25,
     "ADX": 30.11,
     "ATR": 0.03,
     "stop_loss_long": 5.09,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 75.0,
-        "score_anterior": 83.0,
+        "score_anterior": 75.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición SHORT ya abierta desde 2026-10-13T09:01:33.335032+00:00. Esperando SL/TP3."
