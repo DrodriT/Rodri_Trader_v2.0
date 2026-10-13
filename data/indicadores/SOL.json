@@ -1,10 +1,10 @@
 {
     "simbolo": "SOL/USDT:USDT",
     "timestamp": "2026-10-13T07:50:00",
-    "precio_actual": 108.75,
+    "precio_actual": 108.74,
     "EMA_21": 108.43,
     "EMA_55": 107.96,
-    "RSI": 59.9,
+    "RSI": 59.7,
     "ADX": 28.77,
     "ATR": 0.27,
     "stop_loss_long": 108.34,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 71.0,
-        "score_anterior": 78.0,
+        "score_anterior": 71.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-10-13T09:24:39.224935+00:00."
