@@ -5,14 +5,14 @@
     "direccion": "SHORT",
     "precio_entrada": 3.065,
     "stop_loss_original": 3.147724,
-    "stop_loss_actual": 3.147724,
+    "stop_loss_actual": 3.065,
     "tp1": 2.982276,
     "tp2": 2.940914,
     "tp3": 2.899552,
-    "tp1_alcanzado": false,
+    "tp1_alcanzado": true,
     "tp2_alcanzado": false,
     "tp3_alcanzado": false,
-    "sl_movido_be": false,
+    "sl_movido_be": true,
     "timestamp_apertura": "2026-10-14T09:42:50.845215+00:00",
-    "ultima_vela_1m": "2026-10-14T14:38:00"
+    "ultima_vela_1m": "2026-10-14T14:40:00"
 }
