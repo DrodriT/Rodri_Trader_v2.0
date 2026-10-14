@@ -1118,5 +1118,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "INJ_USDT_USDT_20261014_094248_302910",
+        "par": "INJ/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-10-13T06:36:46.195492+00:00",
+        "timestamp_cierre": "2026-10-14T09:42:00+00:00",
+        "precio_entrada": 7.958,
+        "precio_salida": 7.958,
+        "stop_loss_original": 7.643286,
+        "stop_loss_final": 7.958,
+        "tp1": 8.272714,
+        "tp2": 8.43007,
+        "tp3": 8.587427,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": true,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
