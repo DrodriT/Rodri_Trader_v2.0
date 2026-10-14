@@ -1098,5 +1098,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "AAVE_USDT_USDT_20261014_084247_978499",
+        "par": "AAVE/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-10-14T00:39:48.088868+00:00",
+        "timestamp_cierre": "2026-10-14T08:42:00+00:00",
+        "precio_entrada": 162.74,
+        "precio_salida": 159.777815,
+        "stop_loss_original": 159.777815,
+        "stop_loss_final": 159.777815,
+        "tp1": 165.702185,
+        "tp2": 167.183277,
+        "tp3": 168.66437,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
