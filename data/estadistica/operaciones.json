@@ -1258,5 +1258,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "HBAR_USDT_USDT_20261015_043340_382362",
+        "par": "HBAR/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-10-15T02:22:46.177332+00:00",
+        "timestamp_cierre": "2026-10-15T04:33:00+00:00",
+        "precio_entrada": 0.08269,
+        "precio_salida": 0.08269,
+        "stop_loss_original": 0.084776,
+        "stop_loss_final": 0.08269,
+        "tp1": 0.080604,
+        "tp2": 0.079561,
+        "tp3": 0.078518,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
