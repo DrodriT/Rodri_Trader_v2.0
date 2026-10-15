@@ -1,10 +1,10 @@
 {
     "simbolo": "UNI/USDT:USDT",
     "timestamp": "2026-10-15T17:35:00",
-    "precio_actual": 7.44,
+    "precio_actual": 7.45,
     "EMA_21": 7.46,
     "EMA_55": 7.34,
-    "RSI": 50.49,
+    "RSI": 51.41,
     "ADX": 28.23,
     "ATR": 0.04,
     "stop_loss_long": 7.38,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 76.0,
-        "score_anterior": 0.0,
+        "score_anterior": 76.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-10-15T18:13:48.023779+00:00."
