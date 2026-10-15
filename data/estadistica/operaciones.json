@@ -1298,5 +1298,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "ICP_USDT_USDT_20261015_143951_852483",
+        "par": "ICP/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-10-15T05:18:43.913776+00:00",
+        "timestamp_cierre": "2026-10-15T14:39:00+00:00",
+        "precio_entrada": 2.889,
+        "precio_salida": 2.959676,
+        "stop_loss_original": 2.959676,
+        "stop_loss_final": 2.959676,
+        "tp1": 2.818324,
+        "tp2": 2.782986,
+        "tp3": 2.747648,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
