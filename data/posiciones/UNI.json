@@ -1,7 +1,7 @@
 {
     "id_operacion": "UNI_20261014_131951_515879",
     "simbolo": "UNI/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 7.187,
     "stop_loss_original": 7.448822,
@@ -14,5 +14,8 @@
     "tp3_alcanzado": false,
     "sl_movido_be": true,
     "timestamp_apertura": "2026-10-14T13:19:51.515896+00:00",
-    "ultima_vela_1m": "2026-10-15T14:11:00"
+    "ultima_vela_1m": "2026-10-15T14:11:00",
+    "motivo_cierre": "BE",
+    "precio_salida": 7.187,
+    "timestamp_cierre": "2026-10-15T14:13:00+00:00"
 }
