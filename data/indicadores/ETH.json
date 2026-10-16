@@ -1,13 +1,13 @@
 {
     "simbolo": "ETH/USDT:USDT",
     "timestamp": "2026-10-16T13:00:00",
-    "precio_actual": 2458.88,
-    "EMA_21": 2468.66,
-    "EMA_55": 2464.38,
-    "RSI": 38.43,
-    "ADX": 26.36,
-    "ATR": 5.41,
-    "stop_loss_long": 2450.76,
+    "precio_actual": 2459.6,
+    "EMA_21": 2468.72,
+    "EMA_55": 2464.41,
+    "RSI": 39.07,
+    "ADX": 26.45,
+    "ATR": 5.46,
+    "stop_loss_long": 2451.42,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": 0.0,
         "score_anterior": 0.0,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición LONG ya abierta desde 2026-10-16T08:38:45.639507+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-10-16T17:04:49.731350+00:00."
     },
     "riesgo": null
 }
