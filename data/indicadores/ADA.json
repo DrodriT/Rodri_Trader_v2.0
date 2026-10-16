@@ -1,10 +1,10 @@
 {
     "simbolo": "ADA/USDT:USDT",
     "timestamp": "2026-10-16T15:20:00",
-    "precio_actual": 0.23,
+    "precio_actual": 0.22,
     "EMA_21": 0.23,
     "EMA_55": 0.23,
-    "RSI": 29.72,
+    "RSI": 28.51,
     "ADX": 35.13,
     "ATR": 0.0,
     "stop_loss_long": 0.22,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 70.0,
-        "score_anterior": 73.0,
+        "score_anterior": 70.0,
         "senal": null
     },
     "riesgo": null
