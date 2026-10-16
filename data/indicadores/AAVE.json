@@ -1,10 +1,10 @@
 {
     "simbolo": "AAVE/USDT:USDT",
     "timestamp": "2026-10-16T06:25:00",
-    "precio_actual": 159.85,
+    "precio_actual": 159.86,
     "EMA_21": 159.43,
     "EMA_55": 159.0,
-    "RSI": 57.55,
+    "RSI": 57.67,
     "ADX": 20.69,
     "ATR": 0.43,
     "stop_loss_long": 159.21,
