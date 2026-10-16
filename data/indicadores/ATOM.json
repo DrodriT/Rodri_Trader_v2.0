@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 60.0,
-        "score_anterior": 70.0,
+        "score_anterior": 60.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (12h) tras último cierre por SL. Termina: 2026-10-16T20:11:08.205204+00:00."
