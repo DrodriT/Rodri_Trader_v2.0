@@ -1398,5 +1398,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "BE",
         "resultado": "BREAKEVEN"
+    },
+    {
+        "id_operacion": "AVAX_USDT_USDT_20261016_150645_512192",
+        "par": "AVAX/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-10-16T14:35:55.085478+00:00",
+        "timestamp_cierre": "2026-10-16T15:06:00+00:00",
+        "precio_entrada": 10.383,
+        "precio_salida": 10.175555,
+        "stop_loss_original": 10.175555,
+        "stop_loss_final": 10.175555,
+        "tp1": 10.590445,
+        "tp2": 10.694168,
+        "tp3": 10.79789,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
