@@ -1358,5 +1358,25 @@
         "sl_movido_be": false,
         "motivo_cierre": "SL",
         "resultado": "PERDIDA"
+    },
+    {
+        "id_operacion": "ATOM_USDT_USDT_20261016_081108_203721",
+        "par": "ATOM/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-10-15T02:33:49.245361+00:00",
+        "timestamp_cierre": "2026-10-16T08:11:00+00:00",
+        "precio_entrada": 1.689,
+        "precio_salida": 1.76853,
+        "stop_loss_original": 1.76853,
+        "stop_loss_final": 1.76853,
+        "tp1": 1.60947,
+        "tp2": 1.569705,
+        "tp3": 1.52994,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
