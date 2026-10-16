@@ -1,12 +1,12 @@
 {
     "simbolo": "DOT/USDT:USDT",
     "timestamp": "2026-10-16T01:45:00",
-    "precio_actual": 1.18,
+    "precio_actual": 1.17,
     "EMA_21": 1.16,
     "EMA_55": 1.15,
-    "RSI": 72.29,
-    "ADX": 25.11,
-    "ATR": 0.0,
+    "RSI": 71.73,
+    "ADX": 25.18,
+    "ATR": 0.01,
     "stop_loss_long": 1.17,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
@@ -17,10 +17,8 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 95.0,
-        "score_anterior": 0.0,
-        "senal": null,
-        "senal_bloqueada": "LONG",
-        "motivo_bloqueo": "máximo de posiciones simultáneas alcanzado (4/4)"
+        "score_anterior": 95.0,
+        "senal": null
     },
     "riesgo": null
 }
