@@ -1,10 +1,10 @@
 {
     "simbolo": "LINK/USDT:USDT",
     "timestamp": "2026-10-17T21:55:00",
-    "precio_actual": 11.86,
+    "precio_actual": 11.85,
     "EMA_21": 11.97,
     "EMA_55": 12.0,
-    "RSI": 29.45,
+    "RSI": 29.36,
     "ADX": 54.63,
     "ATR": 0.04,
     "stop_loss_long": 11.79,
