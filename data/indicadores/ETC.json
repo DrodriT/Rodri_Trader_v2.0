@@ -1,10 +1,10 @@
 {
     "simbolo": "ETC/USDT:USDT",
     "timestamp": "2026-10-17T21:35:00",
-    "precio_actual": 7.66,
+    "precio_actual": 7.67,
     "EMA_21": 7.8,
     "EMA_55": 7.81,
-    "RSI": 12.89,
+    "RSI": 13.21,
     "ADX": 45.57,
     "ATR": 0.03,
     "stop_loss_long": 7.63,
@@ -19,8 +19,8 @@
         "score_actual": 85.0,
         "score_anterior": 85.0,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición LONG ya abierta desde 2026-10-15T15:39:48.486515+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por SL. Termina: 2026-10-18T01:39:48.463369+00:00."
     },
     "riesgo": null
 }
