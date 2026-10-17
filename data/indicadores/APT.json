@@ -1,11 +1,11 @@
 {
     "simbolo": "APT/USDT:USDT",
     "timestamp": "2026-10-17T22:55:00",
-    "precio_actual": 0.8,
+    "precio_actual": 0.79,
     "EMA_21": 0.79,
     "EMA_55": 0.8,
-    "RSI": 49.87,
-    "ADX": 26.59,
+    "RSI": 48.48,
+    "ADX": 26.61,
     "ATR": 0.0,
     "stop_loss_long": 0.79,
     "multiplicador_SL": 1.5,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 68.0,
-        "score_anterior": 0.0,
+        "score_anterior": 68.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición LONG ya abierta desde 2026-10-15T15:39:49.879126+00:00. Esperando SL/TP3."
