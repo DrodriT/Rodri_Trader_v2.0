@@ -1,10 +1,10 @@
 {
     "simbolo": "INJ/USDT:USDT",
     "timestamp": "2026-10-17T13:45:00",
-    "precio_actual": 8.55,
+    "precio_actual": 8.54,
     "EMA_21": 8.59,
     "EMA_55": 8.67,
-    "RSI": 30.25,
+    "RSI": 29.47,
     "ADX": 50.72,
     "ATR": 0.03,
     "stop_loss_long": 8.5,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 72.0,
-        "score_anterior": 67.0,
+        "score_actual": 67.0,
+        "score_anterior": 72.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición LONG ya abierta desde 2026-10-15T15:58:50.058754+00:00. Esperando SL/TP3."
