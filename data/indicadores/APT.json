@@ -1,10 +1,10 @@
 {
     "simbolo": "APT/USDT:USDT",
     "timestamp": "2026-10-18T21:40:00",
-    "precio_actual": 0.75,
+    "precio_actual": 0.74,
     "EMA_21": 0.74,
     "EMA_55": 0.75,
-    "RSI": 48.32,
+    "RSI": 47.08,
     "ADX": 34.9,
     "ATR": 0.0,
     "stop_loss_long": 0.74,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 68.0,
-        "score_anterior": 65.0,
+        "score_anterior": 68.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (4h) tras último cierre por SL. Termina: 2026-10-18T23:42:53.728722+00:00."
