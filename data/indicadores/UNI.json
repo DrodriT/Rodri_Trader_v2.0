@@ -1,10 +1,10 @@
 {
     "simbolo": "UNI/USDT:USDT",
     "timestamp": "2026-10-18T15:35:00",
-    "precio_actual": 6.99,
+    "precio_actual": 6.98,
     "EMA_21": 7.05,
     "EMA_55": 7.12,
-    "RSI": 29.64,
+    "RSI": 29.36,
     "ADX": 43.64,
     "ATR": 0.03,
     "stop_loss_long": 6.94,
