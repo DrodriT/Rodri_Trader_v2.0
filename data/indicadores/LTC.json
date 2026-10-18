@@ -1,13 +1,13 @@
 {
     "simbolo": "LTC/USDT:USDT",
     "timestamp": "2026-10-18T22:10:00",
-    "precio_actual": 58.46,
+    "precio_actual": 58.41,
     "EMA_21": 57.64,
     "EMA_55": 57.7,
-    "RSI": 71.17,
+    "RSI": 70.49,
     "ADX": 24.23,
     "ATR": 0.21,
-    "stop_loss_long": 58.15,
+    "stop_loss_long": 58.1,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -19,8 +19,8 @@
         "score_actual": 0.0,
         "score_anterior": 0.0,
         "senal": null,
-        "posicion_abierta": true,
-        "nota": "Posición SHORT ya abierta desde 2026-10-18T19:57:46.012748+00:00. Esperando SL/TP3."
+        "en_cooldown": true,
+        "nota": "En cooldown (4h) tras último cierre por SL. Termina: 2026-10-19T02:13:50.206309+00:00."
     },
     "riesgo": null
 }
