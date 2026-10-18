@@ -1498,5 +1498,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "BCH_USDT_USDT_20261018_215244_337008",
+        "par": "BCH/USDT:USDT",
+        "direccion": "SHORT",
+        "timestamp_apertura": "2026-10-18T19:31:12.922161+00:00",
+        "timestamp_cierre": "2026-10-18T21:52:00+00:00",
+        "precio_entrada": 267.59,
+        "precio_salida": 267.59,
+        "stop_loss_original": 270.564825,
+        "stop_loss_final": 267.59,
+        "tp1": 264.615175,
+        "tp2": 263.127763,
+        "tp3": 261.64035,
+        "tp1_alcanzado": true,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": true,
+        "motivo_cierre": "BE",
+        "resultado": "BREAKEVEN"
     }
 ]
