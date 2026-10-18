@@ -1,13 +1,13 @@
 {
     "simbolo": "BCH/USDT:USDT",
     "timestamp": "2026-10-18T19:30:00",
-    "precio_actual": 267.59,
-    "EMA_21": 268.95,
-    "EMA_55": 269.68,
-    "RSI": 30.41,
+    "precio_actual": 267.23,
+    "EMA_21": 268.91,
+    "EMA_55": 269.67,
+    "RSI": 27.92,
     "ADX": 26.29,
     "ATR": 0.56,
-    "stop_loss_long": 266.74,
+    "stop_loss_long": 266.38,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -16,28 +16,11 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 93.0,
-        "score_anterior": 0.0,
-        "senal": "SHORT"
+        "score_actual": 95.0,
+        "score_anterior": 93.0,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición SHORT ya abierta desde 2026-10-18T19:31:12.922161+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "SHORT",
-        "precio_entrada": 267.59,
-        "stop_loss": 270.564825,
-        "tp1": 264.615175,
-        "tp2": 263.127763,
-        "tp3": 261.64035,
-        "nivel_estructura_referencia": 267.56,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 1.112,
-        "apalancamiento_sugerido": 9.0,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 899.52,
-        "cantidad_activo": 3.361542
-    }
+    "riesgo": null
 }
