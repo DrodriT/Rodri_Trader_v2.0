@@ -1,11 +1,11 @@
 {
     "simbolo": "LINK/USDT:USDT",
     "timestamp": "2026-10-19T00:40:00",
-    "precio_actual": 12.08,
+    "precio_actual": 12.09,
     "EMA_21": 12.01,
     "EMA_55": 11.91,
-    "RSI": 69.32,
-    "ADX": 48.33,
+    "RSI": 70.02,
+    "ADX": 48.39,
     "ATR": 0.03,
     "stop_loss_long": 12.04,
     "multiplicador_SL": 1.5,
@@ -16,28 +16,11 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 92.0,
-        "score_anterior": 67.0,
-        "senal": "LONG"
+        "score_actual": 87.0,
+        "score_anterior": 92.0,
+        "senal": null,
+        "posicion_abierta": true,
+        "nota": "Posición LONG ya abierta desde 2026-10-19T00:43:49.028563+00:00. Esperando SL/TP3."
     },
-    "riesgo": {
-        "direccion": "LONG",
-        "precio_entrada": 12.081,
-        "stop_loss": 11.905565,
-        "tp1": 12.256435,
-        "tp2": 12.344152,
-        "tp3": 12.431869,
-        "nivel_estructura_referencia": 12.069,
-        "tp1_validado_por_estructura": false,
-        "tp2_validado_por_estructura": false,
-        "tp3_validado_por_estructura": false,
-        "distancia_sl_pct": 1.452,
-        "apalancamiento_sugerido": 6.89,
-        "apalancamiento_limitado": false,
-        "perdida_estimada_pct_margen": 10.0,
-        "perdida_estimada_usdt": 10.0,
-        "capital_entrada_usdt": 100.0,
-        "tamano_posicion_usdt": 688.63,
-        "cantidad_activo": 57.001324
-    }
+    "riesgo": null
 }
