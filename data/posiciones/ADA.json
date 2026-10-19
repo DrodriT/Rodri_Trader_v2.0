@@ -1,7 +1,7 @@
 {
     "id_operacion": "ADA_20261019_004446_649940",
     "simbolo": "ADA/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "LONG",
     "precio_entrada": 0.2217,
     "stop_loss_original": 0.218015,
@@ -14,5 +14,8 @@
     "tp3_alcanzado": false,
     "sl_movido_be": false,
     "timestamp_apertura": "2026-10-19T00:44:46.649959+00:00",
-    "ultima_vela_1m": "2026-10-19T10:26:00"
+    "ultima_vela_1m": "2026-10-19T10:26:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 0.218015,
+    "timestamp_cierre": "2026-10-19T10:28:00+00:00"
 }
