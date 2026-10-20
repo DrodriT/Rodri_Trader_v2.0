@@ -1,10 +1,10 @@
 {
     "simbolo": "FIL/USDT:USDT",
     "timestamp": "2026-10-20T07:45:00",
-    "precio_actual": 1.0,
+    "precio_actual": 1.01,
     "EMA_21": 1.01,
     "EMA_55": 1.01,
-    "RSI": 33.6,
+    "RSI": 39.06,
     "ADX": 28.46,
     "ATR": 0.0,
     "stop_loss_long": 1.0,
@@ -16,8 +16,8 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
-        "score_actual": 83.0,
-        "score_anterior": 78.0,
+        "score_actual": 78.0,
+        "score_anterior": 83.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición SHORT ya abierta desde 2026-10-19T14:03:10.328696+00:00. Esperando SL/TP3."
