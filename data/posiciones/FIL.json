@@ -1,7 +1,7 @@
 {
     "id_operacion": "FIL_20261019_140310_328676",
     "simbolo": "FIL/USDT:USDT",
-    "estado": "abierta",
+    "estado": "cerrada",
     "direccion": "SHORT",
     "precio_entrada": 1.0133,
     "stop_loss_original": 1.04209,
@@ -14,5 +14,8 @@
     "tp3_alcanzado": false,
     "sl_movido_be": false,
     "timestamp_apertura": "2026-10-19T14:03:10.328696+00:00",
-    "ultima_vela_1m": "2026-10-20T14:08:00"
+    "ultima_vela_1m": "2026-10-20T14:09:00",
+    "motivo_cierre": "SL",
+    "precio_salida": 1.04209,
+    "timestamp_cierre": "2026-10-20T14:11:00+00:00"
 }
