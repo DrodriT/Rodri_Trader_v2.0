@@ -1,13 +1,13 @@
 {
     "simbolo": "XMR/USDT:USDT",
-    "timestamp": "2026-10-20T07:55:00",
-    "precio_actual": 613.6,
-    "EMA_21": 610.49,
-    "EMA_55": 607.69,
-    "RSI": 68.1,
-    "ADX": 23.78,
-    "ATR": 1.59,
-    "stop_loss_long": 611.22,
+    "timestamp": "2026-10-20T08:00:00",
+    "precio_actual": 613.69,
+    "EMA_21": 610.78,
+    "EMA_55": 607.9,
+    "RSI": 68.64,
+    "ADX": 24.21,
+    "ATR": 1.47,
+    "stop_loss_long": 611.48,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -15,10 +15,11 @@
         "timeframe_entrada": "5m",
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
-        "cumple_mandatory": false,
+        "cumple_mandatory": null,
         "score_actual": 0.0,
-        "score_anterior": 0.0,
-        "senal": null
+        "score_anterior": null,
+        "senal": null,
+        "error": "No se pudieron descargar velas de 15m para evaluar la estrategia."
     },
     "riesgo": null
 }
