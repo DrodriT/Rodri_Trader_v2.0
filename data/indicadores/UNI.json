@@ -3,9 +3,9 @@
     "timestamp": "2026-10-22T02:10:00",
     "precio_actual": 7.39,
     "EMA_21": 7.47,
-    "EMA_55": 7.5,
-    "RSI": 30.79,
-    "ADX": 32.36,
+    "EMA_55": 7.51,
+    "RSI": 31.59,
+    "ADX": 31.92,
     "ATR": 0.04,
     "stop_loss_long": 7.33,
     "multiplicador_SL": 1.5,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 70.0,
-        "score_anterior": 83.0,
+        "score_anterior": 70.0,
         "senal": null
     },
     "riesgo": null
