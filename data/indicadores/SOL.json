@@ -1,10 +1,10 @@
 {
     "simbolo": "SOL/USDT:USDT",
     "timestamp": "2026-10-22T06:40:00",
-    "precio_actual": 104.62,
+    "precio_actual": 104.63,
     "EMA_21": 104.92,
     "EMA_55": 105.39,
-    "RSI": 35.24,
+    "RSI": 35.28,
     "ADX": 34.55,
     "ATR": 0.21,
     "stop_loss_long": 104.31,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 83.0,
-        "score_anterior": 75.0,
+        "score_anterior": 83.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición LONG ya abierta desde 2026-10-20T14:17:46.096800+00:00. Esperando SL/TP3."
