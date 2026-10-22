@@ -10,9 +10,9 @@
     "tp2": 7.670226,
     "tp3": 7.622301,
     "tp1_alcanzado": true,
-    "tp2_alcanzado": false,
+    "tp2_alcanzado": true,
     "tp3_alcanzado": false,
     "sl_movido_be": true,
     "timestamp_apertura": "2026-10-22T08:21:46.887810+00:00",
-    "ultima_vela_1m": "2026-10-22T16:47:00"
+    "ultima_vela_1m": "2026-10-22T16:48:00"
 }
