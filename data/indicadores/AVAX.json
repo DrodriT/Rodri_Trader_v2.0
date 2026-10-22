@@ -5,9 +5,9 @@
     "EMA_21": 9.62,
     "EMA_55": 9.69,
     "RSI": 20.14,
-    "ADX": 36.94,
+    "ADX": 36.98,
     "ATR": 0.03,
-    "stop_loss_long": 9.45,
+    "stop_loss_long": 9.44,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -17,10 +17,8 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 92.0,
-        "score_anterior": 75.0,
-        "senal": null,
-        "senal_bloqueada": "SHORT",
-        "motivo_bloqueo": "máximo de posiciones simultáneas alcanzado (4/4)"
+        "score_anterior": 92.0,
+        "senal": null
     },
     "riesgo": null
 }
