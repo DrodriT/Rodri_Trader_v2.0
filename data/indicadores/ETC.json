@@ -1,10 +1,10 @@
 {
     "simbolo": "ETC/USDT:USDT",
     "timestamp": "2026-10-22T16:45:00",
-    "precio_actual": 7.7,
+    "precio_actual": 7.71,
     "EMA_21": 7.74,
     "EMA_55": 7.76,
-    "RSI": 36.92,
+    "RSI": 37.4,
     "ADX": 27.93,
     "ATR": 0.02,
     "stop_loss_long": 7.68,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 83.0,
-        "score_anterior": 76.0,
+        "score_anterior": 83.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición SHORT ya abierta desde 2026-10-22T08:21:46.887810+00:00. Esperando SL/TP3."
