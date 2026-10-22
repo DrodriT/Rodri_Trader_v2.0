@@ -1,10 +1,10 @@
 {
     "simbolo": "SUI/USDT:USDT",
     "timestamp": "2026-10-22T02:05:00",
-    "precio_actual": 1.01,
-    "EMA_21": 1.02,
+    "precio_actual": 1.02,
+    "EMA_21": 1.03,
     "EMA_55": 1.03,
-    "RSI": 24.48,
+    "RSI": 29.8,
     "ADX": 36.31,
     "ATR": 0.0,
     "stop_loss_long": 1.01,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 85.0,
-        "score_anterior": 92.0,
+        "score_anterior": 85.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición LONG ya abierta desde 2026-10-20T14:08:00.108491+00:00. Esperando SL/TP3."
