@@ -1,10 +1,10 @@
 {
     "simbolo": "SUI/USDT:USDT",
     "timestamp": "2026-10-22T10:55:00",
-    "precio_actual": 0.98,
+    "precio_actual": 0.99,
     "EMA_21": 0.99,
     "EMA_55": 0.99,
-    "RSI": 44.07,
+    "RSI": 47.42,
     "ADX": 25.18,
     "ATR": 0.0,
     "stop_loss_long": 0.98,
@@ -17,7 +17,7 @@
         "bias_htf": "SHORT",
         "cumple_mandatory": true,
         "score_actual": 81.0,
-        "score_anterior": 76.0,
+        "score_anterior": 81.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (4h) tras último cierre por SL. Termina: 2026-10-22T12:21:39.274422+00:00."
