@@ -1878,5 +1878,25 @@
         "sl_movido_be": true,
         "motivo_cierre": "TP3",
         "resultado": "GANANCIA"
+    },
+    {
+        "id_operacion": "SOL_USDT_USDT_20261022_165103_354540",
+        "par": "SOL/USDT:USDT",
+        "direccion": "LONG",
+        "timestamp_apertura": "2026-10-20T14:17:46.096800+00:00",
+        "timestamp_cierre": "2026-10-22T16:51:00+00:00",
+        "precio_entrada": 107.887,
+        "precio_salida": 103.291514,
+        "stop_loss_original": 103.291514,
+        "stop_loss_final": 103.291514,
+        "tp1": 112.482486,
+        "tp2": 114.780229,
+        "tp3": 117.077972,
+        "tp1_alcanzado": false,
+        "tp2_alcanzado": false,
+        "tp3_alcanzado": false,
+        "sl_movido_be": false,
+        "motivo_cierre": "SL",
+        "resultado": "PERDIDA"
     }
 ]
