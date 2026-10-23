@@ -1,10 +1,10 @@
 {
     "simbolo": "ETC/USDT:USDT",
     "timestamp": "2026-10-23T05:20:00",
-    "precio_actual": 7.89,
+    "precio_actual": 7.88,
     "EMA_21": 7.86,
     "EMA_55": 7.82,
-    "RSI": 65.61,
+    "RSI": 65.02,
     "ADX": 32.74,
     "ATR": 0.01,
     "stop_loss_long": 7.87,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 75.0,
-        "score_anterior": 88.0,
+        "score_anterior": 75.0,
         "senal": null,
         "en_cooldown": true,
         "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-10-23T05:46:06.601416+00:00."
