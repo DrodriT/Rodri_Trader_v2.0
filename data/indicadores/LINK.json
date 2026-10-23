@@ -4,10 +4,10 @@
     "precio_actual": 12.16,
     "EMA_21": 12.16,
     "EMA_55": 12.12,
-    "RSI": 49.89,
+    "RSI": 51.16,
     "ADX": 21.96,
     "ATR": 0.02,
-    "stop_loss_long": 12.12,
+    "stop_loss_long": 12.13,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -18,9 +18,7 @@
         "cumple_mandatory": false,
         "score_actual": 0.0,
         "score_anterior": 0.0,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por SL. Termina: 2026-10-23T05:29:49.651089+00:00."
+        "senal": null
     },
     "riesgo": null
 }
