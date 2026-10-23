@@ -1,13 +1,13 @@
 {
     "simbolo": "ETC/USDT:USDT",
     "timestamp": "2026-10-23T05:45:00",
-    "precio_actual": 7.9,
+    "precio_actual": 7.88,
     "EMA_21": 7.87,
     "EMA_55": 7.83,
-    "RSI": 64.67,
-    "ADX": 30.03,
+    "RSI": 58.43,
+    "ADX": 29.22,
     "ATR": 0.01,
-    "stop_loss_long": 7.88,
+    "stop_loss_long": 7.86,
     "multiplicador_SL": 1.5,
     "timeframe": "5m",
     "velas_usadas": 200,
@@ -16,11 +16,9 @@
         "timeframe_tendencia": "15m",
         "bias_htf": "LONG",
         "cumple_mandatory": true,
-        "score_actual": 90.0,
-        "score_anterior": 83.0,
-        "senal": null,
-        "en_cooldown": true,
-        "nota": "En cooldown (4h) tras último cierre por BE. Termina: 2026-10-23T05:46:06.601416+00:00."
+        "score_actual": 68.0,
+        "score_anterior": 90.0,
+        "senal": null
     },
     "riesgo": null
 }
