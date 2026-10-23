@@ -1,11 +1,11 @@
 {
     "simbolo": "ATOM/USDT:USDT",
     "timestamp": "2026-10-23T02:55:00",
-    "precio_actual": 1.78,
+    "precio_actual": 1.79,
     "EMA_21": 1.77,
     "EMA_55": 1.74,
-    "RSI": 68.36,
-    "ADX": 41.71,
+    "RSI": 68.61,
+    "ADX": 41.78,
     "ATR": 0.01,
     "stop_loss_long": 1.77,
     "multiplicador_SL": 1.5,
@@ -17,7 +17,7 @@
         "bias_htf": "LONG",
         "cumple_mandatory": true,
         "score_actual": 80.0,
-        "score_anterior": 72.0,
+        "score_anterior": 80.0,
         "senal": null,
         "posicion_abierta": true,
         "nota": "Posición LONG ya abierta desde 2026-10-23T01:48:55.026214+00:00. Esperando SL/TP3."
